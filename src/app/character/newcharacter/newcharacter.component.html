@@ -1,0 +1,21 @@
+<h1>Fill in the form to create a new character</h1>
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="text" class="form-control" id="name" aria-describedby="name" [(ngModel)]="character.name"
+            name="name">
+    </div>
+    <div class="form-group">
+        <label for="level">Level</label>
+        <input type="email" class="form-control" id="level" aria-describedby="level" placeholder="Enter level"
+            [(ngModel)]="character.level" name="level">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput">Picture</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" [(ngModel)]="character.picture" name="afb">
+    </div>
+    <div class="d-flex justify-content-end">
+        <button (click)="Toevoegen()" class="btn btn-primary">Toevoegen</button>
+        <button (click)="Reset()" class="btn btn-primary mx-2" [disabled]="Resetknop()">Reset</button>
+    </div>
+</form>
