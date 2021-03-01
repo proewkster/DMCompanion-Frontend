@@ -1,21 +1,43 @@
 <h1>Fill in the form to create a new character</h1>
-<form>
+<form (ngSubmit)="addCharacter()" #f="ngForm">
     <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="name" aria-describedby="name" [(ngModel)]="character.name"
-            name="name">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required minlength="4" [(ngModel)]="character.name"
+            #name="ngModel" name="name">
+    </div>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+            Name is required.
+        </div>
+        <div *ngIf="name.errors.minlength">
+            Name must be at least 4 characters long.
+        </div>
     </div>
     <div class="form-group">
         <label for="level">Level</label>
-        <input type="email" class="form-control" id="level" aria-describedby="level" placeholder="Enter level"
-            [(ngModel)]="character.level" name="level">
+        <input type="number" class="form-control" id="level" required placeholder="Enter level"
+            [(ngModel)]="character.level" #level="ngModel" name="level">
+    </div>
+    <div *ngIf="level.invalid && (level.dirty || level.touched)" class="alert alert-danger">
+        <div *ngIf="level.errors.required">
+            Level is required.
+        </div>
     </div>
     <div class="form-group">
         <label for="formGroupExampleInput">Picture</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" [(ngModel)]="character.picture" name="afb">
+        <input type="text" class="form-control" id="formGroupExampleInput" required [(ngModel)]="character.picture"
+            #picture="ngModel" name="picture">
     </div>
+    <div *ngIf="picture.invalid && (picture.dirty || picture.touched)" class="alert alert-danger">
+        <div *ngIf="picture.errors.required">
+            Picture is required.
+        </div>
+    </div>
+
+
+
     <div class="d-flex justify-content-end">
-        <button (click)="Toevoegen()" class="btn btn-primary">Toevoegen</button>
+        <button type="submit" class="btn btn-primary">Create</button>
         <button (click)="Reset()" class="btn btn-primary mx-2" [disabled]="Resetknop()">Reset</button>
     </div>
 </form>

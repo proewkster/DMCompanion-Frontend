@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Character } from 'src/app/models/character';
 
 @Component({
   selector: 'app-characterlist',
@@ -6,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./characterlist.component.scss']
 })
 export class CharacterlistComponent implements OnInit {
-  // DIT MOET vAN DE KLASSE CHAR EEN ARRAY WORDEN
-  characters: string[] = ["char1test", "char2test"];
+  characters: Character[] = [];
   constructor() { }
 
   ngOnInit(): void {

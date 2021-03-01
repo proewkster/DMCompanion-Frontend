@@ -1,5 +1,5 @@
 <button [routerLink]="['/newCharacter']" class="btn btn-primary m-3">New character</button>
 <h1>Select your character</h1>
 <ul>
-    <li *ngFor="let char of characters">{{char}}</li>
+    <li *ngFor="let char of characters">{{char.name}}</li>
 </ul>
