@@ -4,35 +4,35 @@ import { Size } from "../enums/size.enum";
 
 export class Character {
 
-    public name: string;
-    public level: number;
-    public picture: string;
-    public inspiration: boolean;
-    public initiative: number;
-    public proficiency_Bonus: number;
-    public armor_Class: number;
-    public exhaustion_Level: number;
-    public current_Carrying_Weight: number;
-    public max_Carrying_Weight: number;
-    public current_Hit_Points: number;
-    public max_Hit_Points: number;
-    public temp_Hit_Points: number;
-    public xp: number;
-    public alignment: Alignment;
-    public gender: Gender;
-    public eye_Color: string;
-    public height: number;
-    public size: Size;
-    public faith: string;
-    public hair_Color: string;
-    public skin_Color: string;
-    public age: number;
-    public weight: number;
-    public appearance: string;
-    public backstory: string;
-    public notes: string;
-    public death_Saving_Throw_Success: number;
-    public death_Saving_Throw_Failure: number;
+    public name: string; //1
+    public level: number;//1
+    public picture: string;//1
+    public inspiration: boolean;//N
+    public initiative: number;//N
+    public proficiency_Bonus: number;//N
+    public armor_Class: number;//N
+    public exhaustion_Level: number;//N
+    public current_Carrying_Weight: number;//N
+    public max_Carrying_Weight: number;//N
+    public current_Hit_Points: number;//N
+    public max_Hit_Points: number;//N
+    public temp_Hit_Points: number;//nergens
+    public xp: number;//nergens
+    public alignment: Alignment;//3
+    public gender: Gender;//2
+    public eye_Color: string;//2
+    public height: number;//2
+    public size: Size;//2
+    public faith: string;//3
+    public hair_Color: string;//2
+    public skin_Color: string;//2
+    public age: number;//2
+    public weight: number;//2
+    public appearance: string;//2
+    public backstory: string;//4
+    public notes: string;//3
+    public death_Saving_Throw_Success: number;//nergens
+    public death_Saving_Throw_Failure: number;//nergens
 
     constructor(
         name: string,
