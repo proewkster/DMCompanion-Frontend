@@ -1,4 +1,5 @@
 export enum ApiEndPoints {
     // Authentication Endpoints
-    REGISTER = "/authentication/register"
+    REGISTER = "/authentication/register",
+    CONFIRMEMAIL = "/authentication/emailconfirmation"
 }
