@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { CharacterlistComponent } from './character/characterlist/characterlist.component';
 import { NewcharacterComponent } from './character/newcharacter/newcharacter.component';
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
+import * as $ from 'jquery';//NODIG voor de $ in create char next button. is in gebruik ook al is et hier niet highlighted.
 
 @NgModule({
   declarations: [

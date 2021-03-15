@@ -1,29 +1,27 @@
 <h1>Fill in the form to create a new character</h1>
 <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
+    <li class="nav-item">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#start" aria-controls="home"
             aria-selected="true">Start</a>
     </li>
-    <li class="nav-item " role="presentation">
-        <!-- <button [disabled]="f1.invalid" type="button" class="btn btn-primary" ngbNavOutlet="./#abilityScore">Ability
-            Scores</button> -->
+    <li class="nav-item ">
         <a [class.disabled]="f1.invalid" class="nav-link" id="profile-tab" data-toggle="tab" href="#abilityScore"
             aria-controls="abilityScore" aria-selected="false">Ability Scores</a>
     </li>
-    <li class="nav-item" role="presentation">
-        <a [class.disabled]="f2.invalid" class="nav-link" id="profile-tab" data-toggle="tab" href="#race"
+    <li class="nav-item">
+        <a [class.disabled]="f2.invalid" class="nav-link" id="profile-tab1" data-toggle="tab" href="#race"
             aria-controls="race" aria-selected="false">Race</a>
     </li>
-    <li class="nav-item" role="presentation">
-        <a [class.disabled]="f3.invalid" class="nav-link" id="profile-tab" data-toggle="tab" href="#description"
+    <li class="nav-item">
+        <a [class.disabled]="f3.invalid" class="nav-link" id="profile-tab2" data-toggle="tab" href="#description"
             aria-controls="description" aria-selected="false">Description</a>
     </li>
-    <li class="nav-item" role="presentation">
-        <a [class.disabled]="f4.invalid" class="nav-link" id="contact-tab" data-toggle="tab" href="#personality"
+    <li class="nav-item">
+        <a [class.disabled]="f4.invalid" class="nav-link" id="contact-tab3" data-toggle="tab" href="#personality"
             aria-controls="personality" aria-selected="false">Personality</a>
     </li>
-    <li class="nav-item" role="presentation">
-        <a [class.disabled]="f5.invalid" class="nav-link" id="contact-tab" data-toggle="tab" href="#backstory"
+    <li class="nav-item">
+        <a [class.disabled]="f5.invalid" class="nav-link" id="contact-tab4" data-toggle="tab" href="#backstory"
             aria-controls="backstory" aria-selected="false">Backstory</a>
     </li>
 </ul>
@@ -66,27 +64,50 @@
             </div>
         </form>
         <div class="d-flex justify-content-end">
-            <button [disabled]="f1.invalid" type="submit" class="btn btn-primary">Create</button>
+            <button [disabled]="f1.invalid" (click)="next()" class="btn btn-primary">Next</button>
         </div>
     </div>
     <!-- TAB2 -->
     <div class="tab-pane fade" id="abilityScore" role="tabpanel" aria-labelledby="contact-tab">
         <form #f2="ngForm">
-            AB score
-
+            <div *ngFor="let abscore of abScores">
+                <div class="form-group">
+                    <label for="{{abscore.name}}">{{abscore.name}}</label>
+                    <input type="number" class="form-control" id="{{abscore.name}}" required min="0" max="20"
+                        placeholder="Enter the abilityscore for {{abscore.name}}" [(ngModel)]="abscore.base_value"
+                        #{{abscore.name}}="ngModel" name="{{abscore.name}}">
+                </div>
+                <div *ngIf="'{{abscore.name}}'.invalid && ('{{abscore.name}}'.dirty || '{{abscore.name}}'.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="'{{abscore.name}}'.errors.required">
+                        The {{abscore.name}} abilityScore must be filled in.
+                    </div>
+                    <div *ngIf="'{{abscore.name}}'.errors.max">
+                        The {{abscore.name}} abilityScore must be less or equal too 20.
+                    </div>
+                </div>
+            </div>
         </form>
         <div class="d-flex justify-content-end">
-            <button [disabled]="f2.invalid" type="submit" class="btn btn-primary">Create</button>
+            <button [disabled]="f2.invalid" (click)="next()" class="btn btn-primary">Next</button>
         </div>
     </div>
     <!-- TAB3 -->
     <div class="tab-pane fade" id="race" role="tabpanel" aria-labelledby="contact-tab">
         <form #f3="ngForm">
-            Race
+            <div class="form-group">
+                <label for="race">Race</label>
+                <select class="form-control" #race="ngModel" [(ngModel)]="selectedrace" required name="race">
+                    <option value="" disabled>Choose your race</option>
+                    <option *ngFor=" let race of races" [ngValue]="race">
+                        {{race}}
+                    </option>
+                </select>
+            </div>
 
         </form>
         <div class="d-flex justify-content-end">
-            <button [disabled]="f3.invalid" type="submit" class="btn btn-primary">Create</button>
+            <button [disabled]="f3.invalid" (click)="next()" class="btn btn-primary">Next</button>
         </div>
     </div>
     <!-- TAB4 -->
@@ -94,7 +115,7 @@
         <form #f4="ngForm">
             <div class="form-group">
                 <label for="gender">Gender</label>
-                <select class="form-control" #alignment [(ngModel)]="character.gender" name="gender">
+                <select class="form-control" #gender="ngModel" [(ngModel)]="character.gender" required name="gender">
                     <option value="" disabled>Choose your gender</option>
                     <option *ngFor=" let gender of genders | keyvalue" [ngValue]="gender.value">
                         {{gender.value}}
@@ -129,7 +150,7 @@
             </div>
             <div class="form-group">
                 <label for="size">Size</label>
-                <select class="form-control" #alignment [(ngModel)]="character.size" name="alignment">
+                <select class="form-control" #size="ngModel" [(ngModel)]="character.size" required name="size">
                     <option value="" disabled>Choose your size</option>
                     <option *ngFor=" let size of sizes | keyvalue" [ngValue]="size.value">
                         {{size.value}}
@@ -178,7 +199,7 @@
             </div>
         </form>
         <div class="d-flex justify-content-end">
-            <button [disabled]="f4.invalid" type="submit" class="btn btn-primary">Create</button>
+            <button [disabled]="f4.invalid" (click)="next()" class="btn btn-primary">Next</button>
         </div>
     </div>
     <!-- TAB5 -->
@@ -212,7 +233,7 @@
             </div>
         </form>
         <div class="d-flex justify-content-end">
-            <button [disabled]="f5.invalid" type="submit" class="btn btn-primary">Create</button>
+            <button [disabled]="f5.invalid" (click)="next()" class="btn btn-primary">Next</button>
         </div>
     </div>
     <!-- TAB6 -->
@@ -232,8 +253,7 @@
             </div>
         </form>
         <div class="d-flex justify-content-end">
-            <button [disabled]="f6.invalid" type="submit" class="btn btn-primary">Create</button>
+            <button [disabled]="f6.invalid" (click)="save()" class="btn btn-primary">Create</button>
         </div>
     </div>
 </div>
-<button (click)="save()">Opslaan</button>
