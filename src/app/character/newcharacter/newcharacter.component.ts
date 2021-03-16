@@ -5,10 +5,11 @@ import { Alignment } from 'src/app/enums/alignment.enum';
 import { Character } from 'src/app/models/character';
 import { Size } from 'src/app/enums/size.enum';
 import { CharacterService } from 'src/app/services/character.service';
-import { AbilityScore } from 'src/app/models/ability-score';
-import { Personality } from 'src/app/models/personality';
 import { RaceService } from 'src/app/services/race.service';
 import { AbilityscoreService } from 'src/app/services/abilityscore.service';
+import { DtoNewABScores } from '../models/dto-new-abscores';
+import { DtoNewcharacter } from '../models/dto-newcharacter';
+import { DtoNewRace } from '../models/dto-new-race';
 
 
 @Component({
@@ -19,12 +20,10 @@ import { AbilityscoreService } from 'src/app/services/abilityscore.service';
 export class NewcharacterComponent implements OnInit {
 
   constructor(private router: Router, private characterService: CharacterService, private raceService: RaceService, private abscoreService: AbilityscoreService) { }
-  character: Character = new Character("", 1, "", true, null, null, null, null, null, null, null, null, null, null, null, null, "", null, null, "", "", "", null, null, "", "", "", null, null);
-  //abScore: AbilityScore = new AbilityScore(null,null,null,null,null,null,null,null,null,null,null);
-  abScores: AbilityScore[] = [];
-  personality: Personality = new Personality(0, "", "");
+  character: DtoNewcharacter = new DtoNewcharacter(null, 1, null, null, null, null, null, null, null, null, null, null, null, null,null,null);
+  abScores: DtoNewABScores[] = [];
   races: string[] = []
-  selectedrace: string = "";
+  selectedrace: DtoNewRace=new DtoNewRace(null)
   public alignments = Object.values(Alignment).filter(value => typeof value != 'number');
   public genders = Object.values(Gender).filter(value => typeof value != 'number');
   public sizes = Object.values(Size).filter(value => typeof value != 'number');
@@ -45,13 +44,12 @@ export class NewcharacterComponent implements OnInit {
     //this.raceService.getRaceNames().subscribe(x => this.races = x);
     this.races = this.raceService.getRaceNames();
     this.abscoreService.getAbilityScores().forEach(element => {
-      this.abScores.push(new AbilityScore(null, element, null, null, null, null, null, null, null, null, null));
+      this.abScores.push(new DtoNewABScores(element, null));
     });
   }
   save() {
     console.log(this.character);
     console.log(this.selectedrace);
     console.log(this.abScores);
-    console.log(this.personality);
   }
 }

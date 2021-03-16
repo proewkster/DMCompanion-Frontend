@@ -97,7 +97,7 @@
         <form #f3="ngForm">
             <div class="form-group">
                 <label for="race">Race</label>
-                <select class="form-control" #race="ngModel" [(ngModel)]="selectedrace" required name="race">
+                <select class="form-control" #race="ngModel" [(ngModel)]="selectedrace.name" required name="race">
                     <option value="" disabled>Choose your race</option>
                     <option *ngFor=" let race of races" [ngValue]="race">
                         {{race}}
@@ -182,7 +182,7 @@
                 <input type="number" class="form-control" id="age" required placeholder="age"
                      [(ngModel)]="character.age"  #age="ngModel" name="age">
             </div>
-            <div *ngIf="age.invalid && (age.dirty ||height.touched)"class="alert alert-danger">
+            <div *ngIf="age.invalid && (age.dirty ||age.touched)"class="alert alert-danger">
                 <div *ngIf="age.errors.required">The age is required.</div>
             </div>
             <div class="form-group">
