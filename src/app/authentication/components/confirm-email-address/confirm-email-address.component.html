@@ -3,7 +3,7 @@
         <div *ngIf="isConfirmed">
             <h1>Email Confirmation</h1>
             <p>Your email address has been confirmed and your account was successfully activated.</p>
-            <p>Welcome to DMCompanion! Follow <a href="#">this link</a> to login.</p>
+            <p>Welcome to DMCompanion! Follow <a routerLink="/authentication/login" routerLinkActive="active">this link</a> to login.</p>
         </div>
         <div *ngIf="isFailed">
             <h1>Email Confirmation Failed</h1>

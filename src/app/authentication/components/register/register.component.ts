@@ -19,12 +19,12 @@ public isSubmitted = false;
 public errorMessage: string;
 public apiError: boolean;
 
-  constructor(private _authService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private _authService: AuthenticationService, private _formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
 
     // Designate registration form and configure validation
-    this.registerForm = this.formBuilder.group({
+    this.registerForm = this._formBuilder.group({
       email: [null, [Validators.required, Validators.email, Validators.maxLength(100)]],
       nickname: [null, Validators.maxLength(50)],
       firstName: [null, [Validators.required, Validators.maxLength(100)]],
@@ -81,8 +81,6 @@ public apiError: boolean;
         this.router.navigateByUrl('authentication/register/success');
       },
       error => {
-        console.log(error);
-
         // Handle errors not handled by the HTTP service
         this.handleError(error);
       })

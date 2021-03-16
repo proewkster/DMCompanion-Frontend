@@ -1,0 +1,85 @@
+<div *ngIf="displayAsMenu; else displayAsPage">
+    <div class="nav-item dropdown-toggle pl-0 text-light ml-auto" href="#" id="userMenu" role="button" data-toggle="dropdown">
+        <i class="fa fa-user mr-2"></i>
+    </div>
+
+    <div class="dropdown-menu dropdown-menu-right dropdown-default p-2 login-menu" aria-labelledby="userMenu">
+        <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="login(loginForm.value)">
+            <div class="alert alert-danger my-1 text-center" *ngIf="apiError">
+                <span>Username or password incorrect</span>
+            </div>
+
+            <div class="form-group">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" formControlName="username" id="username" class="form-control" />
+                <div class="mt-1">
+                    <div class="text-danger" *ngIf="validateControlForMenu('username') && hasError('username', 'required')">Please enter your username</div>
+                    <div class="text-danger" *ngIf="validateControlForMenu('username') && hasError('username', 'email')">Your username should be a valid email address</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" formControlName="password" id="password" class="form-control" />
+                <div class="mt-1">
+                    <div class="text-danger" *ngIf="validateControlForMenu('password') && hasError('password', 'required')">Please enter your password</div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block my-2" (click)="onClick($event)">Login</button>
+
+            <p class="text-center"><a href="#">Forgot your password?</a></p>
+
+            <div class="dropdown-divider"></div>
+
+            <a class="nav-link dropdown-item text-dark" routerLink="/authentication/register" routerLinkActive="active">
+                <i class="fa fa-user-plus mr-2"></i>Register
+            </a>
+        </form>
+    </div>
+</div>
+
+<ng-template #displayAsPage>
+    <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="login(loginForm.value)">
+        <div class="row text-center mt-3">
+            <div class="col-12">
+                <h1 class="display-2">Login</h1>
+                <p>Don't have an account? <a routerLink="/authentication/register" routerLinkActive="active">Register here</a></p>
+                <hr/>
+            </div>
+        </div>
+    
+        <div class="row my-3">
+            <div class="col-12 col-md-8 offset-md-2">
+                <div class="alert alert-danger text-center" *ngIf="apiError">
+                    <span>Username or password incorrect</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <div class="form-group">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" autofocus formControlName="username" id="username" class="form-control" />
+                    <div class="mt-2">
+                        <div class="alert alert-danger" *ngIf="validateControl('username') && hasError('username', 'required')">Please enter your username</div>
+                        <div class="alert alert-danger" *ngIf="validateControl('username') && hasError('username', 'email')">Your username should be a valid email address</div>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" formControlName="password" id="password" class="form-control" />
+                    <div class="mt-2">
+                        <div class="alert alert-danger" *ngIf="validateControl('password') && hasError('password', 'required')">Please enter your password</div>
+                    </div>
+                </div>
+    
+                <button type="submit" class="btn btn-primary btn-block mt-2">Login</button>
+                
+                <p class="mt-2 text-center"><a href="#">Forgot your password?</a></p>
+            </div>
+        </div>
+    </form>
+</ng-template>

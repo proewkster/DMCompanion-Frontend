@@ -5,22 +5,24 @@ import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 import { ConfirmEmailAddressComponent } from './components/confirm-email-address/confirm-email-address.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
 @NgModule({
-  declarations: [RegisterComponent, RegisterSuccessComponent, ConfirmEmailAddressComponent],
+  declarations: [RegisterComponent, RegisterSuccessComponent, ConfirmEmailAddressComponent, LoginComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       { path: 'register', component: RegisterComponent },
       { path: 'register/success', component: RegisterSuccessComponent },
-      { path: 'confirmemailaddress', component: ConfirmEmailAddressComponent }
+      { path: 'confirmemailaddress', component: ConfirmEmailAddressComponent },
+      { path: 'login', component: LoginComponent }
     ])
   ],
   exports: [
-    RegisterComponent
+    LoginComponent
   ]
 })
 export class AuthenticationModule { }

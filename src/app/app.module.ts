@@ -1,3 +1,4 @@
+import { LoginComponent } from './authentication/components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { CharacterlistComponent } from './character/characterlist/characterlist.component';
 import { NewcharacterComponent } from './character/newcharacter/newcharacter.component';
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { SelectedCharacterComponent } from './character/characterlist/selected-c
     NgbModule,
     FormsModule,
     HttpClientModule,
+    AuthenticationModule,
     RouterModule.forRoot([
       { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)}
     ])

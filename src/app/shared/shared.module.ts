@@ -1,4 +1,3 @@
-import { HttpService } from './services/http.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +9,6 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   exports: [
-    HttpService
   ]
 })
 export class SharedModule { }
