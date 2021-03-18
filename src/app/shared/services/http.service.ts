@@ -12,7 +12,7 @@ import { Observable, of, throwError } from 'rxjs';
 })
 export class HttpService {
 
-  constructor(private _http: HttpClient, public router: Router) { }
+  constructor(private _http: HttpClient, private _router: Router) { }
 
   requestCall(endpoint: ApiEndPoints, method: ApiMethod, data?: any) {
     // Define response as the result of any API call
@@ -61,18 +61,18 @@ export class HttpService {
           break;
         case 401:     // Unauthorized
           console.log("Unauthorized request. Redirect to login page");
-          this.router.navigateByUrl("/authentication/login");
+          this._router.navigate(["/authentication/login"], { queryParams: { returnUrl: this._router.url}});
           isHandled = true;
           break;
         case 403:     // Forbidden
           console.log("Access had been denied. Redirect to notification page");
-          this.router.navigateByUrl("/error/forbidden");
+          this._router.navigate(["/error/forbidden"], { queryParams: { returnUrl: this._router.url }});
           isHandled = true;
           break;
         case 500:     // Server error
           console.log(`Returned error message: ${error.error.message}`);
           console.log("A server error occurred, request could not be processed. Redirect to generic error page.");
-          this.router.navigateByUrl("/error/servererror");
+          this._router.navigateByUrl("/error/servererror");
           isHandled = true;
           break;
         default:      // All other error messages

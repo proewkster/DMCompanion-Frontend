@@ -11,15 +11,18 @@ import { Router } from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   isAuthenticated: boolean;
+  username: string;
   title = 'DMCompanion';
 
-  constructor(private _authService: AuthenticationService, private _router: Router) { }
-
-  ngOnInit(): void {
+  constructor(private _authService: AuthenticationService, private _router: Router) {
     this._authService.authChanged
       .subscribe(res => {
         this.isAuthenticated = res;
       })
+  }
+
+  ngOnInit(): void {
+    this.username = this._authService.getAuthenticatedUser();
   }
 
   public logout = () => {

@@ -13,6 +13,7 @@ import { CharacterlistComponent } from './character/characterlist/characterlist.
 import { NewcharacterComponent } from './character/newcharacter/newcharacter.component';
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
 import { AuthenticationModule } from './authentication/authentication.module';
+import {JwtModule } from '@auth0/angular-jwt';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -36,13 +37,14 @@ export function tokenGetter() {
     HttpClientModule,
     AuthenticationModule,
     RouterModule.forRoot([
-      { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)}
+      { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)},
+      { path: 'error', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule)}
     ]),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ["localhost:5001"],
-        blacklistedDomains: []
+        allowedDomains: ["localhost:5001"],
+        disallowedRoutes: []
       }
     })
   ],

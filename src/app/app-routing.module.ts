@@ -1,5 +1,7 @@
+import { AdminGuard } from './authentication/guards/admin.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './authentication/guards/auth.guard';
 import { CharacterlistComponent } from './character/characterlist/characterlist.component';
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
 import { NewcharacterComponent } from './character/newcharacter/newcharacter.component';
@@ -9,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: "home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "Characters", component: CharacterlistComponent },
-  { path: "newCharacter", component: NewcharacterComponent },
+  { path: "newCharacter", component: NewcharacterComponent, canActivate: [AuthGuard] },
   { path: "Character:id", component: SelectedCharacterComponent }
 ];
 
