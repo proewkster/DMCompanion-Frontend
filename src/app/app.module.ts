@@ -1,4 +1,3 @@
-import { LoginComponent } from './authentication/components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +13,10 @@ import { CharacterlistComponent } from './character/characterlist/characterlist.
 import { NewcharacterComponent } from './character/newcharacter/newcharacter.component';
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
 import { AuthenticationModule } from './authentication/authentication.module';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -34,7 +37,14 @@ import { AuthenticationModule } from './authentication/authentication.module';
     AuthenticationModule,
     RouterModule.forRoot([
       { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)}
-    ])
+    ]),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:5001"],
+        blacklistedDomains: []
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

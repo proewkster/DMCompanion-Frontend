@@ -36,6 +36,14 @@ export class AuthenticationService {
     return this._http.requestCall(ApiEndPoints.LOGIN, ApiMethod.POST, data);
   }
 
+  public logout = () => {
+    // Remove the token from local storage
+    localStorage.removeItem("token");
+
+    // Notify subscribers of logout event
+    this.sendAuthenticationChangeNotification(false);
+  }
+
   // Authentication state tracking - Keep observable for authentication state so subscribing components know when user is authenticated
   public sendAuthenticationChangeNotification = (isAuthenticated: boolean) => {
     this._authChangeSubject.next(isAuthenticated);
