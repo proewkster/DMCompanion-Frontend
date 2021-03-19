@@ -27,9 +27,6 @@ export class ConfirmEmailAddressComponent implements OnInit {
     const token = this._route.snapshot.queryParams['token'];
     const userId = this._route.snapshot.queryParams['userId'];
 
-    console.log(token);
-    console.log(userId);
-
     // Call API endpoint to confirm user account
     this._authService.confirmEmail(token, userId)
       .subscribe(_ => {

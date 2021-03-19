@@ -1,3 +1,6 @@
+import { ResetPasswordComponent } from './../components/reset-password/reset-password.component';
+import { DTO_ResetPassword } from './../models/dto_reset-password';
+import { DTO_ForgotPassword } from './../models/dto_forgot-password';
 import { DTO_Login } from './../models/dto_login';
 import { CustomEncoder } from './../../shared/helpers/custom-encoder';
 import { HttpParams } from '@angular/common/http';
@@ -44,6 +47,14 @@ export class AuthenticationService {
 
     // Notify subscribers of logout event
     this.sendAuthenticationChangeNotification(false);
+  }
+
+  public forgotPassword = (data: DTO_ForgotPassword) => {
+    return this._http.requestCall(ApiEndPoints.FORGOTPASSWORD, ApiMethod.POST, data);
+  }
+
+  public resetPassword = (data: DTO_ResetPassword) => {
+    return this._http.requestCall(ApiEndPoints.RESETPASSWORD, ApiMethod.POST, data);
   }
 
   public getAuthenticatedUser = () => {

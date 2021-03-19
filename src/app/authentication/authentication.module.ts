@@ -6,11 +6,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 import { ConfirmEmailAddressComponent } from './components/confirm-email-address/confirm-email-address.component';
 import { LoginComponent } from './components/login/login.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 
 @NgModule({
-  declarations: [RegisterComponent, RegisterSuccessComponent, ConfirmEmailAddressComponent, LoginComponent],
+  declarations: [RegisterComponent, RegisterSuccessComponent, ConfirmEmailAddressComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -18,7 +20,9 @@ import { LoginComponent } from './components/login/login.component';
       { path: 'register', component: RegisterComponent },
       { path: 'register/success', component: RegisterSuccessComponent },
       { path: 'confirmemailaddress', component: ConfirmEmailAddressComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'forgotpassword', component: ForgotPasswordComponent },
+      { path: 'resetpassword', component: ResetPasswordComponent }
     ])
   ],
   exports: [

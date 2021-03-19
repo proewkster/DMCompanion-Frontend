@@ -1,6 +1,6 @@
 import { DTO_Login } from './../../models/dto_login';
 import { AuthenticationService } from './../../services/authentication.service';
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
