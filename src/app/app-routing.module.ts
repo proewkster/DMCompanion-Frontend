@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: "home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "Characters", component: CharacterlistComponent },
-  { path: "newCharacter", component: NewcharacterComponent, canActivate: [AuthGuard] },
+  { path: "newCharacter", component: NewcharacterComponent },
   { path: "Character:id", component: SelectedCharacterComponent }
 ];
 
