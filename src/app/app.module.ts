@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,7 +12,13 @@ import { FormsModule } from '@angular/forms';
 import { CharacterlistComponent } from './character/characterlist/characterlist.component';
 import { NewcharacterComponent } from './character/newcharacter/newcharacter.component';
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
+import { AuthenticationModule } from './authentication/authentication.module';
+import {JwtModule } from '@auth0/angular-jwt';
 import * as $ from 'jquery';//NODIG voor de $ in create char next button. is in gebruik ook al is et hier niet highlighted.
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -28,7 +35,19 @@ import * as $ from 'jquery';//NODIG voor de $ in create char next button. is in 
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthenticationModule,
+    RouterModule.forRoot([
+      { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)},
+      { path: 'error', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule)}
+    ]),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:5001"],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

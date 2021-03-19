@@ -22,4 +22,17 @@
             </li>
         </ul>
     </div>
+
+    <div *ngIf="isAuthenticated; else loginMenu">
+        <div class="nav-item dropdown-toggle pl-0 text-light ml-auto" href="#" id="userMenu" role="button" data-toggle="dropdown">
+            <i class="fa fa-user mr-2"></i>{{ username }}
+        </div>
+    
+        <div class="dropdown-menu dropdown-menu-right dropdown-default p-2 login-menu" aria-labelledby="userMenu">
+            <button class="btn btn-link" (click)="logout()">Logout</button>
+        </div>
+    </div>
+    <ng-template #loginMenu>
+        <auth-login displayAsMenu="true"></auth-login>
+    </ng-template>
 </nav>

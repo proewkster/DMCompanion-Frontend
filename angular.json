@@ -68,7 +68,10 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "DMCompanion-Frontend:build"
+            "browserTarget": "DMCompanion-Frontend:build",
+            "sslKey": "./src/assets/certificate/localhost.key",
+            "sslCert": "./src/assets/certificate/localhost.crt",
+            "ssl": true
           },
           "configurations": {
             "production": {

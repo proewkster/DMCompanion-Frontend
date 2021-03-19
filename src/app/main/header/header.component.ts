@@ -1,5 +1,6 @@
+import { AuthenticationService } from './../../authentication/services/authentication.service';
 import { from } from "rxjs";
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Router } from "@angular/router";
 
 @Component({
@@ -7,9 +8,25 @@ import { Router } from "@angular/router";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  isAuthenticated: boolean;
+  username: string;
   title = 'DMCompanion';
 
+  constructor(private _authService: AuthenticationService, private _router: Router) {
+    this._authService.authChanged
+      .subscribe(res => {
+        this.isAuthenticated = res;
+      })
+  }
+
+  ngOnInit(): void {
+    this.username = this._authService.getAuthenticatedUser();
+  }
+
+  public logout = () => {
+    this._authService.logout();
+    this._router.navigateByUrl("/");
+  }
 }
