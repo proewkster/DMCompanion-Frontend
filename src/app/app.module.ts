@@ -37,10 +37,7 @@ export function tokenGetter() {
     FormsModule,
     HttpClientModule,
     AuthenticationModule,
-    RouterModule.forRoot([
-      { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)},
-      { path: 'error', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule)}
-    ]),
+    RouterModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

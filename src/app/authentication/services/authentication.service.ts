@@ -61,11 +61,15 @@ export class AuthenticationService {
     // Get token
     const token = localStorage.getItem('token');
 
-    // Decode token
-    const decodedToken = this._jwtHelper.decodeToken(token);
+    if (token != null) {
+      // Decode token
+      const decodedToken = this._jwtHelper.decodeToken(token);
 
-    // return username
-    return decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+      // return username
+      return decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+    }
+
+    else return "";
   }
 
   // Authentication state tracking - Keep observable for authentication state so subscribing components know when user is authenticated
