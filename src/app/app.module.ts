@@ -1,3 +1,4 @@
+import { AdminModule } from './admin/admin.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -37,6 +38,7 @@ export function tokenGetter() {
     FormsModule,
     HttpClientModule,
     AuthenticationModule,
+    AdminModule,
     RouterModule,
     JwtModule.forRoot({
       config: {

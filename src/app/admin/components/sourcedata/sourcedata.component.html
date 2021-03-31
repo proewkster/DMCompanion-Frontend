@@ -1,0 +1,87 @@
+<div id="wrapper" class="d-flex flex-row h-100 m-0 p-0">
+    <div id="sidebar-wrapper">
+        <nav id="sidebar" class="sidebar bg-primary pt-2 h-100">
+            <div class="mx-3 border-top border-bottom border-white text-center py-2">
+                <span class="text-white text-center"><strong>Source Data Management</strong></span>
+            </div>
+            <div class="nav">
+                <div class="p-2 pl-3" id="sourcedataNavbar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#baseDataMenu">
+                                Basic Data
+                            </a>
+                            <div class="collapse" id="baseDataMenu" aria-expanded="false">
+                                <ul class="nav navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" [routerLink]="[{ outlets: { 'admin-sourcedata-outlet': ['abilityscore'] } }]" routerLinkActive="active">Ability Scores</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" [routerLink]="[{ outlets: { 'admin-sourcedata-outlet': ['condition'] } }]" routerLinkActive="active">Conditions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Damage Types</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Magic Schools</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Proficiencies</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Senses</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Skills</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Speeds</a>
+                                    </li>
+                                </ul>                    
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Races</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Classes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Spells</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Equipment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Feats</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Abilities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Modifiers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="[{ outlets: { 'admin-sourcedata-outlet': ['source'] } }]" routerLinkActive="active">Sources</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>    
+        </nav> 
+    </div>
+    
+    <div class="pt-4">
+        <button type="button" class="btn border border-primary d-md-none sidebar-toggler text-primary" (click)="toggleSidebar($event)">
+            <i id="sidebar-toggler-icon-sm-collapsed" class="fa fa-angle-double-right"></i>
+            <i id="sidebar-toggler-icon-sm-expanded" class="fa fa-angle-double-left d-none"></i>
+        </button>
+        
+        <button type="button" class="btn border border-primary d-none d-md-block sidebar-toggler text-primary" (click)="toggleSidebar($event)">
+            <i id="sidebar-toggler-icon-md-collapsed" class="fa fa-angle-double-right d-none"></i>
+            <i id="sidebar-toggler-icon-md-expanded" class="fa fa-angle-double-left"></i>
+        </button>
+    </div>  
+    <div id="page-content-wrapper" class="align-self-stretch p-3">
+        <router-outlet name="admin-sourcedata-outlet"></router-outlet>
+    </div>
+</div>

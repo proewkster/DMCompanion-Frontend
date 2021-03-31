@@ -1,0 +1,56 @@
+body {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+.sidebar {
+    width: 15rem;
+    float: left;
+}
+
+.sidebar-toggler {
+    border-radius: 0 !important;
+}
+
+.toggled {
+    margin-left: 0rem !important;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link[data-toggle].collapsed:after {
+    content: " ▾";
+}
+
+.nav-link[data-toggle]:not(.collapsed):after {
+    content: " ▴";
+}
+
+.navbar-nav {
+    margin-left: 50px;
+}
+
+.active {
+    font-weight: bold;
+    text-shadow: 0 0 3px white;
+}
+
+/* On medium screens and larger, Sidebar starts as expanded */
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0rem;
+    }
+
+    .toggled {
+        margin-left: -15rem !important;
+    }
+}
