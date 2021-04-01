@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -5,13 +6,17 @@ import { SourcedataComponent } from './components/sourcedata/sourcedata.componen
 import { AbilityscoreComponent } from './components/sourcedata/basedata/abilityscore/abilityscore.component';
 import { ConditionComponent } from './components/sourcedata/basedata/condition/condition.component';
 import { SourceComponent } from './components/sourcedata/source/source.component';
+import { AddSourceComponent } from './components/sourcedata/source/add-source/add-source.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [SourcedataComponent, AbilityscoreComponent, ConditionComponent, SourceComponent],
+  declarations: [SourcedataComponent, AbilityscoreComponent, ConditionComponent, SourceComponent, AddSourceComponent],
   imports: [
     CommonModule,
+    SharedModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       { path: 'sourcedata', component: SourcedataComponent,
         children: [

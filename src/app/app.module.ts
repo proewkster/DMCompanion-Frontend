@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './main/header/header.component';
 import { HomeComponent } from './main/home/home.component';
 import { FooterComponent } from './main/footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CharacterlistComponent } from './character/characterlist/characterlist.component';
 import { NewcharacterComponent } from './character/newcharacter/newcharacter.component';
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
@@ -38,6 +38,7 @@ export function tokenGetter() {
     FormsModule,
     HttpClientModule,
     AuthenticationModule,
+    ReactiveFormsModule,
     AdminModule,
     RouterModule,
     JwtModule.forRoot({

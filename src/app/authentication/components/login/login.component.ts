@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this._formBuilder.group({
       username: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]]
-    })
+    });
 
     // Grab return URL from query parameter, or set as homepage if non-existent
     this._returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/';

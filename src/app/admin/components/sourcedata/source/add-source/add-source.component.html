@@ -1,0 +1,20 @@
+<shared-modal title="Add Source">
+        <div body>
+            <form [formGroup]="addSourceForm" id="addSourceForm" autocomplete="off" novalidate (ngSubmit)="createSource(addSourceForm.value)">
+                <div class="row text-center">
+                    <div class="col-8 offset-2">
+                        <div class="form-group text-left">
+                            <label for="sourceName" class="form-label">Source Name:</label>
+                            <input type="text" formControlName="sourceName" id="sourceName" class="form-control" />
+                            <div class="mt-1">
+                                <div class="text-danger" *ngIf="validateControl('sourceName') && hasError('sourceName', 'required')">Please enter a name for the new Source</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div footer>
+            <button type="submit" form="addSourceForm" class="btn btn-primary btn-block">Submit</button>            
+        </div>
+</shared-modal>

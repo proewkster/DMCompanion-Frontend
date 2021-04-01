@@ -3,7 +3,7 @@ import { GlobalSettings } from './../../../shared/globalsettings';
 import { DTO_Register } from './../../models/dto_register';
 import { AuthenticationService } from './../../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from 'src/app/shared/validators/must-match';
 import { HttpErrorResponse } from '@angular/common/http';
 

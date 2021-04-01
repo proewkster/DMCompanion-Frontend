@@ -1,4 +1,3 @@
-import { ResetPasswordComponent } from './../components/reset-password/reset-password.component';
 import { DTO_ResetPassword } from './../models/dto_reset-password';
 import { DTO_ForgotPassword } from './../models/dto_forgot-password';
 import { DTO_Login } from './../models/dto_login';
@@ -11,7 +10,6 @@ import { HttpService } from 'src/app/shared/services/http.service';
 import { DTO_Register } from '../models/dto_register';
 import { Subject } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { updateShorthandPropertyAssignment } from 'typescript';
 
 @Injectable({
   providedIn: 'root'

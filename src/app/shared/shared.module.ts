@@ -2,11 +2,12 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
 @NgModule({
-  declarations: [ForbiddenComponent],
+  declarations: [ForbiddenComponent, ModalComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -14,6 +15,7 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
     ])
   ],
   exports: [
+    ModalComponent
   ]
 })
 export class SharedModule { }
