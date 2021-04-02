@@ -1,0 +1,25 @@
+<shared-modal title={{title}}>
+    <div body>
+        <form [formGroup]="editSourceForm" id="editSourceForm" autocomplete="off" novalidate (ngSubmit)="editSource(editSourceForm.value)">
+            <div class="row text-center">
+                <div class="col-8 offset-2">
+                    <div class="form-group text-left">
+                        <label for="sourceId" class="form-label">Source Name:</label>
+                        <input type="text" formControlName="sourceId" id="sourceId" class="form-control" readonly/>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="sourceName" class="form-label">Source Name:</label>
+                        <input type="text" formControlName="sourceName" id="sourceName" class="form-control" />
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('sourceName') && hasError('sourceName', 'required')">Please enter a name for the new Source</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('sourceName') && hasError('sourceName', 'maxLength')">Source name can be maximum {{ addSourceForm.controls['sourceName'].errors.maxlength.requiredLength }} characters long</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div footer>
+        <button type="submit" form="editSourceForm" class="btn btn-primary btn-block">Submit</button>            
+    </div>
+</shared-modal>

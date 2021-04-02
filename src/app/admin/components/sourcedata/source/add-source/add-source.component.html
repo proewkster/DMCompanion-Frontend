@@ -1,4 +1,4 @@
-<shared-modal title="Add Source">
+<shared-modal title={{title}}>
         <div body>
             <form [formGroup]="addSourceForm" id="addSourceForm" autocomplete="off" novalidate (ngSubmit)="createSource(addSourceForm.value)">
                 <div class="row text-center">
@@ -7,7 +7,8 @@
                             <label for="sourceName" class="form-label">Source Name:</label>
                             <input type="text" formControlName="sourceName" id="sourceName" class="form-control" />
                             <div class="mt-1">
-                                <div class="text-danger" *ngIf="validateControl('sourceName') && hasError('sourceName', 'required')">Please enter a name for the new Source</div>
+                                <div class="alert alert-danger" *ngIf="validateControl('sourceName') && hasError('sourceName', 'required')">Please enter a name for the new Source</div>
+                                <div class="alert alert-danger" *ngIf="validateControl('sourceName') && hasError('sourceName', 'maxLength')">Source name can be maximum {{ addSourceForm.controls['sourceName'].errors.maxlength.requiredLength }} characters long</div>
                             </div>
                         </div>
                     </div>

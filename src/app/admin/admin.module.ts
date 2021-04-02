@@ -8,11 +8,13 @@ import { ConditionComponent } from './components/sourcedata/basedata/condition/c
 import { SourceComponent } from './components/sourcedata/source/source.component';
 import { AddSourceComponent } from './components/sourcedata/source/add-source/add-source.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditSourceComponent } from './components/sourcedata/source/edit-source/edit-source.component';
+import { DeleteSourceComponent } from './components/sourcedata/source/delete-source/delete-source.component';
 
 
 
 @NgModule({
-  declarations: [SourcedataComponent, AbilityscoreComponent, ConditionComponent, SourceComponent, AddSourceComponent],
+  declarations: [SourcedataComponent, AbilityscoreComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent],
   imports: [
     CommonModule,
     SharedModule,

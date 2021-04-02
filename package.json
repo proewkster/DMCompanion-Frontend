@@ -27,6 +27,7 @@
     "javascript": "^1.0.0",
     "jquerry": "0.0.1-security",
     "jquery": "^3.6.0",
+    "ngx-toastr": "^13.2.1",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

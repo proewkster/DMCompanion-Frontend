@@ -1,7 +1,9 @@
+import { SourcedataService } from './../../../../services/sourcedata.service';
+import { DTO_SourceData_Source } from './../../../../models/sourcedata/dto_sourcedata_source';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Console } from 'node:console';
 import { validateLocaleAndSetLanguage } from 'typescript';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'admin-sourcedata-addsource',
@@ -12,8 +14,9 @@ export class AddSourceComponent implements OnInit {
 
   public addSourceForm: FormGroup;
   public isSubmitted = false;
+  public title: string;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private _sourcedataService: SourcedataService, private _activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
 
@@ -29,11 +32,35 @@ export class AddSourceComponent implements OnInit {
   }
 
   public hasError = (controlName: string, errorName: string) => {
-    this.addSourceForm.controls[controlName].hasError(errorName);
+    return this.addSourceForm.controls[controlName].hasError(errorName);
   }
 
   // Submit new Source
-  public createSource = (addSourceValue) => {;
-    console.log("test");
+  public createSource = (addSourceValue) => {
+    
+    // Initialize properties
+    this.isSubmitted = true;
+
+    // Stop if form is invalid
+    if (this.addSourceForm.invalid) {
+      return;
+    }
+
+    // Get form values
+    const formValues = { ...addSourceValue };
+
+    // Create instance of Source model
+    const source: DTO_SourceData_Source = {
+      name: formValues.sourceName
+    }
+
+    // Create source in API
+    this._sourcedataService.createSource(source)
+      .subscribe(data => {
+        this._activeModal.close(data);
+      },
+      error => {
+        this._activeModal.close(error);
+      });
   }
 }

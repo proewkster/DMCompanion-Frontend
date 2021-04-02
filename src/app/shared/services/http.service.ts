@@ -14,26 +14,33 @@ export class HttpService {
 
   constructor(private _http: HttpClient, private _router: Router) { }
 
-  requestCall(endpoint: ApiEndPoints, method: ApiMethod, data?: any) {
+  requestCall(endpoint: ApiEndPoints, method: ApiMethod, id?: any, data?: any) {
     // Define response as the result of any API call
     let response;
+
+    // Create URL string
+    let url: string = GlobalSettings.ApiServer + endpoint;
+    
+    if (id) {
+      url += "/" + id;
+    }
 
     // Generate the API call based on the input provided
     switch(method) {
       case ApiMethod.GET:
-        response = this._http.get(GlobalSettings['ApiServer'] + endpoint, data)
+        response = this._http.get(url, data)
           .pipe(catchError((err) => this.handleError(err)));
         break;
       case ApiMethod.POST:
-        response = this._http.post(GlobalSettings['ApiServer'] + endpoint, data)
+        response = this._http.post(url, data)
           .pipe(catchError((err) => this.handleError(err)));
         break;
       case ApiMethod.PUT:
-        response = this._http.put(GlobalSettings['ApiServer'] + endpoint, data)
+        response = this._http.put(url, data)
           .pipe(catchError((err) => this.handleError(err)));
         break;
       case ApiMethod.DELETE:
-        response = this._http.delete(GlobalSettings['ApiServer'] + endpoint, data)
+        response = this._http.delete(url, data)
           .pipe(catchError((err) => this.handleError(err)));
         break;
     }
@@ -71,9 +78,7 @@ export class HttpService {
           break;
         case 500:     // Server error
           console.log(`Returned error message: ${error.error.message}`);
-          console.log("A server error occurred, request could not be processed. Redirect to generic error page.");
-          this._router.navigateByUrl("/error/servererror");
-          isHandled = true;
+          console.log("A server error occurred, request could not be processed. Rethrowing error...");
           break;
         default:      // All other error messages
           console.log("An unhandled error occurred. Rethrowing error...");

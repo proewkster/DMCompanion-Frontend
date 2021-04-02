@@ -22,7 +22,7 @@ export class AuthenticationService {
   constructor(private _http: HttpService, private _jwtHelper: JwtHelperService) { }
 
   public registerUser = (data: DTO_Register) => {
-    return this._http.requestCall(ApiEndPoints.REGISTER, ApiMethod.POST, data);
+    return this._http.requestCall(ApiEndPoints.REGISTER, ApiMethod.POST, null, data);
   }
 
   public confirmEmail = (token: string, userId: string) => {
@@ -32,11 +32,11 @@ export class AuthenticationService {
       .set('token', token);
 
     // Request API call
-    return this._http.requestCall(ApiEndPoints.CONFIRMEMAIL, ApiMethod.GET, { params: params });
+    return this._http.requestCall(ApiEndPoints.CONFIRMEMAIL, ApiMethod.GET, null, { params: params });
   }
   
   public login = (data: DTO_Login) => {
-    return this._http.requestCall(ApiEndPoints.LOGIN, ApiMethod.POST, data);
+    return this._http.requestCall(ApiEndPoints.LOGIN, ApiMethod.POST, null, data);
   }
 
   public logout = () => {
@@ -48,11 +48,11 @@ export class AuthenticationService {
   }
 
   public forgotPassword = (data: DTO_ForgotPassword) => {
-    return this._http.requestCall(ApiEndPoints.FORGOTPASSWORD, ApiMethod.POST, data);
+    return this._http.requestCall(ApiEndPoints.FORGOTPASSWORD, ApiMethod.POST, null, data);
   }
 
   public resetPassword = (data: DTO_ResetPassword) => {
-    return this._http.requestCall(ApiEndPoints.RESETPASSWORD, ApiMethod.POST, data);
+    return this._http.requestCall(ApiEndPoints.RESETPASSWORD, ApiMethod.POST, null, data);
   }
 
   public getAuthenticatedUser = () => {

@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,11 +11,13 @@ import { HeaderComponent } from './main/header/header.component';
 import { HomeComponent } from './main/home/home.component';
 import { FooterComponent } from './main/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { CharacterlistComponent } from './character/characterlist/characterlist.component';
 import { NewcharacterComponent } from './character/newcharacter/newcharacter.component';
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
 import { AuthenticationModule } from './authentication/authentication.module';
-import {JwtModule } from '@auth0/angular-jwt';
+import { JwtModule } from '@auth0/angular-jwt';
 import * as $ from 'jquery';//NODIG voor de $ in create char next button. is in gebruik ook al is et hier niet highlighted.
 
 export function tokenGetter() {
@@ -39,6 +42,8 @@ export function tokenGetter() {
     HttpClientModule,
     AuthenticationModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AdminModule,
     RouterModule,
     JwtModule.forRoot({

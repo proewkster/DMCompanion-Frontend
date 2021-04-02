@@ -4,5 +4,8 @@ export enum ApiEndPoints {
     CONFIRMEMAIL = "/authentication/emailconfirmation",
     LOGIN = "/authentication/login",
     FORGOTPASSWORD = "/authentication/forgotpassword",
-    RESETPASSWORD = "/authentication/resetpassword"
+    RESETPASSWORD = "/authentication/resetpassword",
+
+    // SourceData Endpoints
+    SOURCEDATA_SOURCE = "/sourcedata/source"
 }

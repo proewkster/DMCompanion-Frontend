@@ -44,6 +44,17 @@ body {
     text-shadow: 0 0 3px white;
 }
 
+.btn-action {
+    width: 40px;
+    height: 40px;
+}
+
+.process-result {
+    z-index: 5;
+    right: 0;
+    bottom: 0;
+}
+
 /* On medium screens and larger, Sidebar starts as expanded */
 @media (min-width: 768px) {
     #sidebar-wrapper {
