@@ -23,8 +23,8 @@ export class EditSourceComponent implements OnInit {
 
     // Designate form and configure validation
     this.editSourceForm = this._formBuilder.group({
-      sourceId: [this.source.id],
-      sourceName: [this.source.name, [Validators.required, Validators.maxLength(100)]]
+      id: [this.source.id],
+      name: [this.source.name, [Validators.required, Validators.maxLength(100)]]
     });
   }
 
@@ -53,8 +53,8 @@ export class EditSourceComponent implements OnInit {
 
     // Create instance of Source model
     const source: DTO_SourceData_Source = {
-      id: formValues.sourceId,
-      name: formValues.sourceName
+      id: formValues.id,
+      name: formValues.name
     }
 
     // Create source in API

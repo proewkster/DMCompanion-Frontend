@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 export class SourceComponent implements OnInit {
 
   sources: [SourceData_Source];
+
   private options: NgbModalOptions = {
     animation: true,
     centered: true,
@@ -38,7 +39,7 @@ export class SourceComponent implements OnInit {
       },
       error => {
         console.log("An error occurred while retrieving data from the server");
-      })
+      });
   }
 
   public showEditSourceModal = (source: SourceData_Source) => {

@@ -4,11 +4,11 @@
                 <div class="row text-center">
                     <div class="col-8 offset-2">
                         <div class="form-group text-left">
-                            <label for="sourceName" class="form-label">Source Name:</label>
-                            <input type="text" formControlName="sourceName" id="sourceName" class="form-control" />
+                            <label for="name" class="form-label">Name:</label>
+                            <input type="text" formControlName="name" id="name" class="form-control" />
                             <div class="mt-1">
-                                <div class="alert alert-danger" *ngIf="validateControl('sourceName') && hasError('sourceName', 'required')">Please enter a name for the new Source</div>
-                                <div class="alert alert-danger" *ngIf="validateControl('sourceName') && hasError('sourceName', 'maxLength')">Source name can be maximum {{ addSourceForm.controls['sourceName'].errors.maxlength.requiredLength }} characters long</div>
+                                <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'required')">Please enter a name for the new Source</div>
+                                <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxLength')">Source name can be maximum {{ addSourceForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
                             </div>
                         </div>
                     </div>

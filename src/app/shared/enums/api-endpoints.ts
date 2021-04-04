@@ -7,5 +7,6 @@ export enum ApiEndPoints {
     RESETPASSWORD = "/authentication/resetpassword",
 
     // SourceData Endpoints
+    SOURCEDATA_ABILITYSCORE = "/sourcedata/abilityscore",
     SOURCEDATA_SOURCE = "/sourcedata/source"
 }
