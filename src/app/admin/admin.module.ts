@@ -26,11 +26,32 @@ import { AbilityScoreComponent } from './components/sourcedata/basedata/ability-
 import { AddAbilityScoreComponent } from './components/sourcedata/basedata/ability-score/add-ability-score/add-ability-score.component';
 import { EditAbilityScoreComponent } from './components/sourcedata/basedata/ability-score/edit-ability-score/edit-ability-score.component';
 import { DeleteAbilityScoreComponent } from './components/sourcedata/basedata/ability-score/delete-ability-score/delete-ability-score.component';
+import { AddConditionComponent } from './components/sourcedata/basedata/condition/add-condition/add-condition.component';
+import { EditConditionComponent } from './components/sourcedata/basedata/condition/edit-condition/edit-condition.component';
+import { DeleteConditionComponent } from './components/sourcedata/basedata/condition/delete-condition/delete-condition.component';
+import { AddDamageTypeComponent } from './components/sourcedata/basedata/damage-type/add-damage-type/add-damage-type.component';
+import { EditDamageTypeComponent } from './components/sourcedata/basedata/damage-type/edit-damage-type/edit-damage-type.component';
+import { DeleteDamageTypeComponent } from './components/sourcedata/basedata/damage-type/delete-damage-type/delete-damage-type.component';
+import { AddMagicSchoolComponent } from './components/sourcedata/basedata/magic-school/add-magic-school/add-magic-school.component';
+import { EditMagicSchoolComponent } from './components/sourcedata/basedata/magic-school/edit-magic-school/edit-magic-school.component';
+import { DeleteMagicSchoolComponent } from './components/sourcedata/basedata/magic-school/delete-magic-school/delete-magic-school.component';
+import { AddProficiencyComponent } from './components/sourcedata/basedata/proficiency/add-proficiency/add-proficiency.component';
+import { EditProficiencyComponent } from './components/sourcedata/basedata/proficiency/edit-proficiency/edit-proficiency.component';
+import { DeleteProficiencyComponent } from './components/sourcedata/basedata/proficiency/delete-proficiency/delete-proficiency.component';
+import { AddSenseComponent } from './components/sourcedata/basedata/sense/add-sense/add-sense.component';
+import { EditSenseComponent } from './components/sourcedata/basedata/sense/edit-sense/edit-sense.component';
+import { DeleteSenseComponent } from './components/sourcedata/basedata/sense/delete-sense/delete-sense.component';
+import { AddSkillComponent } from './components/sourcedata/basedata/skill/add-skill/add-skill.component';
+import { EditSkillComponent } from './components/sourcedata/basedata/skill/edit-skill/edit-skill.component';
+import { DeleteSkillComponent } from './components/sourcedata/basedata/skill/delete-skill/delete-skill.component';
+import { AddSpeedComponent } from './components/sourcedata/basedata/speed/add-speed/add-speed.component';
+import { EditSpeedComponent } from './components/sourcedata/basedata/speed/edit-speed/edit-speed.component';
+import { DeleteSpeedComponent } from './components/sourcedata/basedata/speed/delete-speed/delete-speed.component';
 
 
 
 @NgModule({
-  declarations: [SourcedataComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent, ModifierComponent, AbilityComponent, FeatComponent, EquipmentComponent, SpellComponent, ClassComponent, RaceComponent, SpeedComponent, SkillComponent, SenseComponent, ProficiencyComponent, MagicSchoolComponent, DamageTypeComponent, AbilityScoreComponent, AddAbilityScoreComponent, EditAbilityScoreComponent, DeleteAbilityScoreComponent],
+  declarations: [SourcedataComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent, ModifierComponent, AbilityComponent, FeatComponent, EquipmentComponent, SpellComponent, ClassComponent, RaceComponent, SpeedComponent, SkillComponent, SenseComponent, ProficiencyComponent, MagicSchoolComponent, DamageTypeComponent, AbilityScoreComponent, AddAbilityScoreComponent, EditAbilityScoreComponent, DeleteAbilityScoreComponent, AddConditionComponent, EditConditionComponent, DeleteConditionComponent, AddDamageTypeComponent, EditDamageTypeComponent, DeleteDamageTypeComponent, AddMagicSchoolComponent, EditMagicSchoolComponent, DeleteMagicSchoolComponent, AddProficiencyComponent, EditProficiencyComponent, DeleteProficiencyComponent, AddSenseComponent, EditSenseComponent, DeleteSenseComponent, AddSkillComponent, EditSkillComponent, DeleteSkillComponent, AddSpeedComponent, EditSpeedComponent, DeleteSpeedComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -40,6 +61,12 @@ import { DeleteAbilityScoreComponent } from './components/sourcedata/basedata/ab
         children: [
           { path: 'abilityscore', component: AbilityScoreComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'condition', component: ConditionComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'damagetype', component: DamageTypeComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'magicschool', component: MagicSchoolComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'proficiency', component: ProficiencyComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'sense', component: SenseComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'skill', component: SkillComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'speed', component: SpeedComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'source', component: SourceComponent, outlet: 'admin-sourcedata-outlet' }
         ]}
     ])

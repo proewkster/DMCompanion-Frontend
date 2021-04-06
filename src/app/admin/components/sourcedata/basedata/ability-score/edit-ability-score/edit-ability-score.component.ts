@@ -47,7 +47,7 @@ export class EditAbilityScoreComponent implements OnInit, AfterViewInit {
     return this.editAbilityScoreForm.controls[controlName].hasError(errorName);
   }
 
-  // Submit updated Source
+  // Submit updated Ability Score
   public editAbilityScore = (editAbilityScoreValue) => {
     
     // Initialize properties
@@ -61,7 +61,7 @@ export class EditAbilityScoreComponent implements OnInit, AfterViewInit {
     // Get form values
     const formValues = { ...editAbilityScoreValue };
 
-    // Create instance of Source model
+    // Create instance of Ability Score model
     const abilityScore: DTO_SourceData_AbilityScore = {
       id: formValues.id,
       name: formValues.name,

@@ -12,7 +12,7 @@
                         <input type="text" formControlName="name" id="name" class="form-control" />
                         <div class="mt-1">
                             <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'required')">Please enter a name for the new Ability Score</div>
-                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxLength')">Ability Score name can be maximum {{ addAbilityScoreForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxLength')">Ability Score name can be maximum {{ editAbilityScoreForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
                         </div>
                     </div>
                     <div class="form-group text-left">

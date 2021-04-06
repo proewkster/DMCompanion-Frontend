@@ -10,7 +10,7 @@ import { SourcedataService } from 'src/app/admin/services/sourcedata.service';
 })
 export class DeleteAbilityScoreComponent implements OnInit {
 
-  abilityScore: SourceData_AbilityScore
+  abilityScore: SourceData_AbilityScore;
   title: string;
 
   constructor(private _activeModal: NgbActiveModal, private _sourcedataService: SourcedataService) { }
@@ -19,7 +19,7 @@ export class DeleteAbilityScoreComponent implements OnInit {
   }
 
   public deleteAbilityScore = () => {
-    // Delete source from database
+    // Delete ability score from database
     this._sourcedataService.deleteAbilityScore(this.abilityScore.id)
       .subscribe(response => {
         this._activeModal.close(response);

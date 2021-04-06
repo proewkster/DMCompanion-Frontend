@@ -1,3 +1,8 @@
+import { DTO_SourceData_Speed } from './../models/sourcedata/dto_sourcedata_speed';
+import { DTO_SourceData_Proficiency } from './../models/sourcedata/dto_sourcedata_proficiency';
+import { DTO_SourceData_MagicSchool } from './../models/sourcedata/dto_sourcedata_magicschool';
+import { DTO_SourceData_DamageType } from './../models/sourcedata/dto_sourcedata_damagetype';
+import { DTO_SourceData_Condition } from './../models/sourcedata/dto_sourcedata_condition';
 import { DTO_SourceData_AbilityScore } from './../models/sourcedata/dto_sourcedata_abilityscore';
 import { DTO_SourceData_Source } from './../models/sourcedata/dto_sourcedata_source';
 import { HttpService } from './../../shared/services/http.service';
@@ -5,7 +10,8 @@ import { Injectable } from '@angular/core';
 import { ApiEndPoints } from 'src/app/shared/enums/api-endpoints';
 import { ApiMethod } from 'src/app/shared/enums/api-method';
 import { data } from 'jquery';
-import { SourceData_AbilityScore } from '../models/sourcedata/sourcedata_abilityscore';
+import { DTO_SourceData_Sense } from '../models/sourcedata/dto_sourcedata_sense';
+import { DTO_SourceData_Skill } from '../models/sourcedata/dto_sourcedata_skill';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +40,160 @@ export class SourcedataService {
 
   public deleteAbilityScore = (id: string) => {
     return this._http.requestCall(ApiEndPoints.SOURCEDATA_ABILITYSCORE, ApiMethod.DELETE, id);
+  }
+
+  // Conditions
+
+  public getConditions = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_CONDITION, ApiMethod.GET);
+  }
+
+  public getCondition = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_CONDITION, ApiMethod.GET, id);
+  }
+
+  public createCondition = (condition: DTO_SourceData_Condition) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_CONDITION, ApiMethod.POST, null, condition);
+  }
+
+  public updateCondition = (condition: DTO_SourceData_Condition) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_CONDITION, ApiMethod.PUT, null, condition);
+  }
+
+  public deleteCondition = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_CONDITION, ApiMethod.DELETE, id);
+  }
+
+  // Damage Types
+
+  public getDamageTypes = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_DAMAGETYPE, ApiMethod.GET);
+  }
+
+  public getDamageType = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_DAMAGETYPE, ApiMethod.GET, id);
+  }
+
+  public createDamageType = (damageType: DTO_SourceData_DamageType) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_DAMAGETYPE, ApiMethod.POST, null, damageType);
+  }
+
+  public updateDamageType = (damageType: DTO_SourceData_DamageType) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_DAMAGETYPE, ApiMethod.PUT, null, damageType);
+  }
+
+  public deleteDamageType = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_DAMAGETYPE, ApiMethod.DELETE, id);
+  }
+
+  // Magic Schools
+
+  public getMagicSchools = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MAGICSCHOOL, ApiMethod.GET);
+  }
+
+  public getMagicSchool = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MAGICSCHOOL, ApiMethod.GET, id);
+  }
+
+  public createMagicSchool = (magicSchool: DTO_SourceData_MagicSchool) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MAGICSCHOOL, ApiMethod.POST, null, magicSchool);
+  }
+
+  public updateMagicSchool = (magicSchool: DTO_SourceData_MagicSchool) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MAGICSCHOOL, ApiMethod.PUT, null, magicSchool);
+  }
+
+  public deleteMagicSchool = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MAGICSCHOOL, ApiMethod.DELETE, id);
+  }
+
+  // Proficiencies
+
+  public getProficiencies = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_PROFICIENCY, ApiMethod.GET);
+  }
+
+  public getProficiency = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_PROFICIENCY, ApiMethod.GET, id);
+  }
+
+  public createProficiency = (proficiency: DTO_SourceData_Proficiency) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_PROFICIENCY, ApiMethod.POST, null, proficiency);
+  }
+
+  public updateProficiency = (proficiency: DTO_SourceData_Proficiency) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_PROFICIENCY, ApiMethod.PUT, null, proficiency);
+  }
+
+  public deleteProficiency = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_PROFICIENCY, ApiMethod.DELETE, id);
+  }
+
+  // Senses
+
+  public getSenses = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SENSE, ApiMethod.GET);
+  }
+
+  public getSense = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SENSE, ApiMethod.GET, id);
+  }
+
+  public createSense = (sense: DTO_SourceData_Sense) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SENSE, ApiMethod.POST, null, sense);
+  }
+
+  public updateSense = (sense: DTO_SourceData_Sense) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SENSE, ApiMethod.PUT, null, sense);
+  }
+
+  public deleteSense = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SENSE, ApiMethod.DELETE, id);
+  }
+
+  // Skills
+
+  public getSkills = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SKILL, ApiMethod.GET);
+  }
+
+  public getSkill = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SKILL, ApiMethod.GET, id);
+  }
+
+  public createSkill = (skill: DTO_SourceData_Skill) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SKILL, ApiMethod.POST, null, skill);
+  }
+
+  public updateSkill = (skill: DTO_SourceData_Skill) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SKILL, ApiMethod.PUT, null, skill);
+  }
+
+  public deleteSkill = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SKILL, ApiMethod.DELETE, id);
+  }
+
+  // Speeds
+
+  public getSpeeds = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPEED, ApiMethod.GET);
+  }
+
+  public getSpeed = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPEED, ApiMethod.GET, id);
+  }
+
+  public createSpeed = (speed: DTO_SourceData_Speed) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPEED, ApiMethod.POST, null, speed);
+  }
+
+  public updateSpeed = (speed: DTO_SourceData_Speed) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPEED, ApiMethod.PUT, null, speed);
+  }
+
+  public deleteSpeed = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPEED, ApiMethod.DELETE, id);
   }
 
   // Sources

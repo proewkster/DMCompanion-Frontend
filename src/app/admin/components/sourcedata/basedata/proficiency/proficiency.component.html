@@ -1,1 +1,36 @@
-<p>proficiency works!</p>
+<div class="container p-3 mx-auto">
+    <div class="row text-center">
+        <div class="col-12">
+            <h1>Proficiencies</h1>
+            <hr/>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-12">
+            <table class="table table-striped table-hover table-bordered table-responsive-lg ">
+                <thead>
+                    <tr>
+                        <th class="text-center" width="20%">ID</th>
+                        <th class="text-center" width="15%">Type</th>
+                        <th class="text-center" width="15%">Name</th>
+                        <th class="text-center" width="35%">Description</th>
+                        <th class="text-center" width="15%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of proficiencies">
+                        <td class="align-middle">{{item.id}}</td>
+                        <td class="align-middle">{{item.type}}</td>
+                        <td class="align-middle">{{item.name}}</td>
+                        <td class="align-middle">{{item.description}}</td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary btn-action text-center mx-1" (click)="showEditProficiencyModal(item)"><i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger btn-action text-center mx-1" (click)="showDeleteProficiencyModal(item)"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="showAddProficiencyModal()"><i class="fa fa-plus mr-2"></i>Add Proficiency</button>
+</div>

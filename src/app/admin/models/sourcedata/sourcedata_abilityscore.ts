@@ -1,8 +1,6 @@
+import { SourceData_BaseData } from './sourcedata_basedata';
 import { SourceData_Source } from './sourcedata_source';
 
-export class SourceData_AbilityScore {
-    id: string;
-    name: string;
-    description: string;
-    source: SourceData_Source;
+export class SourceData_AbilityScore extends SourceData_BaseData {
+    
 }
