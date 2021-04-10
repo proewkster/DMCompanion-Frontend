@@ -1,3 +1,4 @@
+import { DTO_SourceData_Feat } from './../models/sourcedata/dto_sourcedata_feat';
 import { CustomEncoder } from './../../shared/helpers/custom-encoder';
 import { HttpParams } from '@angular/common/http';
 import { DTO_SourceData_Speed } from './../models/sourcedata/dto_sourcedata_speed';
@@ -228,6 +229,28 @@ export class SourcedataService {
 
   public deleteRace = (id: string) => {
     return this._http.requestCall(ApiEndPoints.SOURCEDATA_RACE, ApiMethod.DELETE, id);
+  }
+
+  // Feats
+
+  public getFeats = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_FEAT, ApiMethod.GET);
+  }
+
+  public getFeat = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_FEAT, ApiMethod.GET, id);
+  }
+
+  public createFeat = (feat: DTO_SourceData_Feat) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_FEAT, ApiMethod.POST, null, feat);
+  }
+
+  public updateFeat = (feat: DTO_SourceData_Feat) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_FEAT, ApiMethod.PUT, null, feat);
+  }
+
+  public deleteFeat = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_FEAT, ApiMethod.DELETE, id);
   }
 
   // Sources

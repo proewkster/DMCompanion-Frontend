@@ -16,5 +16,6 @@ export enum ApiEndPoints {
     SOURCEDATA_SKILL = "/sourcedata/skill",
     SOURCEDATA_SPEED = "/sourcedata/speed",
     SOURCEDATA_RACE = "/sourcedata/race",
+    SOURCEDATA_FEAT = '/sourcedata/feat',
     SOURCEDATA_SOURCE = "/sourcedata/source"
 }

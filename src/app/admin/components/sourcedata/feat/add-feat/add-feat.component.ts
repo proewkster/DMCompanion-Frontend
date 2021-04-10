@@ -1,26 +1,28 @@
-import { DTO_SourceData_Race } from './../../../../models/sourcedata/dto_sourcedata_race';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { SourceData_Race } from 'src/app/admin/models/sourcedata/sourcedata_race';
+import { DTO_SourceData_Feat } from 'src/app/admin/models/sourcedata/dto_sourcedata_feat';
+import { SourceData_Feat } from 'src/app/admin/models/sourcedata/sourcedata_feat';
 import { SourceData_Source } from 'src/app/admin/models/sourcedata/sourcedata_source';
 import { SourcedataService } from 'src/app/admin/services/sourcedata.service';
+import { FeatType } from 'src/app/enums/feat-type.enum';
 
 declare var $: any;
 
 @Component({
-  selector: 'app-add-race',
-  templateUrl: './add-race.component.html',
-  styleUrls: ['./add-race.component.scss']
+  selector: 'app-add-feat',
+  templateUrl: './add-feat.component.html',
+  styleUrls: ['./add-feat.component.scss']
 })
-export class AddRaceComponent implements OnInit, AfterViewInit {
+export class AddFeatComponent implements OnInit, AfterViewInit {
 
-  public addRaceForm: FormGroup;
-  public sources: [SourceData_Source];
-  public parentRace: SourceData_Race;
-  public raceType: string;
-  public title: string;
+  public addFeatForm: FormGroup;
   public isSubmitted = false;
+  public feat: SourceData_Feat;
+  public sources: [SourceData_Source];
+  public featTypes = FeatType;
+  public keys = Object.keys;
+  public title: string;
 
   constructor(private _formBuilder: FormBuilder, private _sourcedataService: SourcedataService, private _activeModal: NgbActiveModal) { }
 
@@ -31,47 +33,49 @@ export class AddRaceComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
     // Designate form and configure validation
-    this.addRaceForm = this._formBuilder.group({
+    this.addFeatForm = this._formBuilder.group({
       name: [null, [Validators.required, Validators.maxLength(100)]],
       description: [null, [Validators.required, Validators.maxLength(1000)]],
+      type: [null, [Validators.required]],
+      stacking: [null],
       sourceId: [null, [Validators.required]]
     });
   }
 
   // Methods for validation
   public validateControl = (controlName: string) => {
-    return this.addRaceForm.controls[controlName].invalid && (this.addRaceForm.controls[controlName].touched || this.isSubmitted);
+    return this.addFeatForm.controls[controlName].invalid && (this.addFeatForm.controls[controlName].touched || this.isSubmitted);
   }
 
   public hasError = (controlName: string, errorName: string) => {
-    return this.addRaceForm.controls[controlName].hasError(errorName);
+    return this.addFeatForm.controls[controlName].hasError(errorName);
   }
 
-  // Submit new Race
-  public createRace = (addRaceValue) => {
+  // Submit updated Feat
+  public createFeat = (addFeatValue) => {
     
     // Initialize properties
     this.isSubmitted = true;
 
     // Stop if form is invalid
-    if (this.addRaceForm.invalid) {
+    if (this.addFeatForm.invalid) {
       return;
     }
 
     // Get form values
-    const formValues = { ...addRaceValue };
+    const formValues = { ...addFeatValue };
 
-    // Create instance of Race model
-    const race: DTO_SourceData_Race = {
+    // Create instance of Feat model
+    const feat: DTO_SourceData_Feat = {
       name: formValues.name,
       description: formValues.description,
-      type: this.raceType,
-      parentId: this.parentRace?.id,
+      type: formValues.type,
+      stacking: formValues.stacking,
       sourceId: formValues.sourceId
     }
 
-    // Create Race in API
-    this._sourcedataService.createRace(race)
+    // Create Feat in API
+    this._sourcedataService.createFeat(feat)
       .subscribe(data => {
         this._activeModal.close(data);
       },

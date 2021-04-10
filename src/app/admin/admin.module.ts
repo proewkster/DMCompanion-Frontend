@@ -50,11 +50,14 @@ import { DeleteSpeedComponent } from './components/sourcedata/basedata/speed/del
 import { AddRaceComponent } from './components/sourcedata/race/add-race/add-race.component';
 import { EditRaceComponent } from './components/sourcedata/race/edit-race/edit-race.component';
 import { DeleteRaceComponent } from './components/sourcedata/race/delete-race/delete-race.component';
+import { AddFeatComponent } from './components/sourcedata/feat/add-feat/add-feat.component';
+import { EditFeatComponent } from './components/sourcedata/feat/edit-feat/edit-feat.component';
+import { DeleteFeatComponent } from './components/sourcedata/feat/delete-feat/delete-feat.component';
 
 
 
 @NgModule({
-  declarations: [SourcedataComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent, ModifierComponent, AbilityComponent, FeatComponent, EquipmentComponent, SpellComponent, ClassComponent, RaceComponent, SpeedComponent, SkillComponent, SenseComponent, ProficiencyComponent, MagicSchoolComponent, DamageTypeComponent, AbilityScoreComponent, AddAbilityScoreComponent, EditAbilityScoreComponent, DeleteAbilityScoreComponent, AddConditionComponent, EditConditionComponent, DeleteConditionComponent, AddDamageTypeComponent, EditDamageTypeComponent, DeleteDamageTypeComponent, AddMagicSchoolComponent, EditMagicSchoolComponent, DeleteMagicSchoolComponent, AddProficiencyComponent, EditProficiencyComponent, DeleteProficiencyComponent, AddSenseComponent, EditSenseComponent, DeleteSenseComponent, AddSkillComponent, EditSkillComponent, DeleteSkillComponent, AddSpeedComponent, EditSpeedComponent, DeleteSpeedComponent, AddRaceComponent, EditRaceComponent, DeleteRaceComponent],
+  declarations: [SourcedataComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent, ModifierComponent, AbilityComponent, FeatComponent, EquipmentComponent, SpellComponent, ClassComponent, RaceComponent, SpeedComponent, SkillComponent, SenseComponent, ProficiencyComponent, MagicSchoolComponent, DamageTypeComponent, AbilityScoreComponent, AddAbilityScoreComponent, EditAbilityScoreComponent, DeleteAbilityScoreComponent, AddConditionComponent, EditConditionComponent, DeleteConditionComponent, AddDamageTypeComponent, EditDamageTypeComponent, DeleteDamageTypeComponent, AddMagicSchoolComponent, EditMagicSchoolComponent, DeleteMagicSchoolComponent, AddProficiencyComponent, EditProficiencyComponent, DeleteProficiencyComponent, AddSenseComponent, EditSenseComponent, DeleteSenseComponent, AddSkillComponent, EditSkillComponent, DeleteSkillComponent, AddSpeedComponent, EditSpeedComponent, DeleteSpeedComponent, AddRaceComponent, EditRaceComponent, DeleteRaceComponent, AddFeatComponent, EditFeatComponent, DeleteFeatComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -71,6 +74,7 @@ import { DeleteRaceComponent } from './components/sourcedata/race/delete-race/de
           { path: 'skill', component: SkillComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'speed', component: SpeedComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'race' , component: RaceComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'feat' , component: FeatComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'source', component: SourceComponent, outlet: 'admin-sourcedata-outlet' }
         ]}
     ])
