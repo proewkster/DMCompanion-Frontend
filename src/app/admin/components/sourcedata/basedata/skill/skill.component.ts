@@ -13,7 +13,7 @@ import { EditSkillComponent } from './edit-skill/edit-skill.component';
 @Component({
   selector: 'app-skill',
   templateUrl: './skill.component.html',
-  styleUrls: ['./skill.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './skill.component.scss']
 })
 export class SkillComponent implements OnInit {
 
@@ -80,7 +80,7 @@ export class SkillComponent implements OnInit {
       if (data) {
         if (data instanceof HttpErrorResponse) { // Error response, process generic error
           //Show error message
-          this._toastrService.error("Skill could not be created");
+          this._toastrService.error("Skill could not be updated");
         }
         else { // Process succeeded
           // Update succeeded, replace item in array

@@ -13,7 +13,7 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-ability-score',
   templateUrl: './ability-score.component.html',
-  styleUrls: ['./ability-score.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './ability-score.component.scss']
 })
 export class AbilityScoreComponent implements OnInit {
 
@@ -67,7 +67,7 @@ export class AbilityScoreComponent implements OnInit {
       if (data) {
         if (data instanceof HttpErrorResponse) { // Error response, process generic error
           //Show error message
-          this._toastrService.error("Abilty Score could not be created");
+          this._toastrService.error("Abilty Score could not be updated");
         }
         else { // Process succeeded
           // Update succeeded, replace item in array

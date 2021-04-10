@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { ApiMethod } from './../enums/api-method';
 import { ApiEndPoints } from '../enums/api-endpoints';
 import { GlobalSettings } from './../globalsettings';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';

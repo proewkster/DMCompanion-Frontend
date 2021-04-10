@@ -12,7 +12,7 @@ import { AddSenseComponent } from './add-sense/add-sense.component';
 @Component({
   selector: 'app-sense',
   templateUrl: './sense.component.html',
-  styleUrls: ['./sense.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './sense.component.scss']
 })
 export class SenseComponent implements OnInit {
 
@@ -66,7 +66,7 @@ export class SenseComponent implements OnInit {
       if (data) {
         if (data instanceof HttpErrorResponse) { // Error response, process generic error
           //Show error message
-          this._toastrService.error("Sense could not be created");
+          this._toastrService.error("Sense could not be updated");
         }
         else { // Process succeeded
           // Update succeeded, replace item in array

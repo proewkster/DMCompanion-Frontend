@@ -22,8 +22,10 @@
                         <td class="align-middle">{{item.name}}</td>
                         <td class="align-middle">{{item.description}}</td>
                         <td class="align-middle">
-                            <button type="button" class="btn btn-primary btn-action text-center mx-1" (click)="showEditSenseModal(item)"><i class="fa fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-action text-center mx-1" (click)="showe=showDeleteSenseModal(item)"><i class="fa fa-trash"></i></button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-action" (click)="showEditSenseModal(item)"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger btn-action" (click)="showe=showDeleteSenseModal(item)"><i class="fa fa-trash"></i></button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

@@ -13,7 +13,7 @@ import { AddSpeedComponent } from './add-speed/add-speed.component';
 @Component({
   selector: 'app-speed',
   templateUrl: './speed.component.html',
-  styleUrls: ['./speed.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './speed.component.scss']
 })
 export class SpeedComponent implements OnInit {
 
@@ -67,7 +67,7 @@ export class SpeedComponent implements OnInit {
       if (data) {
         if (data instanceof HttpErrorResponse) { // Error response, process generic error
           //Show error message
-          this._toastrService.error("Speed could not be created");
+          this._toastrService.error("Speed could not be updated");
         }
         else { // Process succeeded
           // Update succeeded, replace item in array

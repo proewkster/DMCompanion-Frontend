@@ -12,7 +12,7 @@ import { EditProficiencyComponent } from './edit-proficiency/edit-proficiency.co
 @Component({
   selector: 'app-proficiency',
   templateUrl: './proficiency.component.html',
-  styleUrls: ['./proficiency.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './proficiency.component.scss']
 })
 export class ProficiencyComponent implements OnInit {
 
@@ -66,7 +66,7 @@ export class ProficiencyComponent implements OnInit {
       if (data) {
         if (data instanceof HttpErrorResponse) { // Error response, process generic error
           //Show error message
-          this._toastrService.error("Proficiency could not be created");
+          this._toastrService.error("Proficiency could not be updated");
         }
         else { // Process succeeded
           // Update succeeded, replace item in array

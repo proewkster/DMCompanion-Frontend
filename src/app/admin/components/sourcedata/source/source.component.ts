@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'admin-sourcedata-source',
   templateUrl: './source.component.html',
-  styleUrls: ['./source.component.scss']
+  styleUrls: ['../sourcedata.component.scss', './source.component.scss']
 })
 export class SourceComponent implements OnInit {
 
@@ -54,7 +54,7 @@ export class SourceComponent implements OnInit {
       if (data) {
         if (data instanceof HttpErrorResponse) { // Error response, process generic error
           //Show error message
-          this._toastrService.error("Source could not be created");
+          this._toastrService.error("Source could not be updated");
         }
         else { // Process succeeded
           // Update succeeded, replace item in array

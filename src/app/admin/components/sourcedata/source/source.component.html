@@ -20,8 +20,10 @@
                         <td class="align-middle">{{source.id}}</td>
                         <td class="align-middle">{{source.name}}</td>
                         <td class="align-middle">
-                            <button type="button" class="btn btn-primary btn-action text-center mx-1" (click)="showEditSourceModal(source)"><i class="fa fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-action text-center mx-1" (click)="showDeleteSourceModal(source)"><i class="fa fa-trash"></i></button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-action" (click)="showEditSourceModal(source)"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger btn-action" (click)="showDeleteSourceModal(source)"><i class="fa fa-trash"></i></button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

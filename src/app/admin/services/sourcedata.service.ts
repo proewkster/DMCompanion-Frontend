@@ -1,3 +1,5 @@
+import { CustomEncoder } from './../../shared/helpers/custom-encoder';
+import { HttpParams } from '@angular/common/http';
 import { DTO_SourceData_Speed } from './../models/sourcedata/dto_sourcedata_speed';
 import { DTO_SourceData_Proficiency } from './../models/sourcedata/dto_sourcedata_proficiency';
 import { DTO_SourceData_MagicSchool } from './../models/sourcedata/dto_sourcedata_magicschool';
@@ -12,6 +14,7 @@ import { ApiMethod } from 'src/app/shared/enums/api-method';
 import { data } from 'jquery';
 import { DTO_SourceData_Sense } from '../models/sourcedata/dto_sourcedata_sense';
 import { DTO_SourceData_Skill } from '../models/sourcedata/dto_sourcedata_skill';
+import { DTO_SourceData_Race } from '../models/sourcedata/dto_sourcedata_race';
 
 @Injectable({
   providedIn: 'root'
@@ -194,6 +197,37 @@ export class SourcedataService {
 
   public deleteSpeed = (id: string) => {
     return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPEED, ApiMethod.DELETE, id);
+  }
+
+  // Races
+
+  public getRaces = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RACE, ApiMethod.GET);
+  }
+
+  public getMainRaces = () => {
+    // Build query parameter to add Type-filter to request
+    let params = new HttpParams({ encoder: new CustomEncoder() })
+      .set('type', 'Main');
+
+    // Launch call
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RACE, ApiMethod.GET, null, { params: params });
+  }
+
+  public getRace = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RACE, ApiMethod.GET, id);
+  }
+
+  public createRace = (race: DTO_SourceData_Race) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RACE, ApiMethod.POST, null, race);
+  }
+
+  public updateRace = (race: DTO_SourceData_Race) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RACE, ApiMethod.PUT, null, race);
+  }
+
+  public deleteRace = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RACE, ApiMethod.DELETE, id);
   }
 
   // Sources

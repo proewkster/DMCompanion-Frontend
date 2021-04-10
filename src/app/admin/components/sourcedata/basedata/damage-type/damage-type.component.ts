@@ -12,7 +12,7 @@ import { EditDamageTypeComponent } from './edit-damage-type/edit-damage-type.com
 @Component({
   selector: 'app-damage-type',
   templateUrl: './damage-type.component.html',
-  styleUrls: ['./damage-type.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './damage-type.component.scss']
 })
 export class DamageTypeComponent implements OnInit {
 
@@ -66,7 +66,7 @@ export class DamageTypeComponent implements OnInit {
       if (data) {
         if (data instanceof HttpErrorResponse) { // Error response, process generic error
           //Show error message
-          this._toastrService.error("Damage Type could not be created");
+          this._toastrService.error("Damage Type could not be updated");
         }
         else { // Process succeeded
           // Update succeeded, replace item in array

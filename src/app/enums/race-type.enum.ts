@@ -1,4 +1,4 @@
 export enum RaceType {
-    "Main",
-    "Sub"
+    Main = "Main",
+    Sub = "Sub"
 }

@@ -1,7 +1,7 @@
 import { FormGroup, ValidatorFn } from '@angular/forms';
 
 
-export function MustMatch(controlName: string, matchedControlName: string) : ValidatorFn{
+export function MustMatch(controlName: string, matchedControlName: string) : ValidatorFn {
     return (formGroup: FormGroup) => {
 
         // Get controls from FormGroup

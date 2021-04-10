@@ -12,7 +12,7 @@ import { AddMagicSchoolComponent } from './add-magic-school/add-magic-school.com
 @Component({
   selector: 'app-magic-school',
   templateUrl: './magic-school.component.html',
-  styleUrls: ['./magic-school.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './magic-school.component.scss']
 })
 export class MagicSchoolComponent implements OnInit {
 
@@ -66,7 +66,7 @@ export class MagicSchoolComponent implements OnInit {
       if (data) {
         if (data instanceof HttpErrorResponse) { // Error response, process generic error
           //Show error message
-          this._toastrService.error("Magic School could not be created");
+          this._toastrService.error("Magic School could not be updated");
         }
         else { // Process succeeded
           // Update succeeded, replace item in array

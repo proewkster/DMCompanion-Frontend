@@ -12,7 +12,7 @@ import { AddConditionComponent } from './add-condition/add-condition.component';
 @Component({
   selector: 'app-condition',
   templateUrl: './condition.component.html',
-  styleUrls: ['./condition.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './condition.component.scss']
 })
 export class ConditionComponent implements OnInit {
 
@@ -66,7 +66,7 @@ export class ConditionComponent implements OnInit {
       if (data) {
         if (data instanceof HttpErrorResponse) { // Error response, process generic error
           //Show error message
-          this._toastrService.error("Condition could not be created");
+          this._toastrService.error("Condition could not be updated");
         }
         else { // Process succeeded
           // Update succeeded, replace item in array
