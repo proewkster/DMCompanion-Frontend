@@ -1,259 +1,266 @@
-<h1>Fill in the form to create a new character</h1>
-<ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#start" aria-controls="home"
-            aria-selected="true">Start</a>
-    </li>
-    <li class="nav-item ">
-        <a [class.disabled]="f1.invalid" class="nav-link" id="profile-tab" data-toggle="tab" href="#abilityScore"
-            aria-controls="abilityScore" aria-selected="false">Ability Scores</a>
-    </li>
-    <li class="nav-item">
-        <a [class.disabled]="f2.invalid" class="nav-link" id="profile-tab1" data-toggle="tab" href="#race"
-            aria-controls="race" aria-selected="false">Race</a>
-    </li>
-    <li class="nav-item">
-        <a [class.disabled]="f3.invalid" class="nav-link" id="profile-tab2" data-toggle="tab" href="#description"
-            aria-controls="description" aria-selected="false">Description</a>
-    </li>
-    <li class="nav-item">
-        <a [class.disabled]="f4.invalid" class="nav-link" id="contact-tab3" data-toggle="tab" href="#personality"
-            aria-controls="personality" aria-selected="false">Personality</a>
-    </li>
-    <li class="nav-item">
-        <a [class.disabled]="f5.invalid" class="nav-link" id="contact-tab4" data-toggle="tab" href="#backstory"
-            aria-controls="backstory" aria-selected="false">Backstory</a>
-    </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-    <!-- TAB1 -->
-    <div class="tab-pane fade show active" id="start" role="tabpanel" aria-labelledby="home-tab">
-        <form #f1="ngForm">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" required minlength="3" placeholder="Name"
-                    [(ngModel)]="character.name" #name="ngModel" name="name">
-            </div>
-            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-                <div *ngIf="name.errors.required">
-                    Name is required.
-                </div>
-                <div *ngIf="name.errors.minlength">
-                    Name must be at least 3 characters long.
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="level">Level</label>
-                <input type="number" class="form-control" id="level" required placeholder="Enter level"
-                    [(ngModel)]="character.level" #level="ngModel" name="level">
-            </div>
-            <div *ngIf="level.invalid && (level.dirty || level.touched)" class="alert alert-danger">
-                <div *ngIf="level.errors.required">
-                    Level is required.
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="picture">Picture</label>
-                <input type="text" class="form-control" id="picture" required [(ngModel)]="character.picture"
-                    placeholder="picture" #picture="ngModel" name="picture">
-            </div>
-            <div *ngIf="picture.invalid && (picture.dirty || picture.touched)" class="alert alert-danger">
-                <div *ngIf="picture.errors.required">
-                    Picture is required.
-                </div>
-            </div>
-        </form>
-        <div class="d-flex justify-content-end">
-            <button [disabled]="f1.invalid" (click)="next()" class="btn btn-primary">Next</button>
-        </div>
-    </div>
-    <!-- TAB2 -->
-    <div class="tab-pane fade" id="abilityScore" role="tabpanel" aria-labelledby="contact-tab">
-        <form #f2="ngForm">
-            <div *ngFor="let abscore of abScores">
+<div class="container">
+    <h1>Fill in the form to create a new character</h1>
+    <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#start" aria-controls="home"
+                aria-selected="true">Start</a>
+        </li>
+        <li class="nav-item ">
+            <a [class.disabled]="f1.invalid" class="nav-link" id="profile-tab" data-toggle="tab" href="#abilityScore"
+                aria-controls="abilityScore" aria-selected="false">Ability Scores</a>
+        </li>
+        <li class="nav-item">
+            <a [class.disabled]="f2.invalid" class="nav-link" id="profile-tab1" data-toggle="tab" href="#race"
+                aria-controls="race" aria-selected="false">Race</a>
+        </li>
+        <li class="nav-item">
+            <a [class.disabled]="f3.invalid" class="nav-link" id="profile-tab2" data-toggle="tab" href="#description"
+                aria-controls="description" aria-selected="false">Description</a>
+        </li>
+        <li class="nav-item">
+            <a [class.disabled]="f4.invalid" class="nav-link" id="contact-tab3" data-toggle="tab" href="#personality"
+                aria-controls="personality" aria-selected="false">Personality</a>
+        </li>
+        <li class="nav-item">
+            <a [class.disabled]="f5.invalid" class="nav-link" id="contact-tab4" data-toggle="tab" href="#backstory"
+                aria-controls="backstory" aria-selected="false">Backstory</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <!-- TAB1 -->
+        <div class="tab-pane fade show active" id="start" role="tabpanel" aria-labelledby="home-tab">
+            <form #f1="ngForm">
                 <div class="form-group">
-                    <label for="{{abscore.name}}">{{abscore.name}}</label>
-                    <input type="number" class="form-control" id="{{abscore.name}}" required min="0" max="20"
-                        placeholder="Enter the abilityscore for {{abscore.name}}" [(ngModel)]="abscore.base_value"
-                        #{{abscore.name}}="ngModel" name="{{abscore.name}}">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" required minlength="3" placeholder="Name"
+                        [(ngModel)]="character.name" #name="ngModel" name="name">
                 </div>
-                <div *ngIf="'{{abscore.name}}'.invalid && ('{{abscore.name}}'.dirty || '{{abscore.name}}'.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="'{{abscore.name}}'.errors.required">
-                        The {{abscore.name}} abilityScore must be filled in.
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                    <div *ngIf="name.errors.required">
+                        Name is required.
                     </div>
-                    <div *ngIf="'{{abscore.name}}'.errors.max">
-                        The {{abscore.name}} abilityScore must be less or equal too 20.
+                    <div *ngIf="name.errors.minlength">
+                        Name must be at least 3 characters long.
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="level">Level</label>
+                    <input type="number" class="form-control" id="level" required placeholder="Enter level"
+                        [(ngModel)]="character.level" #level="ngModel" name="level">
+                </div>
+                <div *ngIf="level.invalid && (level.dirty || level.touched)" class="alert alert-danger">
+                    <div *ngIf="level.errors.required">
+                        Level is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="picture">Picture</label>
+                    <input type="text" class="form-control" id="picture" required [(ngModel)]="character.picture"
+                        placeholder="picture" #picture="ngModel" name="picture">
+                </div>
+                <div *ngIf="picture.invalid && (picture.dirty || picture.touched)" class="alert alert-danger">
+                    <div *ngIf="picture.errors.required">
+                        Picture is required.
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-end">
+                <button [disabled]="f1.invalid" (click)="next()" class="btn btn-primary">Next</button>
             </div>
-        </form>
-        <div class="d-flex justify-content-end">
-            <button [disabled]="f2.invalid" (click)="next()" class="btn btn-primary">Next</button>
         </div>
-    </div>
-    <!-- TAB3 -->
-    <div class="tab-pane fade" id="race" role="tabpanel" aria-labelledby="contact-tab">
-        <form #f3="ngForm">
-            <div class="form-group">
-                <label for="race">Race</label>
-                <select class="form-control" #race="ngModel" [(ngModel)]="selectedrace.name" required name="race">
-                    <option value="" disabled>Choose your race</option>
-                    <option *ngFor=" let race of races" [ngValue]="race">
-                        {{race}}
-                    </option>
-                </select>
+        <!-- TAB2 -->
+        <div class="tab-pane fade" id="abilityScore" role="tabpanel" aria-labelledby="contact-tab">
+            <form #f2="ngForm">
+                <div *ngFor="let abscore of abilityScores">
+                    <div class="form-group">
+                        <label for="{{abscore.name}}">{{abscore.name}}</label>
+                        <input type="number" class="form-control" id="{{abscore.name}}" required min="0" max="20"
+                            placeholder="Enter the abilityscore for {{abscore.name}}" [(ngModel)]="abscore.base_value"
+                            #{{abscore.name}}="ngModel" name="{{abscore.name}}">
+                    </div>
+                    <div *ngIf="'{{abscore.name}}'.invalid && ('{{abscore.name}}'.dirty || '{{abscore.name}}'.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="'{{abscore.name}}'.errors.required">
+                            The {{abscore.name}} abilityScore must be filled in.
+                        </div>
+                        <div *ngIf="'{{abscore.name}}'.errors.max">
+                            The {{abscore.name}} abilityScore must be less or equal too 20.
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-end">
+                <button [disabled]="f2.invalid" (click)="next()" class="btn btn-primary">Next</button>
             </div>
+        </div>
+        <!-- TAB3 -->
+        <div class="tab-pane fade" id="race" role="tabpanel" aria-labelledby="contact-tab">
+            <form #f3="ngForm">
+                <div class="form-group">
+                    <label for="race">Race</label>
+                    <select class="form-control" #race="ngModel" [(ngModel)]="character.Race" required name="race">
+                        <option value="" disabled>Choose your race</option>
+                        <option *ngFor=" let race of races" [ngValue]="race">
+                            {{race.name}}
+                        </option>
+                    </select>
+                </div>
+                <p>
+                    {{character.Race.description}}
+                </p>
 
-        </form>
-        <div class="d-flex justify-content-end">
-            <button [disabled]="f3.invalid" (click)="next()" class="btn btn-primary">Next</button>
+            </form>
+            <div class="d-flex justify-content-end">
+                <button [disabled]="f3.invalid" (click)="next()" class="btn btn-primary">Next</button>
+            </div>
         </div>
-    </div>
-    <!-- TAB4 -->
-    <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="profile-tab">
-        <form #f4="ngForm">
-            <div class="form-group">
-                <label for="gender">Gender</label>
-                <select class="form-control" #gender="ngModel" [(ngModel)]="character.gender" required name="gender">
-                    <option value="" disabled>Choose your gender</option>
-                    <option *ngFor=" let gender of genders | keyvalue" [ngValue]="gender.value">
-                        {{gender.value}}
-                    </option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="eye_Color">Eye color</label>
-                <input type="text" class="form-control" id="eye_Color" required placeholder="eye color"
-                    [(ngModel)]="character.eye_Color" #eye_Color="ngModel" name="eye_Color">
-            </div>
-            <div *ngIf="eye_Color.invalid && (eye_Color.dirty || eye_Color.touched)" class="alert alert-danger">
-                <div *ngIf="eye_Color.errors.required">
-                    The eye color is required.
+        <!-- TAB4 -->
+        <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="profile-tab">
+            <form #f4="ngForm">
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" #gender="ngModel" [(ngModel)]="character.gender" required
+                        name="gender">
+                        <option value="" disabled>Choose your gender</option>
+                        <option *ngFor=" let gender of genders | keyvalue" [ngValue]="gender.value">
+                            {{gender.value}}
+                        </option>
+                    </select>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="height">Height</label>
-                <input type="number" class="form-control" id="height" required placeholder="height"
-                     [(ngModel)]="character.height"  #height="ngModel" name="height">
-            </div>
-            <div *ngIf="height.invalid && (height.dirty ||height.touched)"class="alert alert-danger">
-                <div *ngIf="height.errors.required">The height is required.</div>
-            </div>
-            <div class="form-group">
-                <label for="weight">Weight</label>
-                <input type="number" class="form-control" id="weight" required placeholder="weight"
-                     [(ngModel)]="character.weight"  #weight="ngModel" name="weight">
-            </div>
-            <div *ngIf="weight.invalid && (weight.dirty ||weight.touched)"class="alert alert-danger">
-                <div *ngIf="weight.errors.required">The weight is required.</div>
-            </div>
-            <div class="form-group">
-                <label for="size">Size</label>
-                <select class="form-control" #size="ngModel" [(ngModel)]="character.size" required name="size">
-                    <option value="" disabled>Choose your size</option>
-                    <option *ngFor=" let size of sizes | keyvalue" [ngValue]="size.value">
-                        {{size.value}}
-                    </option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="hair_Color">Hair color</label>
-                <input type="text" class="form-control" id="hair_Color" required placeholder="hair color"
-                    [(ngModel)]="character.hair_Color" #hair_Color="ngModel" name="hair_Color">
-            </div>
-            <div *ngIf="hair_Color.invalid && (hair_Color.dirty || hair_Color.touched)" class="alert alert-danger">
-                <div *ngIf="hair_Color.errors.required">
-                    Hair color is required.
+                <div class="form-group">
+                    <label for="eye_Color">Eye color</label>
+                    <input type="text" class="form-control" id="eye_Color" required placeholder="eye color"
+                        [(ngModel)]="character.eye_Color" #eye_Color="ngModel" name="eye_Color">
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="skin_Color">Skin color</label>
-                <input type="text" class="form-control" id="skin_Color" required placeholder="skin color"
-                    [(ngModel)]="character.skin_Color" #skin_Color="ngModel" name="skin_Color">
-            </div>
-            <div *ngIf="skin_Color.invalid && (skin_Color.dirty || skin_Color.touched)" class="alert alert-danger">
-                <div *ngIf="skin_Color.errors.required">
-                    Skin color is required.
+                <div *ngIf="eye_Color.invalid && (eye_Color.dirty || eye_Color.touched)" class="alert alert-danger">
+                    <div *ngIf="eye_Color.errors.required">
+                        The eye color is required.
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="age">Age</label>
-                <input type="number" class="form-control" id="age" required placeholder="age"
-                     [(ngModel)]="character.age"  #age="ngModel" name="age">
-            </div>
-            <div *ngIf="age.invalid && (age.dirty ||age.touched)"class="alert alert-danger">
-                <div *ngIf="age.errors.required">The age is required.</div>
-            </div>
-            <div class="form-group">
-                <label for="appearance">Appearance</label>
-                <textarea rows="3" type="text" class="form-control" id="appearance" required
-                    placeholder="Write a description of your characters general appearance here."
-                    [(ngModel)]="character.appearance" #appearance="ngModel" name="appearance">
+                <div class="form-group">
+                    <label for="height">Height</label>
+                    <input type="number" class="form-control" id="height" required placeholder="height"
+                         [(ngModel)]="character.height"  #height="ngModel" name="height">
+                </div>
+                <div *ngIf="height.invalid && (height.dirty ||height.touched)"class="alert alert-danger">
+                    <div *ngIf="height.errors.required">The height is required.</div>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight</label>
+                    <input type="number" class="form-control" id="weight" required placeholder="weight"
+                         [(ngModel)]="character.weight"  #weight="ngModel" name="weight">
+                </div>
+                <div *ngIf="weight.invalid && (weight.dirty ||weight.touched)"class="alert alert-danger">
+                    <div *ngIf="weight.errors.required">The weight is required.</div>
+                </div>
+                <div class="form-group">
+                    <label for="size">Size</label>
+                    <select class="form-control" #size="ngModel" [(ngModel)]="character.size" required name="size">
+                        <option value="" disabled>Choose your size</option>
+                        <option *ngFor=" let size of sizes | keyvalue" [ngValue]="size.value">
+                            {{size.value}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="hair_Color">Hair color</label>
+                    <input type="text" class="form-control" id="hair_Color" required placeholder="hair color"
+                        [(ngModel)]="character.hair_Color" #hair_Color="ngModel" name="hair_Color">
+                </div>
+                <div *ngIf="hair_Color.invalid && (hair_Color.dirty || hair_Color.touched)" class="alert alert-danger">
+                    <div *ngIf="hair_Color.errors.required">
+                        Hair color is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="skin_Color">Skin color</label>
+                    <input type="text" class="form-control" id="skin_Color" required placeholder="skin color"
+                        [(ngModel)]="character.skin_Color" #skin_Color="ngModel" name="skin_Color">
+                </div>
+                <div *ngIf="skin_Color.invalid && (skin_Color.dirty || skin_Color.touched)" class="alert alert-danger">
+                    <div *ngIf="skin_Color.errors.required">
+                        Skin color is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" required placeholder="age"
+                         [(ngModel)]="character.age"  #age="ngModel" name="age">
+                </div>
+                <div *ngIf="age.invalid && (age.dirty ||age.touched)"class="alert alert-danger">
+                    <div *ngIf="age.errors.required">The age is required.</div>
+                </div>
+                <div class="form-group">
+                    <label for="appearance">Appearance</label>
+                    <textarea rows="3" type="text" class="form-control" id="appearance" required
+                        placeholder="Write a description of your characters general appearance here."
+                        [(ngModel)]="character.appearance" #appearance="ngModel" name="appearance">
             </textarea>
-            </div>
-            <div *ngIf="appearance.invalid && (appearance.dirty || appearance.touched)" class="alert alert-danger">
-                <div *ngIf="appearance.errors.required">
-                    Appearance is required.
                 </div>
+                <div *ngIf="appearance.invalid && (appearance.dirty || appearance.touched)" class="alert alert-danger">
+                    <div *ngIf="appearance.errors.required">
+                        Appearance is required.
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-end">
+                <button [disabled]="f4.invalid" (click)="next()" class="btn btn-primary">Next</button>
             </div>
-        </form>
-        <div class="d-flex justify-content-end">
-            <button [disabled]="f4.invalid" (click)="next()" class="btn btn-primary">Next</button>
         </div>
-    </div>
-    <!-- TAB5 -->
-    <div class="tab-pane fade" id="personality" role="tabpanel" aria-labelledby="contact-tab">
-        <form #f5="ngForm">
-            <div class="form-group">
-                <label for="alignment">Alignment</label>
-                <select class="form-control" #alignment [(ngModel)]="character.alignment" name="alignment">
-                    <option value="" disabled>Choose your alignment</option>
-                    <option *ngFor=" let alignment of alignments | keyvalue" [ngValue]="alignment.value">
-                        {{alignment.value}}
-                    </option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="faith">Faith</label>
-                <input type="text" class="form-control" id="faith" required placeholder="faith"
-                    [(ngModel)]="character.faith" #faith="ngModel" name="faith">
-            </div>
-            <div *ngIf="faith.invalid && (faith.dirty || faith.touched)" class="alert alert-danger">
-                <div *ngIf="faith.errors.required">
-                    Faith is required.
+        <!-- TAB5 -->
+        <div class="tab-pane fade" id="personality" role="tabpanel" aria-labelledby="contact-tab">
+            <form #f5="ngForm">
+                <div class="form-group">
+                    <label for="alignment">Alignment</label>
+                    <select class="form-control" #alignment [(ngModel)]="character.alignment" name="alignment">
+                        <option value="" disabled>Choose your alignment</option>
+                        <option *ngFor=" let alignment of alignments | keyvalue" [ngValue]="alignment.value">
+                            {{alignment.value}}
+                        </option>
+                    </select>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="notes">Other notes</label>
-                <textarea rows="3" type="text" class="form-control" id="notes"
-                    placeholder="Write some character notes here." [(ngModel)]="character.notes" #notes="ngModel"
-                    name="notes">
+                <div class="form-group">
+                    <label for="faith">Faith</label>
+                    <input type="text" class="form-control" id="faith" required placeholder="faith"
+                        [(ngModel)]="character.faith" #faith="ngModel" name="faith">
+                </div>
+                <div *ngIf="faith.invalid && (faith.dirty || faith.touched)" class="alert alert-danger">
+                    <div *ngIf="faith.errors.required">
+                        Faith is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Other notes</label>
+                    <textarea rows="3" type="text" class="form-control" id="notes"
+                        placeholder="Write some character notes here." [(ngModel)]="character.notes" #notes="ngModel"
+                        name="notes">
             </textarea>
+                </div>
+            </form>
+            <div class="d-flex justify-content-end">
+                <button [disabled]="f5.invalid" (click)="next()" class="btn btn-primary">Next</button>
             </div>
-        </form>
-        <div class="d-flex justify-content-end">
-            <button [disabled]="f5.invalid" (click)="next()" class="btn btn-primary">Next</button>
         </div>
-    </div>
-    <!-- TAB6 -->
-    <div class="tab-pane fade" id="backstory" role="tabpanel" aria-labelledby="contact-tab">
-        <form #f6="ngForm">
-            <div class="form-group">
-                <label for="backstory">Your backstory</label>
-                <textarea rows="8" type="text" class="form-control" id="backstory" required
-                    placeholder="Write your characters backstory here." [(ngModel)]="character.backstory"
-                    #backstory="ngModel" name="backstory">
+        <!-- TAB6 -->
+        <div class="tab-pane fade" id="backstory" role="tabpanel" aria-labelledby="contact-tab">
+            <form #f6="ngForm">
+                <div class="form-group">
+                    <label for="backstory">Your backstory</label>
+                    <textarea rows="8" type="text" class="form-control" id="backstory" required
+                        placeholder="Write your characters backstory here." [(ngModel)]="character.backstory"
+                        #backstory="ngModel" name="backstory">
             </textarea>
-            </div>
-            <div *ngIf="backstory.invalid && (backstory.dirty || backstory.touched)" class="alert alert-danger">
-                <div *ngIf="backstory.errors.required">
-                    Backstory is required.
                 </div>
+                <div *ngIf="backstory.invalid && (backstory.dirty || backstory.touched)" class="alert alert-danger">
+                    <div *ngIf="backstory.errors.required">
+                        Backstory is required.
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-end">
+                <button [disabled]="f6.invalid" (click)="save()" class="btn btn-primary">Create</button>
             </div>
-        </form>
-        <div class="d-flex justify-content-end">
-            <button [disabled]="f6.invalid" (click)="save()" class="btn btn-primary">Create</button>
+            <pre>{{character|json}}</pre>
         </div>
     </div>
 </div>

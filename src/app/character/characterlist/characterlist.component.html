@@ -1,5 +1,21 @@
-<button [routerLink]="['/newCharacter']" class="btn btn-primary m-3">New character</button>
-<h1>Select your character</h1>
-<ul>
-    <li *ngFor="let char of characters">{{char.name}}</li>
-</ul>
+<div class="container">
+
+    <button [routerLink]="['/newCharacter']" class="btn btn-primary m-3">New character</button>
+    <h1>Select your character</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Race</th>
+                <th scope="col">Level</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let character of characters">
+            <tr>
+                <th scope="row"><a routerLink="./{{character.id}}">{{character.name}}</a></th>
+                <td>{{character.raceName}}</td>
+                <td>{{character.level}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
