@@ -1,0 +1,55 @@
+<shared-modal title={{title}}>
+    <div body>
+        <form [formGroup]="addProficiencyForm" id="addProficiencyForm" autocomplete="off" novalidate (ngSubmit)="createProficiency(addProficiencyForm.value)">
+            <div class="row text-center">
+                <div class="col-8 offset-2">
+                    <div class="form-group text-left">
+                        <label for="type" class="form-label">Type:</label>
+                        <select for="type" id="type" formControlName="type" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Type..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let key of keys(proficiencyTypes)" [value]="key">
+                                {{proficiencyTypes[key]}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('type') && hasError('type', 'required')">Please select a Proficiency Type</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" formControlName="name" id="name" class="form-control" />
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'required')">Please enter a name for the new Condition</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxLength')">Condition name can be maximum {{ addProficiencyForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea formControlName="description" id="description" class="form-control" rows="5"></textarea>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'required')">Please enter a description for the new Condition</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'maxLength')">Condition description can be maximum {{ addProficiencyForm.controls['description'].errors.maxlength.requiredLength }} characters long</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="sourceId" class="form-label">Source:</label>
+                        <select for="sourceId" id="sourceId" formControlName="sourceId" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Source..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let source of sources" [value]="source.id">
+                                {{source.name}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('sourceId') && hasError('sourceId', 'required')">Please select a Source</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div footer>
+        <button type="submit" form="addProficiencyForm" class="btn btn-primary btn-block">Submit</button>            
+    </div>
+</shared-modal>

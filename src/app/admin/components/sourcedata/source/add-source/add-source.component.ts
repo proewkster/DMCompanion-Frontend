@@ -22,7 +22,7 @@ export class AddSourceComponent implements OnInit {
 
     // Designate form and configure validation
     this.addSourceForm = this._formBuilder.group({
-      sourceName: [null, [Validators.required, Validators.maxLength(100)]]
+      name: [null, [Validators.required, Validators.maxLength(100)]]
     });
   }
 
@@ -51,7 +51,7 @@ export class AddSourceComponent implements OnInit {
 
     // Create instance of Source model
     const source: DTO_SourceData_Source = {
-      name: formValues.sourceName
+      name: formValues.name
     }
 
     // Create source in API

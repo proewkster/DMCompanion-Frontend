@@ -13,11 +13,12 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'admin-sourcedata-source',
   templateUrl: './source.component.html',
-  styleUrls: ['./source.component.scss']
+  styleUrls: ['../sourcedata.component.scss', './source.component.scss']
 })
 export class SourceComponent implements OnInit {
 
   sources: [SourceData_Source];
+
   private options: NgbModalOptions = {
     animation: true,
     centered: true,
@@ -38,7 +39,7 @@ export class SourceComponent implements OnInit {
       },
       error => {
         console.log("An error occurred while retrieving data from the server");
-      })
+      });
   }
 
   public showEditSourceModal = (source: SourceData_Source) => {
@@ -53,7 +54,7 @@ export class SourceComponent implements OnInit {
       if (data) {
         if (data instanceof HttpErrorResponse) { // Error response, process generic error
           //Show error message
-          this._toastrService.error("Source could not be created");
+          this._toastrService.error("Source could not be updated");
         }
         else { // Process succeeded
           // Update succeeded, replace item in array

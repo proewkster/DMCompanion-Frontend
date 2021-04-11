@@ -5,6 +5,10 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+/* Import Bootstrap-Select CSS file */
+@import "../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css";
+
 input.ng-touched.ng-invalid{
     border: 3px solid red;
 }

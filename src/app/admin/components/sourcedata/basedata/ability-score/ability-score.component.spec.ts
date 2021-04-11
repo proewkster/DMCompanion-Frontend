@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AbilityscoreComponent } from './abilityscore.component';
+import { AbilityScoreComponent } from './ability-score.component';
 
-describe('AbilityscoreComponent', () => {
-  let component: AbilityscoreComponent;
-  let fixture: ComponentFixture<AbilityscoreComponent>;
+describe('AbilityScoreComponent', () => {
+  let component: AbilityScoreComponent;
+  let fixture: ComponentFixture<AbilityScoreComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AbilityscoreComponent ]
+      declarations: [ AbilityScoreComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AbilityscoreComponent);
+    fixture = TestBed.createComponent(AbilityScoreComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

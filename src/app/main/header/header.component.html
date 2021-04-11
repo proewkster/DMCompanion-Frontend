@@ -15,8 +15,15 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="Characters" routerLinkActive="active">Characters</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="test" routerLinkActive="active">in te vullen</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="adminMenu">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" routerLink="admin/sourcedata" routerLinkActive="active">Source Data</a>
+                        </li>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="test" routerLinkActive="active">in te vullen</a>

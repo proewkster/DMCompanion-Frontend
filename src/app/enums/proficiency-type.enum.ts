@@ -1,7 +1,7 @@
 export enum ProficiencyType {
-    "Armor",
-    "Weapon",
-    "Tool",
-    "Language",
-    "Other"
+    Armor = "Armor",
+    Weapon = "Weapon",
+    Tool = "Tool",
+    Language = "Language",
+    Other = "Other"
 }
