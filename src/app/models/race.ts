@@ -2,27 +2,28 @@ import { RaceType } from "../enums/race-type.enum";
 import { Source } from "../enums/source.enum";
 
 export class Race {
-    public id: string;
+    public raceId: string;
     public name: string;
     public description: string;
-    public type: RaceType;
-    public source: Source;
-    public path: string;
+    public type: string;
+    public sourceId: string;
+    public parentId?: string;
+
 
     constructor(
         id: string,
         name: string,
         description: string,
-        type: RaceType,
-        source: Source,
-        path: string
+        type: string,
+        sourceId: string,
+        parentId?: string
     ) {
-        this.id = id
+        this.raceId = id
         this.name = name
         this.description = description
         this.type = type
-        this.source = source
-        this.path = path
+        this.sourceId = sourceId
+        this.parentId = parentId
     }
 
 }

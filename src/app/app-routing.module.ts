@@ -12,10 +12,10 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "Characters", component: CharacterlistComponent },
   { path: "newCharacter", component: NewcharacterComponent },
-  { path: "Character:id", component: SelectedCharacterComponent },
-  { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)},
-  { path: 'error', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule)},
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)}
+  { path: "Characters/:id", component: SelectedCharacterComponent },
+  { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
+  { path: 'error', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
 ];
 
 @NgModule({

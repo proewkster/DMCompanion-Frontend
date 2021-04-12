@@ -1,24 +1,30 @@
 import { Alignment } from "src/app/enums/alignment.enum";
 import { Gender } from "src/app/enums/gender.enum";
 import { Size } from "src/app/enums/size.enum";
+import { Race } from "src/app/models/race";
+import { DtoNewABScores } from "./dto-new-abscores";
 
 export class DtoNewcharacter {
-    public name: string; //1
-    public level: number;//1
-    public picture: string;//1
-    public alignment: Alignment;//3
-    public gender: Gender;//2
-    public eye_Color: string;//2
-    public height: number;//2
-    public size: Size;//2
-    public faith: string;//3
-    public hair_Color: string;//2
-    public skin_Color: string;//2
-    public age: number;//2
-    public weight: number;//2
-    public appearance: string;//2
-    public backstory: string;//4
-    public notes: string;//3
+  public name: string; //1
+  public level: number;//1
+  public picture: string;//1
+  public alignment: Alignment;//3
+  public gender: Gender;//2
+  public eye_Color: string;//2
+  public height: number;//2
+  public size: Size;//2
+  public faith: string;//3
+  public hair_Color: string;//2
+  public skin_Color: string;//2
+  public age: number;//2
+  public weight: number;//2
+  public appearance: string;//2
+  public backstory: string;//4
+  public notes: string;//3
+  public abilityScores: DtoNewABScores[];
+  public Race:Race;
+
+
 
   constructor(
     name: string, 
@@ -36,7 +42,9 @@ export class DtoNewcharacter {
     weight: number, 
     appearance: string, 
     backstory: string, 
-    notes: string
+    notes: string, 
+    abilityScores: DtoNewABScores[], 
+    Race: Race
 ) {
     this.name = name
     this.level = level
@@ -54,6 +62,9 @@ export class DtoNewcharacter {
     this.appearance = appearance
     this.backstory = backstory
     this.notes = notes
+    this.abilityScores = abilityScores
+    this.Race = Race
   }
+  
 
 }

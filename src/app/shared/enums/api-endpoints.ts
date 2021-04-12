@@ -21,5 +21,8 @@ export enum ApiEndPoints {
     SOURCEDATA_MELEEATTACK = '/sourcedata/meleeattack',
     SOURCEDATA_RANGEDATTACK = '/sourcedata/rangedattack',
     SOURCEDATA_CASTSPELL = '/sourcedata/castspell',
-    SOURCEDATA_SOURCE = "/sourcedata/source"
+    SOURCEDATA_SOURCE = "/sourcedata/source",
+
+    //Character endpoints
+    CHARACTERDATA_CHARACTER = "/CharacterData/Character"
 }

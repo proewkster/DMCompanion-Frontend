@@ -1,1 +1,33 @@
-<p>selected-character works!</p>
+<div class="container">
+    <div class="row">
+        <div class="list-group-item list-group-item-action d-flex">
+            <div class="col-2">
+                <img class="img-fluid rounded-circle" src="{{char.picture}}" />
+            </div>
+            <div class="col-10">
+                Name: {{char.name}} <br>
+                Level: {{char.level}} <br>
+                Race: {{char.race?.name}}
+            </div>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="d-flex flex-wrap col-6 justify-content-around border border-primary rounded">
+            <div *ngFor="let abscore of char.abilityScores" class="col-4 border border-primary rounded m-2">
+                <p class="text-center">
+                    {{abscore.name}}
+                </p>
+                <hr>
+                <p class="text-center">
+                    {{abscore.base_value}}
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- <pre>{{char|json}}</pre> -->
