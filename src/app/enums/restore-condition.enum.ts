@@ -1,6 +1,6 @@
 export enum RestoreCondition {
-    "Long_Rest",
-"Short_Rest",
-"Turn",
-"Other"
+    LongRest = "Long Rest",
+    ShortRest = "Short Rest",
+    Turn = "Turn",
+    Other = "Other"
 }

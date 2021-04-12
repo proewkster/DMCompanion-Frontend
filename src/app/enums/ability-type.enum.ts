@@ -1,7 +1,6 @@
 export enum AbilityType {
-    "Action",
-    "Bonus Action",
-    "Reaction",
-    "OtherAction",
-    "Other"
+    Action = "Action",
+    BonusAction = "Bonus Action",
+    Reaction = "Reaction",
+    Other = "Other"
 }

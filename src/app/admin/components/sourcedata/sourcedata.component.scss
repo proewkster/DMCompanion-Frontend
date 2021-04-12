@@ -63,10 +63,14 @@ body {
     font-size: small;
 }
 
-.process-result {
-    z-index: 5;
-    right: 0;
-    bottom: 0;
+table {
+    max-height: 100px;
+}
+
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* On medium screens and larger, Sidebar starts as expanded */

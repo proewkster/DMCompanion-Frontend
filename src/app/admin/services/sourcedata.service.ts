@@ -16,6 +16,10 @@ import { data } from 'jquery';
 import { DTO_SourceData_Sense } from '../models/sourcedata/dto_sourcedata_sense';
 import { DTO_SourceData_Skill } from '../models/sourcedata/dto_sourcedata_skill';
 import { DTO_SourceData_Race } from '../models/sourcedata/dto_sourcedata_race';
+import { DTO_SourceData_Ability } from '../models/sourcedata/dto_sourcedata_ability';
+import { DTO_SourceData_MeleeAttack } from '../models/sourcedata/dto_sourcedata_meleeattack';
+import { DTO_SourceData_RangedAttack } from '../models/sourcedata/dto_sourcedata_rangedattack';
+import { DTO_SourceData_CastSpell } from '../models/sourcedata/dto_sourcedata_castspell';
 
 @Injectable({
   providedIn: 'root'
@@ -251,6 +255,94 @@ export class SourcedataService {
 
   public deleteFeat = (id: string) => {
     return this._http.requestCall(ApiEndPoints.SOURCEDATA_FEAT, ApiMethod.DELETE, id);
+  }
+
+  // Abilities
+
+  public getAbilities = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_ABILITY, ApiMethod.GET);
+  }
+
+  public getAbility = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_ABILITY, ApiMethod.GET, id);
+  }
+
+  public createAbility = (ability: DTO_SourceData_Ability) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_ABILITY, ApiMethod.POST, null, ability);
+  }
+
+  public updateAbility = (ability: DTO_SourceData_Ability) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_ABILITY, ApiMethod.PUT, null, ability);
+  }
+
+  public deleteAbility = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_ABILITY, ApiMethod.DELETE, id);
+  }
+
+  // MeleeAttacks
+
+  public getMeleeAttacks = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MELEEATTACK, ApiMethod.GET);
+  }
+
+  public getMeleeAttack = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MELEEATTACK, ApiMethod.GET, id);
+  }
+
+  public createMeleeAttack = (meleeAttack: DTO_SourceData_MeleeAttack) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MELEEATTACK, ApiMethod.POST, null, meleeAttack);
+  }
+
+  public updateMeleeAttack = (meleeAttack: DTO_SourceData_MeleeAttack) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MELEEATTACK, ApiMethod.PUT, null, meleeAttack);
+  }
+
+  public deleteMeleeAttack = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MELEEATTACK, ApiMethod.DELETE, id);
+  }
+
+  // RangedAttacks
+
+  public getRangedAttacks = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RANGEDATTACK, ApiMethod.GET);
+  }
+
+  public getRangedAttack = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RANGEDATTACK, ApiMethod.GET, id);
+  }
+
+  public createRangedAttack = (rangedAttack: DTO_SourceData_RangedAttack) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RANGEDATTACK, ApiMethod.POST, null, rangedAttack);
+  }
+
+  public updateRangedAttack = (rangedAttack: DTO_SourceData_RangedAttack) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RANGEDATTACK, ApiMethod.PUT, null, rangedAttack);
+  }
+
+  public deleteRangedAttack = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_RANGEDATTACK, ApiMethod.DELETE, id);
+  }
+
+  // CastSpells
+
+  public getCastSpells = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_CASTSPELL, ApiMethod.GET);
+  }
+
+  public getCastSpell = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_CASTSPELL, ApiMethod.GET, id);
+  }
+
+  public createCastSpell = (castSpell: DTO_SourceData_CastSpell) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_CASTSPELL, ApiMethod.POST, null, castSpell);
+  }
+
+  public updateCastSpell = (castSpell: DTO_SourceData_CastSpell) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_CASTSPELL, ApiMethod.PUT, null, castSpell);
+  }
+
+  public deleteCastSpell = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_CASTSPELL, ApiMethod.DELETE, id);
   }
 
   // Sources

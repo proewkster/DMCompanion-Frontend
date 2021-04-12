@@ -1,0 +1,101 @@
+<shared-modal title={{title}}>
+    <div body>
+        <form [formGroup]="addMeleeAttackForm" id="addMeleeAttackForm" autocomplete="off" novalidate (ngSubmit)="createMeleeAttack(addMeleeAttackForm.value)">
+            <div class="row text-center">
+                <div class="col-8 offset-2 col-lg-6 offset-md-0">
+                    <div class="form-group text-left">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" formControlName="name" id="name" class="form-control" />
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'required')">Please enter a name for the new Melee Attack</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxLength')">Melee Attack name can be maximum {{ addMeleeAttackForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea formControlName="description" id="description" class="form-control" rows="5"></textarea>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'required')">Please enter a description for the new Melee Attack</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'maxLength')">Melee Attack description can be maximum {{ addMeleeAttackForm.controls['description'].errors.maxlength.requiredLength }} characters long</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="type" class="form-label">Type:</label>
+                        <select for="type" id="type" formControlName="type" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Type..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let key of keys(abilityTypes)" [value]="abilityTypes[key]">
+                                {{abilityTypes[key]}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('type') && hasError('type', 'required')">Please select an Ability Type</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="restoreCondition" class="form-label">Restore Condition:</label>
+                        <select for="restoreCondition" id="restoreCondition" formControlName="restoreCondition" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Restore Condition..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let key of keys(restoreConditions)" [value]="restoreConditions[key]">
+                                {{restoreConditions[key]}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('restoreCondition') && hasError('restoreCondition', 'required')">Please select a Restore Condition</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 offset-2 col-lg-6 offset-md-0">
+                    <div class="form-group text-left">
+                        <label for="maxSlots" class="form-label">Max Slots:</label>
+                        <input type="number" id="maxSlots" formControlName="maxSlots" min="0" max="100" placeholder="1" class="form-control" />
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('maxSlots') && hasError('maxSlots', 'required')">Please enter the maximum number of slots</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('maxSlots') && hasError('maxSlots', 'range')">Maximum number of slots must be between 0 and 100</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="range" class="form-label">Range (feet):</label>
+                        <input type="number" id="range" formControlName="range" min="0" max="1000" step="5" placeholder="5" class="form-control" />
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('range') && hasError('range', 'required')">Please enter the attack range</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('range') && hasError('range', 'range')">Attack range must be between 0 and 1000</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="sourceId" class="form-label">Source:</label>
+                        <select for="sourceId" id="sourceId" formControlName="sourceId" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Source..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let source of sources" [value]="source.id">
+                                {{source.name}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('sourceId') && hasError('sourceId', 'required')">Please select a Source</div>
+                        </div>
+                    </div>
+                    <div class="text-left">
+                        <label class="form-label">Damage:</label>
+                        <table class="table">
+                            <tr *ngFor="let damage of damageList">
+                                <td class="align-middle">{{damage.diceCount}}{{damage.diceType}} {{damage.damageType.name}} damage</td>
+                                <td class="align-middle">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary btn-action-small" (click)="showEditDamageModal(damage)"><i class="fa fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger btn-action-small" (click)="showDeleteDamageModal(damage)"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <button type="button" class="btn btn-primary btn-action-small mt-2" (click)="showAddDamageModal()"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div footer>
+        <button type="submit" form="addMeleeAttackForm" class="btn btn-primary btn-block">Submit</button>            
+    </div>
+</shared-modal>
