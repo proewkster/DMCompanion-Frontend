@@ -7,6 +7,7 @@ import { DynamicFormControl_Select } from 'src/app/shared/models/dynamic-forms/d
 import { DamageType } from 'src/app/enums/damage-type.enum';
 import { DynamicFormConverters } from 'src/app/shared/services/dynamic-form-converters';
 import { DynamicFormControl_Base } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-base';
+import { DynamicFormControl_SelectEnum } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-selectenum';
 
 export class SourceData_Modifier_Defense_Add extends SourceData_Modifier {
     type: string;
@@ -25,7 +26,7 @@ export class SourceData_Modifier_Defense_Add extends SourceData_Modifier {
         });
 
         formControls.push(
-            new DynamicFormControl_Select ({
+            new DynamicFormControl_SelectEnum ({
                 key: "type",
                 label: "Type",
                 value: this.type || '',

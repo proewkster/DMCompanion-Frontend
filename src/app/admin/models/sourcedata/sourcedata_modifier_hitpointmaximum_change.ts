@@ -4,6 +4,7 @@ import { HitPointVariables } from 'src/app/enums/hitpoint-variables.enum';
 import { ModifierType } from 'src/app/enums/modifier-type.enum';
 import { DynamicFormControl_Base } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-base';
 import { DynamicFormControl_Select } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-select';
+import { DynamicFormControl_SelectEnum } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-selectenum';
 import { DynamicFormConverters } from 'src/app/shared/services/dynamic-form-converters';
 import { SourceData_Modifier } from './sourcedata_modifier';
 
@@ -21,7 +22,7 @@ export class SourceData_Modifier_HitPointMaximum_Change extends SourceData_Modif
         });
 
         formControls.push(
-            new DynamicFormControl_Select ({
+            new DynamicFormControl_SelectEnum ({
                 key: "variable",
                 label: "Property containing value",
                 value: this.variable || '',

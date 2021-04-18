@@ -9,6 +9,7 @@ import { DynamicFormControl_Number } from 'src/app/shared/models/dynamic-forms/d
 import { DynamicFormControl_Select } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-select';
 import { DynamicFormConverters } from 'src/app/shared/services/dynamic-form-converters';
 import { SpellLists } from 'src/app/enums/spell-list.enum';
+import { DynamicFormControl_SelectEnum } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-selectenum';
 
 export class SourceData_Modifier_Spell_Add extends SourceData_Modifier {
     level: number;
@@ -41,7 +42,7 @@ export class SourceData_Modifier_Spell_Add extends SourceData_Modifier {
                 order: 3
             }),
 
-            new DynamicFormControl_Select ({
+            new DynamicFormControl_SelectEnum ({
                 key: "spellList",
                 label: "Spell List",
                 value: this.spellList || '',

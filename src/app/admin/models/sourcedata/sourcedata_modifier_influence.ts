@@ -6,6 +6,7 @@ import { DynamicFormControl_Select } from 'src/app/shared/models/dynamic-forms/d
 import { DynamicFormConverters } from 'src/app/shared/services/dynamic-form-converters';
 import { SourceData_Modifier } from './sourcedata_modifier';
 import { InfluenceType } from 'src/app/enums/influence-type.enum';
+import { DynamicFormControl_SelectEnum } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-selectenum';
 
 export abstract class SourceData_Modifier_Influence extends SourceData_Modifier {
     class: string;
@@ -20,7 +21,7 @@ export abstract class SourceData_Modifier_Influence extends SourceData_Modifier 
         });
 
         formControls.push(
-            new DynamicFormControl_Select ({
+            new DynamicFormControl_SelectEnum ({
                 key: "class",
                 label: "Influence Class",
                 value: this.class || '',
@@ -29,7 +30,7 @@ export abstract class SourceData_Modifier_Influence extends SourceData_Modifier 
                 options: DynamicFormConverters.enumAsOptions(InfluenceClass)
             }),
             
-            new DynamicFormControl_Select ({
+            new DynamicFormControl_SelectEnum ({
                 key: "type",
                 label: "Influence Type",
                 value: this.type || '',
