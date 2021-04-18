@@ -1,0 +1,30 @@
+<div [formGroup]="form"> 
+    <div class="form-group text-left">
+        <label [attr.for]="control.key" class="form-label">{{control.label}}:</label>
+
+        <div [ngSwitch]="control.controlType">
+
+            <input *ngSwitchCase="'textbox'" [type]="control.type" [formControlName]="control.key" [id]="control.key" class="form-control" />
+
+            <textarea *ngSwitchCase="'textarea'" [formControlName]="control.key" [id]="control.key" class="form-control" [rows]="control.rows"></textarea>
+
+            <select *ngSwitchCase="'selectpicker'" [for]="control.key" [id]="control.key" [formControlName]="control.key" class="form-control selectpicker"
+                data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Select..." data-live-search-style="contains">
+                <option></option>
+                <option *ngFor="let opt of control.options" [value]="opt.key">
+                    {{opt.value}}
+                </option>
+            </select>
+
+            <input *ngSwitchCase="'number'" type="number" [id]="control.key" [formControlName]="control.key" [step]="control.stepSize" [min]="control.rangeMin" [max]="control.rangeMax" class="form-control" />
+
+        </div>
+
+        <div class="mt-1">
+            <div class="alert alert-danger" *ngIf="isInvalid && hasError('required')">{{control.label}} is required</div>
+            <div class="alert alert-danger" *ngIf="isInvalid && hasError('range')">{{control.label}} must be between {{control.rangeMin}} and {{control.rangeMax}}</div>
+            <div class="alert alert-danger" *ngIf="isInvalid && hasError('maxLength')">{{control.label}} can be maximum {{control.maxLengthValue}} characters long</div>
+        </div>
+
+    </div>
+</div>

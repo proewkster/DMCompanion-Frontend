@@ -1,0 +1,26 @@
+<shared-modal title={{title}}>
+    <div body>
+        <form [formGroup]="getModifierTypeForm" id="getModifierTypeForm" autocomplete="off" novalidate (ngSubmit)="CreateNewModifier(getModifierTypeForm.value)">
+            <div class="row text-center">
+                <div class="col-8 offset-2">
+                    <div class="form-group text-left">
+                        <label for="modifierType" class="form-label">Select a Modifier Type:</label>
+                        <select for="modifierType" id="modifierType" formControlName="modifierType" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Modifier Type..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let key of keys(modifierTypes)" [value]="key">
+                                {{modifierTypes[key]}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('modifierType') && hasError('modifierType', 'required')">Please select a Modifier Type</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div footer>
+        <button type="submit" form="getModifierTypeForm" class="btn btn-primary btn-block">Submit</button>            
+    </div>
+</shared-modal>

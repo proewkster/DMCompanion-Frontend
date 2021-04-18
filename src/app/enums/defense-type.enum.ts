@@ -1,5 +1,5 @@
 export enum DefenseType {
-    "Immunity",
-    "Resistance",
-    "Vulnerability"
+    IMMUNITY = "Immunity",
+    RESISTANCE = "Resistance",
+    VULNERABILITY = "Vulnerability"
 }

@@ -77,7 +77,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Modifiers</a>
+                            <a class="nav-link" [routerLink]="[{ outlets: { 'admin-sourcedata-outlet': ['modifier'] } }]" routerLinkActive="active">Modifiers</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" [routerLink]="[{ outlets: { 'admin-sourcedata-outlet': ['source'] } }]" routerLinkActive="active">Sources</a>

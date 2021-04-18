@@ -1,0 +1,5 @@
+<form [formGroup]="form" [id]="formName" autocomplete="off" novalidate (ngSubmit)="onSubmit(form.value)">
+    <div *ngFor="let formControl of formControls" class="col-8 offset-2">
+        <shared-dynamic-formcontrol [control]="formControl" [form]="form"></shared-dynamic-formcontrol>
+    </div>
+</form>

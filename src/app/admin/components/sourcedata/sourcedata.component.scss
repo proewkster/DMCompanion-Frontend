@@ -63,16 +63,6 @@ body {
     font-size: small;
 }
 
-table {
-    max-height: 100px;
-}
-
-td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 /* On medium screens and larger, Sidebar starts as expanded */
 @media (min-width: 768px) {
     #sidebar-wrapper {
