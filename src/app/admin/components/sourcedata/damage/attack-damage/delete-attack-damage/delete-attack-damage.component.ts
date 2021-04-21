@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SourceData_DamageType } from 'src/app/admin/models/sourcedata/sourcedata_damagetype';
-import { SourcedataService } from 'src/app/admin/services/sourcedata.service';
 
 @Component({
   selector: 'app-delete-attack-damage',
@@ -13,7 +12,7 @@ export class DeleteAttackDamageComponent implements OnInit {
   damage: SourceData_DamageType;
   title: string;
 
-  constructor(private _activeModal: NgbActiveModal, private _sourcedataService: SourcedataService) { }
+  constructor(private _activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }

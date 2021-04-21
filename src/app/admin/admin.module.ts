@@ -75,11 +75,20 @@ import { AddModifierComponent } from './components/sourcedata/modifier/add-modif
 import { GetModifierTypeComponent } from './components/sourcedata/modifier/get-modifier-type/get-modifier-type.component';
 import { EditModifierComponent } from './components/sourcedata/modifier/edit-modifier/edit-modifier.component';
 import { DeleteModifierComponent } from './components/sourcedata/modifier/delete-modifier/delete-modifier.component';
+import { AddSpellComponent } from './components/sourcedata/spell/add-spell/add-spell.component';
+import { EditSpellComponent } from './components/sourcedata/spell/edit-spell/edit-spell.component';
+import { DeleteSpellComponent } from './components/sourcedata/spell/delete-spell/delete-spell.component';
+import { AddSpellDamageComponent } from './components/sourcedata/damage/spell-damage/add-spell-damage/add-spell-damage.component';
+import { EditSpellDamageComponent } from './components/sourcedata/damage/spell-damage/edit-spell-damage/edit-spell-damage.component';
+import { DeleteSpellDamageComponent } from './components/sourcedata/damage/spell-damage/delete-spell-damage/delete-spell-damage.component';
+import { AddAreaEffectComponent } from './components/sourcedata/area-effect/add-area-effect/add-area-effect.component';
+import { EditAreaEffectComponent } from './components/sourcedata/area-effect/edit-area-effect/edit-area-effect.component';
+import { DeleteAreaEffectComponent } from './components/sourcedata/area-effect/delete-area-effect/delete-area-effect.component';
 
 
 
 @NgModule({
-  declarations: [SourcedataComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent, ModifierComponent, AbilityComponent, FeatComponent, EquipmentComponent, SpellComponent, ClassComponent, RaceComponent, SpeedComponent, SkillComponent, SenseComponent, ProficiencyComponent, MagicSchoolComponent, DamageTypeComponent, AbilityScoreComponent, AddAbilityScoreComponent, EditAbilityScoreComponent, DeleteAbilityScoreComponent, AddConditionComponent, EditConditionComponent, DeleteConditionComponent, AddDamageTypeComponent, EditDamageTypeComponent, DeleteDamageTypeComponent, AddMagicSchoolComponent, EditMagicSchoolComponent, DeleteMagicSchoolComponent, AddProficiencyComponent, EditProficiencyComponent, DeleteProficiencyComponent, AddSenseComponent, EditSenseComponent, DeleteSenseComponent, AddSkillComponent, EditSkillComponent, DeleteSkillComponent, AddSpeedComponent, EditSpeedComponent, DeleteSpeedComponent, AddRaceComponent, EditRaceComponent, DeleteRaceComponent, AddFeatComponent, EditFeatComponent, DeleteFeatComponent, MeleeAttackComponent, RangedAttackComponent, CastSpellComponent, AddCastSpellComponent, EditCastSpellComponent, DeleteCastSpellComponent, AddRangedAttackComponent, EditRangedAttackComponent, DeleteRangedAttackComponent, AddMeleeAttackComponent, EditMeleeAttackComponent, DeleteMeleeAttackComponent, AddAbilityComponent, EditAbilityComponent, DeleteAbilityComponent, AddAttackDamageComponent, EditAttackDamageComponent, DeleteAttackDamageComponent, AddModifierComponent, GetModifierTypeComponent, EditModifierComponent, DeleteModifierComponent],
+  declarations: [SourcedataComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent, ModifierComponent, AbilityComponent, FeatComponent, EquipmentComponent, SpellComponent, ClassComponent, RaceComponent, SpeedComponent, SkillComponent, SenseComponent, ProficiencyComponent, MagicSchoolComponent, DamageTypeComponent, AbilityScoreComponent, AddAbilityScoreComponent, EditAbilityScoreComponent, DeleteAbilityScoreComponent, AddConditionComponent, EditConditionComponent, DeleteConditionComponent, AddDamageTypeComponent, EditDamageTypeComponent, DeleteDamageTypeComponent, AddMagicSchoolComponent, EditMagicSchoolComponent, DeleteMagicSchoolComponent, AddProficiencyComponent, EditProficiencyComponent, DeleteProficiencyComponent, AddSenseComponent, EditSenseComponent, DeleteSenseComponent, AddSkillComponent, EditSkillComponent, DeleteSkillComponent, AddSpeedComponent, EditSpeedComponent, DeleteSpeedComponent, AddRaceComponent, EditRaceComponent, DeleteRaceComponent, AddFeatComponent, EditFeatComponent, DeleteFeatComponent, MeleeAttackComponent, RangedAttackComponent, CastSpellComponent, AddCastSpellComponent, EditCastSpellComponent, DeleteCastSpellComponent, AddRangedAttackComponent, EditRangedAttackComponent, DeleteRangedAttackComponent, AddMeleeAttackComponent, EditMeleeAttackComponent, DeleteMeleeAttackComponent, AddAbilityComponent, EditAbilityComponent, DeleteAbilityComponent, AddAttackDamageComponent, EditAttackDamageComponent, DeleteAttackDamageComponent, AddModifierComponent, GetModifierTypeComponent, EditModifierComponent, DeleteModifierComponent, AddSpellComponent, EditSpellComponent, DeleteSpellComponent, AddSpellDamageComponent, EditSpellDamageComponent, DeleteSpellDamageComponent, AddAreaEffectComponent, EditAreaEffectComponent, DeleteAreaEffectComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -102,6 +111,7 @@ import { DeleteModifierComponent } from './components/sourcedata/modifier/delete
           { path: 'rangedattack' , component: RangedAttackComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'castspell' , component: CastSpellComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'modifier' , component: ModifierComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'spell' , component: SpellComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'source', component: SourceComponent, outlet: 'admin-sourcedata-outlet' }
         ]}
     ])

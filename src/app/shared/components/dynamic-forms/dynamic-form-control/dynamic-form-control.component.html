@@ -31,7 +31,7 @@
         <div class="mt-1">
             <div class="alert alert-danger" *ngIf="isInvalid && hasError('required')">{{control.label}} is required</div>
             <div class="alert alert-danger" *ngIf="isInvalid && hasError('range')">{{control.label}} must be between {{control.rangeMin}} and {{control.rangeMax}}</div>
-            <div class="alert alert-danger" *ngIf="isInvalid && hasError('maxLength')">{{control.label}} can be maximum {{control.maxLengthValue}} characters long</div>
+            <div class="alert alert-danger" *ngIf="isInvalid && hasError('maxlength')">{{control.label}} can be maximum {{control.maxLengthValue}} characters long</div>
         </div>
 
     </div>

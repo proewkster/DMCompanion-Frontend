@@ -8,7 +8,7 @@
                         <input type="text" formControlName="name" id="name" class="form-control" />
                         <div class="mt-1">
                             <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'required')">Please enter a name for the new Ability</div>
-                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxLength')">Ability name can be maximum {{ addAbilityForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxlength')">Ability name can be maximum {{ addAbilityForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
                         </div>
                     </div>
                     <div class="form-group text-left">
@@ -16,7 +16,7 @@
                         <textarea formControlName="description" id="description" class="form-control" rows="5"></textarea>
                         <div class="mt-1">
                             <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'required')">Please enter a description for the new Ability</div>
-                            <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'maxLength')">Ability description can be maximum {{ addAbilityForm.controls['description'].errors.maxlength.requiredLength }} characters long</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'maxlength')">Ability description can be maximum {{ addAbilityForm.controls['description'].errors.maxlength.requiredLength }} characters long</div>
                         </div>
                     </div>
                     <div class="form-group text-left">

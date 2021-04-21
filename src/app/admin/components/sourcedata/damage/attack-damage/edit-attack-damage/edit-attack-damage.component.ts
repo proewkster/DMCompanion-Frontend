@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SourceData_AttackDamage } from 'src/app/admin/models/sourcedata/sourcedata_attackdamage';
 import { SourceData_DamageType } from 'src/app/admin/models/sourcedata/sourcedata_damagetype';
-import { SourcedataService } from 'src/app/admin/services/sourcedata.service';
 import { DiceType } from 'src/app/enums/dice-type.enum';
 import { CustomValidators } from 'src/app/shared/validators/CustomValidators';
 
@@ -24,7 +23,7 @@ export class EditAttackDamageComponent implements OnInit, AfterViewInit {
   public diceTypes = DiceType;
   public keys = Object.keys;
 
-  constructor(private _formBuilder: FormBuilder, private _sourcedataService: SourcedataService, private _activeModal: NgbActiveModal) { }
+  constructor(private _formBuilder: FormBuilder, private _activeModal: NgbActiveModal) { }
 
   ngAfterViewInit(): void {
     $('.selectpicker').selectpicker();

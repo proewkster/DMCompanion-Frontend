@@ -1,1 +1,38 @@
-<p>spell works!</p>
+<div class="container p-3 mx-auto">
+    <div class="row text-center">
+        <div class="col-12">
+            <h1>Spells</h1>
+            <hr/>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-12">
+            <table class="table table-striped table-hover table-bordered table-responsive-lg ">
+                <thead>
+                    <tr>
+                        <th class="text-center" width="25%">Name</th>
+                        <th class="text-center" width="7%">Level</th>
+                        <th class="text-center" width="45%">Description</th>
+                        <th class="text-center" width="13%">Magic School</th>
+                        <th class="text-center" width="10%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of spells">
+                        <td class="align-middle">{{item.name}}</td>
+                        <td class="align-middle">{{item.level}}</td>
+                        <td class="align-middle">{{item.description}}</td>
+                        <td class="align-middle">{{item.magicSchool?.name}}</td>
+                        <td class="align-middle">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-action" (click)="showEditSpellModal(item)"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger btn-action" (click)="showDeleteSpellModal(item)"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="showAddSpellModal()"><i class="fa fa-plus mr-2"></i>Add Spell</button>
+</div>

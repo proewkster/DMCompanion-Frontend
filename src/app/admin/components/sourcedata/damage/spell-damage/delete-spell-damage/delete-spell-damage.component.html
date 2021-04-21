@@ -1,0 +1,16 @@
+<shared-modal title={{title}}>
+    <div body>
+        <div class="row text-center">
+            <div class="col-8 offset-2">
+                <div class="text-danger">
+                    <p><strong>Warning</strong></p>
+                    <p>This will permanently delete the damage object.</p>
+                    <p class="mt-1">Are you sure you want to proceed?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div footer>
+        <button type="button" class="btn btn-danger btn-block" (click)="deleteDamage()">Delete</button>            
+    </div>
+</shared-modal>

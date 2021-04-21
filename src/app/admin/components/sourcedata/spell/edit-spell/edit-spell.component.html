@@ -1,0 +1,169 @@
+<shared-modal title={{title}}>
+    <div body>
+        <form [formGroup]="editSpellForm" id="editSpellForm" autocomplete="off" novalidate (ngSubmit)="editSpell(editSpellForm.value)">
+            <div class="row text-center">
+                <div class="col-8 offset-2 col-lg-6 offset-md-0">
+                    <div class="form-group text-left">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" formControlName="name" id="name" class="form-control" />
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'required')">Please enter a name for the new Spell</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxlength')">Spell name can be maximum {{ editSpellForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea formControlName="description" id="description" class="form-control" rows="5"></textarea>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'required')">Please enter a description for the new Melee Attack</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'maxlength')">Melee Attack description can be maximum {{ editSpellForm.controls['description'].errors.maxlength.requiredLength }} characters long</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="level" class="form-label">Spell Level:</label>
+                        <input type="number" id="level" formControlName="level" min="0" max="9" class="form-control" />
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('level') && hasError('level', 'required')">Please enter the Spell level</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('level') && hasError('level', 'range')">Spell Level must be between 0 and 9</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="castingTime" class="form-label">Casting Time:</label>
+                        <select for="castingTime" id="castingTime" formControlName="castingTime" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Casting Time..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let key of keys(castingTimes)" [value]="castingTimes[key]">
+                                {{castingTimes[key]}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('castingTime') && hasError('castingTime', 'required')">Please select a Casting Time</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="duration" class="form-label">Duration:</label>
+                        <select for="duration" id="duration" formControlName="duration" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Casting Time..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let key of keys(spellDurations)" [value]="spellDurations[key]">
+                                {{spellDurations[key]}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('duration') && hasError('duration', 'required')">Please select a Duration</div>
+                        </div>
+                    </div>
+                    <div class="form-group form-check text-left">
+                        <input type="checkbox" class="form-check-input" formControlName="concentration" id="concentration">
+                        <label for="concentration" class="form-check-label">Concentration</label>
+                    </div>
+                    <div class="form-group form-check text-left">
+                        <input type="checkbox" class="form-check-input" formControlName="components_Verbal" id="components_Verbal">
+                        <label for="components_Verbal" class="form-check-label">Verbal</label>
+                    </div>
+                    <div class="form-group form-check text-left">
+                        <input type="checkbox" class="form-check-input" formControlName="components_Somatic" id="components_Somatic">
+                        <label for="components_Somatic" class="form-check-label">Somatic</label>
+                    </div>
+                    <div class="form-group form-check text-left">
+                        <input type="checkbox" class="form-check-input" formControlName="components_Material" id="components_Material">
+                        <label for="components_Material" class="form-check-label">Material</label>
+                    </div>
+                    <div class="form-group text-left" *ngIf="editSpellForm.get('components_Material').value == true">
+                        <label for="components_Material_Description" class="form-label">Material Description:</label>
+                        <textarea formControlName="components_Material_Description" id="components_Material_Description" class="form-control" rows="3"></textarea>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('components_Material_Description') && hasError('components_Material_Description', 'requiredIf')">Please enter a description for the material components</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('components_Material_Description') && hasError('components_Material_Description', 'maxlength')">Material components description can be maximum {{ editSpellForm.controls['components_Material_Description'].errors.maxlength.requiredLength }} characters long</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 offset-2 col-lg-6 offset-md-0">
+                    <div class="form-group text-left">
+                        <label for="range" class="form-label">Range:</label>
+                        <select for="range" id="range" formControlName="range" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Range..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let key of keys(spellRanges)" [value]="spellRanges[key]">
+                                {{spellRanges[key]}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('range') && hasError('range', 'required')">Please select a Range</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="magicSchoolId" class="form-label">Magic School:</label>
+                        <select for="magicSchoolId" id="magicSchoolId" formControlName="magicSchoolId" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Magic School..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let magicSchool of magicSchools" [value]="magicSchool.id">
+                                {{magicSchool.name}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('magicSchoolId') && hasError('magicSchoolId', 'required')">Please select a Magic School</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="abilityScoreId" class="form-label">Saving Throw Type:</label>
+                        <select for="abilityScoreId" id="abilityScoreId" formControlName="abilityScoreId" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Saving Throw Type..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let abilityScore of abilityScores" [value]="abilityScore.id">
+                                {{abilityScore.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="sourceId" class="form-label">Source:</label>
+                        <select for="sourceId" id="sourceId" formControlName="sourceId" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Source..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let source of sources" [value]="source.id">
+                                {{source.name}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('sourceId') && hasError('sourceId', 'required')">Please select a Source</div>
+                        </div>
+                    </div>
+                    <div class="text-left">
+                        <label class="form-label">Damage:</label>
+                        <table class="table">
+                            <tr *ngFor="let damage of damageList">
+                                <td class="align-middle">Level: {{damage.castingLevel}}</td>
+                                <td class="align-middle">{{damage.diceCount}}{{damage.diceType}} {{damage.damageType?.name}} damage</td>
+                                <td class="align-middle">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary btn-action-small" (click)="showEditDamageModal(damage)"><i class="fa fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger btn-action-small" (click)="showDeleteDamageModal(damage)"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <button type="button" class="btn btn-primary btn-action-small mt-2" (click)="showAddDamageModal()"><i class="fa fa-plus"></i></button>
+                    </div>
+                    <div class="text-left mt-2">
+                        <label class="form-label">Area Effect:</label>
+                        <table class="table">
+                            <tr *ngIf="areaEffect != undefined">
+                                <td class="align-middle">{{areaEffect.areaSize}}ft {{areaEffect.areaType}}</td>
+                                <td class="align-middle">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary btn-action-small" (click)="showEditAreaEffectModal(areaEffect)"><i class="fa fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger btn-action-small" (click)="showDeleteAreaEffectModal(areaEffect)"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <button *ngIf="areaEffect === undefined || areaEffect === null" type="button" class="btn btn-primary btn-action-small mt-2" (click)="showAddAreaEffectModal()"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div footer>
+        <button type="submit" form="editSpellForm" class="btn btn-primary btn-block">Submit</button>            
+    </div>
+</shared-modal>

@@ -12,7 +12,7 @@
                         <input type="text" formControlName="name" id="name" class="form-control" />
                         <div class="mt-1">
                             <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'required')">Please enter a name for the new Speed</div>
-                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxLength')">Speed name can be maximum {{ editFeatForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxlength')">Speed name can be maximum {{ editFeatForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
                         </div>
                     </div>
                     <div class="form-group text-left">
@@ -20,7 +20,7 @@
                         <textarea formControlName="description" id="description" class="form-control" rows="5"></textarea>
                         <div class="mt-1">
                             <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'required')">Please enter a description for the new Speed</div>
-                            <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'maxLength')">Speed description can be maximum {{ editFeatForm.controls['description'].errors.maxlength.requiredLength }} characters long</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('description') && hasError('description', 'maxlength')">Speed description can be maximum {{ editFeatForm.controls['description'].errors.maxlength.requiredLength }} characters long</div>
                         </div>
                     </div>
                     <div class="form-group text-left">
