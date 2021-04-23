@@ -20,6 +20,7 @@ import { DTO_SourceData_Ability } from '../models/sourcedata/dto_sourcedata_abil
 import { DTO_SourceData_MeleeAttack } from '../models/sourcedata/dto_sourcedata_meleeattack';
 import { DTO_SourceData_RangedAttack } from '../models/sourcedata/dto_sourcedata_rangedattack';
 import { DTO_SourceData_CastSpell } from '../models/sourcedata/dto_sourcedata_castspell';
+import { DTO_SourceData_Spell } from '../models/sourcedata/dto_sourcedata_spell';
 
 @Injectable({
   providedIn: 'root'
@@ -343,6 +344,50 @@ export class SourcedataService {
 
   public deleteCastSpell = (id: string) => {
     return this._http.requestCall(ApiEndPoints.SOURCEDATA_CASTSPELL, ApiMethod.DELETE, id);
+  }
+
+  // Modifiers
+
+  public getModifiers = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MODIFIER, ApiMethod.GET);
+  }
+
+  public getModifier = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MODIFIER, ApiMethod.GET, id)
+  }
+
+  public createModifier = (modifier: any) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MODIFIER, ApiMethod.POST, null, modifier);
+  }
+
+  public updateModifier = (modifier: any) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MODIFIER, ApiMethod.PUT, null, modifier)
+  }
+
+  public deleteModifier = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_MODIFIER, ApiMethod.DELETE, id)
+  }
+
+  // Spells
+
+  public getSpells = () => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPELL, ApiMethod.GET);
+  }
+
+  public getSpell = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPELL, ApiMethod.GET, id)
+  }
+
+  public createSpell = (spell: DTO_SourceData_Spell) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPELL, ApiMethod.POST, null, spell);
+  }
+
+  public updateSpell = (spell: DTO_SourceData_Spell) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPELL, ApiMethod.PUT, null, spell)
+  }
+
+  public deleteSpell = (id: string) => {
+    return this._http.requestCall(ApiEndPoints.SOURCEDATA_SPELL, ApiMethod.DELETE, id)
   }
 
   // Sources

@@ -12,7 +12,7 @@
                         <input type="text" formControlName="name" id="name" class="form-control" />
                         <div class="mt-1">
                             <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'required')">Please enter a name for the new Source</div>
-                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxLength')">Source name can be maximum {{ addSourceForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('name') && hasError('name', 'maxlength')">Source name can be maximum {{ addSourceForm.controls['name'].errors.maxlength.requiredLength }} characters long</div>
                         </div>
                     </div>
                 </div>

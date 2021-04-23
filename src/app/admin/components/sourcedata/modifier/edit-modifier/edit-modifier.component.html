@@ -1,0 +1,8 @@
+<shared-modal title={{title}}>
+    <div body>
+        <shared-dynamic-form [formControls]="formControls" [formName]="'editModifierForm'" (process)="processData($event)"></shared-dynamic-form>
+    </div>
+    <div footer>
+        <button type="submit" form="editModifierForm" class="btn btn-primary btn-block">Submit</button>            
+    </div>
+</shared-modal>

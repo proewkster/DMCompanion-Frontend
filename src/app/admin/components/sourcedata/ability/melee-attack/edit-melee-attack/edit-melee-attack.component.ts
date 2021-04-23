@@ -61,7 +61,7 @@ export class EditMeleeAttackComponent implements OnInit, AfterViewInit {
       restoreCondition: [this.meleeAttack.restoreCondition, [Validators.required, Validators.maxLength(100)]],
       maxSlots: [this.meleeAttack.maxSlots, [Validators.required, CustomValidators.range(0, 100)]],
       range: [this.meleeAttack.range, [Validators.required, CustomValidators.range(0, 1000)]],
-      sourceId: [this.meleeAttack.source.id, [Validators.required]]
+      sourceId: [this.meleeAttack.source?.id, [Validators.required]]
     });
 
     // Transfer damage to variable list

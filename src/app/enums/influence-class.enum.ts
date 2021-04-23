@@ -1,6 +1,6 @@
 export enum InfluenceClass {
-    "Ability Check",
-    "Skill Check",
-    "Saving Throws",
-    "Attack Roll "
+    ABILITY_CHECK = "Ability Checks",
+    SKILL_CHECK = "Skill Checks",
+    SAVING_THROWS = "Saving Throws",
+    ATTACK_ROLLS = "Attack Rolls"
 }

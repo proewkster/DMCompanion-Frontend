@@ -1,0 +1,34 @@
+<shared-modal title={{title}}>
+    <div body>
+        <form [formGroup]="addAreaEffectForm" id="addAreaEffectForm" autocomplete="off" novalidate (ngSubmit)="createAreaEffect(addAreaEffectForm.value)">
+            <div class="row text-center">
+                <div class="col-8 offset-2">
+                    <div class="form-group text-left">
+                        <label for="areaSize" class="form-label">Area Size:</label>
+                        <input type="number" id="areaSize" formControlName="areaSize" min="0" max="1000" step="5" class="form-control" />
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('areaSize') && hasError('areaSize', 'required')">Please enter the Area Size</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('areaSize') && hasError('areaSize', 'range')">Area Size must be between 0 and 1000</div>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="areaType" class="form-label">Area Type:</label>
+                        <select for="areaType" id="areaType" formControlName="areaType" class="form-control selectpicker"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Area Type..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let key of keys(areaTypes)" [value]="areaTypes[key]">
+                                {{areaTypes[key]}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('areaType') && hasError('areaType', 'required')">Please select a Dice Type</div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </form>
+    </div>
+    <div footer>
+        <button type="submit" form="addAreaEffectForm" class="btn btn-primary btn-block">Submit</button>            
+    </div>
+</shared-modal>

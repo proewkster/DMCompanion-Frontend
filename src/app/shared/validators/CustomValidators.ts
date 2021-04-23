@@ -64,4 +64,18 @@ export class CustomValidators {
             }
         }        
     }
+
+    static requiredIf(sourceControl: string, targetControl: string, compareVal: string): ValidatorFn {
+        return (formGroup: FormGroup) => {
+            // Get current control values
+            const targetVal: string = formGroup.get(targetControl).value?.toString();
+
+            // If Target Control has required value, check if Source Control is defined
+            if (targetVal === compareVal) {
+                formGroup.get(sourceControl).value ? formGroup.get(sourceControl).setErrors(null) : formGroup.get(sourceControl).setErrors({ requiredIf: true });
+            }
+
+            return null;
+        }
+    }
 }

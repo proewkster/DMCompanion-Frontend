@@ -19,7 +19,15 @@ export class MeleeAttackComponent implements OnInit {
   sources: [SourceData_Source];
   meleeAttacks: [SourceData_MeleeAttack];
 
-  private options: NgbModalOptions = {
+  private optionsLarge: NgbModalOptions = {
+    animation: true,
+    centered: true,
+    keyboard: true,
+    backdrop: "static",
+    size: "lg"
+  }
+
+  private optionsSmall: NgbModalOptions = {
     animation: true,
     centered: true,
     keyboard: true,
@@ -58,7 +66,7 @@ export class MeleeAttackComponent implements OnInit {
   public showEditMeleeAttackModal = (meleeAttack: SourceData_MeleeAttack) => {
     
     // Open modal
-    const modalRef = this._modalService.open(EditMeleeAttackComponent, this.options);
+    const modalRef = this._modalService.open(EditMeleeAttackComponent, this.optionsLarge);
     modalRef.componentInstance.title = "Edit MeleeAttack";
     modalRef.componentInstance.meleeAttack = meleeAttack;
     modalRef.componentInstance.sources = this.sources;
@@ -93,7 +101,7 @@ export class MeleeAttackComponent implements OnInit {
   public showDeleteMeleeAttackModal = (meleeAttack: SourceData_MeleeAttack) => {
     
     // Open modal
-    const modalRef = this._modalService.open(DeleteMeleeAttackComponent, this.options);
+    const modalRef = this._modalService.open(DeleteMeleeAttackComponent, this.optionsSmall);
     modalRef.componentInstance.title = "Delete MeleeAttack";
     modalRef.componentInstance.meleeAttack = meleeAttack;
 
@@ -128,7 +136,7 @@ export class MeleeAttackComponent implements OnInit {
   public showAddMeleeAttackModal = () => {
 
     // Open modal
-    const modalRef = this._modalService.open(AddMeleeAttackComponent, this.options);
+    const modalRef = this._modalService.open(AddMeleeAttackComponent, this.optionsLarge);
     modalRef.componentInstance.title = "Add MeleeAttack";
     modalRef.componentInstance.sources = this.sources;
 

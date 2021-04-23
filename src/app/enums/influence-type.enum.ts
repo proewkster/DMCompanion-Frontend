@@ -1,4 +1,4 @@
 export enum InfluenceType {
-    "Advantage",
-    "Disadvantage"
+    ADVANTAGE = "Advantage",
+    DISADVANTAGE = "Disadvantage"
 }

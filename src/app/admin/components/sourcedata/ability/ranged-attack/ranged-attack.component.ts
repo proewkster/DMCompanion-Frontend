@@ -19,7 +19,15 @@ export class RangedAttackComponent implements OnInit {
   sources: [SourceData_Source];
   rangedAttacks: [SourceData_RangedAttack];
 
-  private options: NgbModalOptions = {
+  private optionsLarge: NgbModalOptions = {
+    animation: true,
+    centered: true,
+    keyboard: true,
+    backdrop: "static",
+    size: "lg"
+  }
+
+  private optionsSmall: NgbModalOptions = {
     animation: true,
     centered: true,
     keyboard: true,
@@ -58,7 +66,7 @@ export class RangedAttackComponent implements OnInit {
   public showEditRangedAttackModal = (rangedAttack: SourceData_RangedAttack) => {
     
     // Open modal
-    const modalRef = this._modalService.open(EditRangedAttackComponent, this.options);
+    const modalRef = this._modalService.open(EditRangedAttackComponent, this.optionsLarge);
     modalRef.componentInstance.title = "Edit RangedAttack";
     modalRef.componentInstance.rangedAttack = rangedAttack;
     modalRef.componentInstance.sources = this.sources;
@@ -93,7 +101,7 @@ export class RangedAttackComponent implements OnInit {
   public showDeleteRangedAttackModal = (rangedAttack: SourceData_RangedAttack) => {
     
     // Open modal
-    const modalRef = this._modalService.open(DeleteRangedAttackComponent, this.options);
+    const modalRef = this._modalService.open(DeleteRangedAttackComponent, this.optionsSmall);
     modalRef.componentInstance.title = "Delete RangedAttack";
     modalRef.componentInstance.rangedAttack = rangedAttack;
 
@@ -128,7 +136,7 @@ export class RangedAttackComponent implements OnInit {
   public showAddRangedAttackModal = () => {
 
     // Open modal
-    const modalRef = this._modalService.open(AddRangedAttackComponent, this.options);
+    const modalRef = this._modalService.open(AddRangedAttackComponent, this.optionsLarge);
     modalRef.componentInstance.title = "Add RangedAttack";
     modalRef.componentInstance.sources = this.sources;
 
