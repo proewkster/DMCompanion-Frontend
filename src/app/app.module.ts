@@ -18,7 +18,8 @@ import { NewcharacterComponent } from './character/newcharacter/newcharacter.com
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { JwtModule } from '@auth0/angular-jwt';
-import * as $ from 'jquery';//NODIG voor de $ in create char next button. is in gebruik ook al is et hier niet highlighted.
+import * as $ from 'jquery';
+import { DeleteCharacterComponent } from './character/characterlist/delete-character/delete-character.component';//NODIG voor de $ in create char next button. is in gebruik ook al is et hier niet highlighted.
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -32,7 +33,9 @@ export function tokenGetter() {
     FooterComponent,
     CharacterlistComponent,
     NewcharacterComponent,
-    SelectedCharacterComponent
+    SelectedCharacterComponent,
+    DeleteCharacterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ export function tokenGetter() {
     ToastrModule.forRoot(),
     AdminModule,
     RouterModule,
+    SharedModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

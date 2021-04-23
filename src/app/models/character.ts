@@ -23,7 +23,7 @@ export class Character {
   public backstory: string;//4
   public notes: string;//3
   public abilityScores: AbilityScore[];
-  public race: Race;
+  public races: Race[];
 
 
 
@@ -45,7 +45,7 @@ export class Character {
     backstory: string,
     notes: string,
     abilityScores: AbilityScore[],
-    race: Race
+    races: Race[]
   ) {
     this.name = name
     this.level = level
@@ -64,7 +64,7 @@ export class Character {
     this.backstory = backstory
     this.notes = notes
     this.abilityScores = abilityScores
-    this.race = race
+    this.races = races
   }
 
 }

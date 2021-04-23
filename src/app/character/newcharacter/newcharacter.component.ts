@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Gender } from 'src/app/enums/gender.enum';
 import { Alignment } from 'src/app/enums/alignment.enum';
@@ -21,8 +21,13 @@ import { Race } from 'src/app/models/race';
 export class NewcharacterComponent implements OnInit {
 
   constructor(private router: Router, private characterService: CharacterService, private raceService: RaceService, private abscoreService: AbilityscoreService) { }
+
   abilityScores: DtoNewABScores[] = [];
-  races: Race[];
+  mainRaces: DtoNewRace[] = [];
+  subRaces: DtoNewRace[] = [];
+  selectedRace: DtoNewRace = null;
+  selectedSubrace: DtoNewRace = null;
+  selectedRaces: DtoNewRace[] = [this.selectedRace, this.selectedSubrace];
   //character: DtoNewcharacter = new DtoNewcharacter(null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
   character: DtoNewcharacter;
 
@@ -45,16 +50,36 @@ export class NewcharacterComponent implements OnInit {
 
   ngOnInit(): void {
     //this.raceService.getRaceNames().subscribe(x => this.races = x);
-    this.races = this.raceService.getRaceNames();
-    this.abscoreService.getAbilityScores().forEach(element => {
-      this.abilityScores.push(new DtoNewABScores(element, 13));
-      //this.abScores.push(new DtoNewABScores(element, null));
+    // this.races = this.raceService.getRaceNames();
+
+    this.raceService.getMainRaces().subscribe(x => {
+      x.forEach(element => {
+        this.mainRaces.push(element);
+        if (element.subRaces.length == 0) {
+          return;
+        }
+        element.subRaces.forEach(subrace => {
+          this.subRaces.push(subrace);
+        });
+
+      });
+      // this.races = x;
+      this.abscoreService.getAbilityScores().forEach(element => {
+        this.abilityScores.push(new DtoNewABScores(element, 13));
+        //this.abScores.push(new DtoNewABScores(element, null));
+      });
+      this.character = new DtoNewcharacter("testchar", 1, "https://cdn1.dotesports.com/wp-content/uploads/2020/09/01144749/Zendikar-Rising-Nissa.jpg",
+        Alignment['1'], Gender["2"], "Blue", 15, Size["2"],
+        "Flying Spaghetti Monster", "Brown", "Pale", 80, 50, "It's an Elf", "Born with the elfs", "No notes Available", this.abilityScores, this.selectedRaces);
+
     });
-    this.character = new DtoNewcharacter("testchar", 1, "https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/7/71/Llanowar_Elves.jpg/revision/latest/scale-to-width-down/250?cb=20190512202900",
-      Alignment['1'], Gender["2"], "Blue", 15, Size["2"],
-      "Flying Spaghetti Monster", "Brown", "Pale", 80, 50, "It's an Elf", "Born with the elfs", "No notes Available", this.abilityScores, this.races[0]);
+
+
   }
+
+
   save() {
+    this.character.races = [this.selectedRace, this.selectedSubrace]
     this.characterService.createNewCharacter(this.character)
       .subscribe(data => {
         this.router.navigateByUrl('/Characters');

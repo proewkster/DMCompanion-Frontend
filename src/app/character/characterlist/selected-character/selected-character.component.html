@@ -5,9 +5,9 @@
                 <img class="img-fluid rounded-circle" src="{{char.picture}}" />
             </div>
             <div class="col-10">
-                Name: {{char.name}} <br>
-                Level: {{char.level}} <br>
-                Race: {{char.race?.name}}
+                Name: {{char?.name}} <br>
+                Level: {{char?.level}} <br>
+                Race: {{getraceName(char.races)}}
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
                 </p>
                 <hr>
                 <p class="text-center">
-                    {{abscore.base_value}}
+                    {{abscore.base_value}} | {{calculateModifier(abscore.base_value)}}
                 </p>
             </div>
         </div>

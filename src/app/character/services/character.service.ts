@@ -24,6 +24,6 @@ export class CharacterService {
     return this._http.requestCall(ApiEndPoints.CHARACTERDATA_CHARACTER, ApiMethod.PUT, null, char);
   }
   deleteCharacter(id: string) {
-    return this._http.requestCall(ApiEndPoints.CHARACTERDATA_CHARACTER, ApiMethod.POST, id);
+    return this._http.requestCall(ApiEndPoints.CHARACTERDATA_CHARACTER, ApiMethod.DELETE, id);
   }
 }
