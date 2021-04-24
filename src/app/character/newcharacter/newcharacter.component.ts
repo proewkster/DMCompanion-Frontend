@@ -27,7 +27,7 @@ export class NewcharacterComponent implements OnInit {
   subRaces: DtoNewRace[] = [];
   selectedRace: DtoNewRace = null;
   selectedSubrace: DtoNewRace = null;
-  selectedRaces: DtoNewRace[] = [this.selectedRace, this.selectedSubrace];
+  subracesForMainRace: DtoNewRace[] = [];
   //character: DtoNewcharacter = new DtoNewcharacter(null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
   character: DtoNewcharacter;
 
@@ -49,9 +49,12 @@ export class NewcharacterComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //this.raceService.getRaceNames().subscribe(x => this.races = x);
-    // this.races = this.raceService.getRaceNames();
+    this.loadraces();
 
+
+  }
+
+  loadraces() {
     this.raceService.getMainRaces().subscribe(x => {
       x.forEach(element => {
         this.mainRaces.push(element);
@@ -63,20 +66,26 @@ export class NewcharacterComponent implements OnInit {
         });
 
       });
-      // this.races = x;
+
       this.abscoreService.getAbilityScores().forEach(element => {
         this.abilityScores.push(new DtoNewABScores(element, 13));
         //this.abScores.push(new DtoNewABScores(element, null));
       });
       this.character = new DtoNewcharacter("testchar", 1, "https://cdn1.dotesports.com/wp-content/uploads/2020/09/01144749/Zendikar-Rising-Nissa.jpg",
         Alignment['1'], Gender["2"], "Blue", 15, Size["2"],
-        "Flying Spaghetti Monster", "Brown", "Pale", 80, 50, "It's an Elf", "Born with the elfs", "No notes Available", this.abilityScores, this.selectedRaces);
+        "Flying Spaghetti Monster", "Brown", "Pale", 80, 50, "It's an Elf", "Born with the elfs", "No notes Available", this.abilityScores, [this.selectedRace, this.selectedSubrace]);
 
     });
-
-
   }
-
+  mainRaceChanged() {
+    this.selectedSubrace = null;
+    this.subracesForMainRace = [];
+    this.subRaces.forEach(element => {
+      if (element.parentId == this.selectedRace.id) {
+        this.subracesForMainRace.push(element);
+      }
+    });
+  }
 
   save() {
     this.character.races = [this.selectedRace, this.selectedSubrace]

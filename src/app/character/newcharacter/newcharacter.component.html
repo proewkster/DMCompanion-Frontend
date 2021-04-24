@@ -98,7 +98,8 @@
             <form #f3="ngForm">
                 <div class="form-group">
                     <label for="race">Race</label>
-                    <select class="form-control" #race="ngModel" [(ngModel)]="selectedRace" required name="race">
+                    <select class="form-control" (change)="mainRaceChanged()" #race="ngModel" [(ngModel)]="selectedRace"
+                        required name="race">
                         <option value="" disabled>Choose your race</option>
                         <ng-container *ngFor=" let race of mainRaces">
 
@@ -111,24 +112,19 @@
                 <p *ngIf="selectedRace">
                     {{selectedRace.description}}
                 </p>
-                <div *ngIf="race.valid" class="form-group">
+                <div *ngIf="race.valid && subracesForMainRace.length>0" class="form-group">
                     <label for="subrace">SubRace</label>
-                    <select class="form-control" #subrace="ngModel" [(ngModel)]="selectedSubrace" required
-                        name="subrace">
+                    <select class="form-control" #subrace="ngModel" [(ngModel)]="selectedSubrace" name="subrace">
                         <option value="" disabled>Choose your subrace</option>
-                        <ng-container *ngFor=" let subrace of subRaces">
-
-                            <option *ngIf="subrace.parentId==selectedRace.id" [ngValue]="subrace">
-                                {{subrace.name}}
-                            </option>
-                        </ng-container>
+                        <option *ngFor=" let subrace of subracesForMainRace" [ngValue]="subrace">
+                            {{subrace.name}}
+                        </option>
                     </select>
                 </div>
                 <p *ngIf="selectedSubrace">
                     {{selectedSubrace.description}}
                 </p>
             </form>
-            <pre>{{selectedRaces|json}}</pre>
             <div class="d-flex justify-content-end">
                 <button [disabled]="f3.invalid" (click)="next()" class="btn btn-primary">Next</button>
             </div>
