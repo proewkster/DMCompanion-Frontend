@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Gender } from 'src/app/enums/gender.enum';
 import { Alignment } from 'src/app/enums/alignment.enum';
 import { Character } from 'src/app/models/character';
@@ -20,7 +20,11 @@ import { Race } from 'src/app/models/race';
 })
 export class NewcharacterComponent implements OnInit {
 
-  constructor(private router: Router, private characterService: CharacterService, private raceService: RaceService, private abscoreService: AbilityscoreService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private characterService: CharacterService, private raceService: RaceService, private abscoreService: AbilityscoreService) { }
+
+  //form shared voor update en create
+  createForm: boolean;
+  id: string;
 
   abilityScores: DtoNewABScores[] = [];
   mainRaces: DtoNewRace[] = [];
@@ -42,6 +46,7 @@ export class NewcharacterComponent implements OnInit {
     this.router.navigateByUrl("/Characters");
   }
 
+  //stuurt de tabs aan.
   next() {
     $('.nav-tabs > .nav-item > .active').parent().next('li').find('a').trigger('click');
   }
@@ -49,6 +54,8 @@ export class NewcharacterComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    this.createForm = !this.id;
     this.loadraces();
 
 
@@ -66,15 +73,34 @@ export class NewcharacterComponent implements OnInit {
         });
 
       });
+      if (this.createForm) {
+        this.abscoreService.getAbilityScores().forEach(element => {
+          this.abilityScores.push(new DtoNewABScores(element, 13));
+          //this.abScores.push(new DtoNewABScores(element, null));
+        });
+      }
 
-      this.abscoreService.getAbilityScores().forEach(element => {
-        this.abilityScores.push(new DtoNewABScores(element, 13));
-        //this.abScores.push(new DtoNewABScores(element, null));
-      });
-      this.character = new DtoNewcharacter("testchar", 1, "https://cdn1.dotesports.com/wp-content/uploads/2020/09/01144749/Zendikar-Rising-Nissa.jpg",
-        Alignment['1'], Gender["2"], "Blue", 15, Size["2"],
-        "Flying Spaghetti Monster", "Brown", "Pale", 80, 50, "It's an Elf", "Born with the elfs", "No notes Available", this.abilityScores, [this.selectedRace, this.selectedSubrace]);
-
+      if (!this.createForm) {
+        this.characterService.getCharacter(this.id)
+          .subscribe(data => {
+            this.character = data;
+            this.selectedRace = this.character.races[0];
+            if (this.character.races.length > 1) {
+              this.selectedSubrace = this.character.races[1];
+            }
+            this.subRaces.forEach(element => {
+              if (element.parentId == this.selectedRace.raceId) {
+                this.subracesForMainRace.push(element);
+              }
+            });
+            this.abilityScores = this.character.abilityScores;
+          })
+      }
+      else {
+        this.character = new DtoNewcharacter("testchar", 1, "https://cdn1.dotesports.com/wp-content/uploads/2020/09/01144749/Zendikar-Rising-Nissa.jpg",
+          Alignment['1'], Gender["2"], "Blue", 15, Size["2"],
+          "Flying Spaghetti Monster", "Brown", "Pale", 80, 50, "It's an Elf", "Born with the elfs", "No notes Available", this.abilityScores, [this.selectedRace, this.selectedSubrace]);
+      }
     });
   }
   mainRaceChanged() {
@@ -87,11 +113,50 @@ export class NewcharacterComponent implements OnInit {
     });
   }
 
+  //in UPDATE de juiste velden selecteren van de form
+  compareRace(race1: DtoNewRace, race2: DtoNewRace) {
+    return race1 && race2 ? race1.name == race2.name : race1 == race2;
+  }
+  compareSubrace(race1: DtoNewRace, race2: DtoNewRace) {
+    return race1 && race2 ? race1.name == race2.name : race1 == race2;
+  }
+
   save() {
-    this.character.races = [this.selectedRace, this.selectedSubrace]
-    this.characterService.createNewCharacter(this.character)
-      .subscribe(data => {
-        this.router.navigateByUrl('/Characters');
-      })
+
+
+    if (this.createForm) {
+      if (this.selectedSubrace == null) {
+        this.character.races = [this.selectedRace]
+      }
+      else {
+        this.character.races = [this.selectedRace, this.selectedSubrace]
+      }
+      this.characterService.createNewCharacter(this.character)
+        .subscribe(data => {
+          this.router.navigateByUrl('/Characters');
+        })
+    }
+    else {
+      this.character.races[0].raceId = this.selectedRace.id;
+      this.character.races[0].name = this.selectedRace.name;
+      this.character.races[0].description = this.selectedRace.description;
+      if (this.selectedSubrace != null) {
+        if (this.character.races.length == 1) {
+          this.character.races.push(this.selectedSubrace)
+          this.character.races[1].id = null;
+        }
+        this.character.races[1].raceId = this.selectedSubrace.id;
+        this.character.races[1].name = this.selectedSubrace.name;
+        this.character.races[1].description = this.selectedSubrace.description;
+        this.character.races[1].parentId = this.selectedSubrace.parentId;
+      }
+      else {
+        this.character.races = this.character.races.slice(0, 1);
+      }
+      this.characterService.updateCharacter(this.character)
+        .subscribe(data => {
+          this.router.navigateByUrl('/Characters');
+        })
+    }
   }
 }

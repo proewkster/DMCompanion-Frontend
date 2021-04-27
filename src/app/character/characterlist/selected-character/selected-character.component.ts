@@ -31,11 +31,12 @@ export class SelectedCharacterComponent implements OnInit {
     }
     return "+" + modifier;
   }
-  getraceName(races:Race[]) {
-    let race = races.find(r => r.type == "Sub");
-    if (race === null) {
-        race = races.find(r => r.type == "Main");
+  getraceName(races: Race[]) {
+    let race = races?.find(r => r.type == "Sub");
+    if (race == null) {
+      race = races?.find(r => r.type == "Main");
     }
     return race ? race.name : "";
-}
+  }
+
 }

@@ -12,11 +12,17 @@
         </thead>
         <tbody *ngFor="let character of characters">
             <tr>
-                <th scope="row"><a routerLink="./{{character.id}}">{{character.name}}</a></th>
-                <td>{{getraceName(character.races)}}</td>
-                <td>{{character.level}}</td>
-                <td><button type="button" class="btn btn-danger btn-action"
-                        (click)="showDeleteCharacterModal(character)"><i class="fa fa-trash"></i></button></td>
+                <th scope="row"><a routerLink="./{{character.id}}">{{character?.name}}</a></th>
+                <td>{{getraceName(character?.races)}}</td>
+                <td>{{character?.level}}</td>
+
+                <td> <button type="button" class="btn btn-primary btn-action"
+                        [routerLink]="['/editCharacter',character.id]"><i class="fa fa-edit"></i></button>
+
+                    <button type="button" class="btn btn-danger btn-action"
+                        (click)="showDeleteCharacterModal(character)"><i class="fa fa-trash"></i></button>
+                </td>
+
             </tr>
         </tbody>
     </table>
