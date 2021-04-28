@@ -11,11 +11,13 @@ const routes: Routes = [
   { path: '', redirectTo: "home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "Characters", component: CharacterlistComponent },
-  { path: "newCharacter", component: NewcharacterComponent },
   { path: "Characters/:id", component: SelectedCharacterComponent },
+  { path: "newCharacter", component: NewcharacterComponent },
+  { path: "editCharacter/:id", component: NewcharacterComponent },
   { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
   { path: 'error', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+  { path: "*", component: HomeComponent }
 ];
 
 @NgModule({
