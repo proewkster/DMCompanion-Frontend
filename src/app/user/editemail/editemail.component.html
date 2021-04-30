@@ -1,0 +1,66 @@
+<div class="container">
+    <form [formGroup]="updateMailForm" autocomplete="off" novalidate (ngSubmit)="updatePassword(updateMailForm.value)">
+        <div class="row text-center mt-3">
+            <div class="col-12 text-center">
+                <h1 class="display-2">Change password</h1>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row my-3">
+            <div class="col-12 col-md-8 offset-md-2">
+                <div class="alert alert-danger" *ngIf="apiError">
+                    <span [innerHTML]="errorMessage"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-6 p-3">
+                <div class="form-group">
+                    <label for="oldEmail" class="form-label">Old Email Address:</label>
+                    <div>
+                        <input type="text" formControlName="oldEmail" id="email" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('oldEmail') && hasError('oldEmail', 'required')">
+                            Your old Email address is required
+                        </div>
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('oldEmail') && hasError('oldEmail', 'oldEmail')">
+                            Enter a valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newEmail" class="form-label"> New Email Address:</label>
+                    <div>
+                        <input type="text" formControlName="newEmail" id="newEmail" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('newEmail') && hasError('newEmail', 'required')">
+                            A new email address is required
+                        </div>
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('newEmail') && hasError('newEmail', 'newEmail')">
+                            Enter a valid email address</div>
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('newEmail') && hasError('newEmail', 'maxlength')">
+                            Email address can be
+                            maximum {{ updateMailForm.controls['newEmail'].errors.maxlength.requiredLength }} characters
+                            long
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-2">
+            <div class="col-12 col-md-6 offset-md-3">
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

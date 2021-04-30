@@ -2,74 +2,71 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
-import { HeaderComponent } from 'src/app/main/header/header.component';
-import { DTOUpdateUser } from '../models/dto-update-user';
+import { GlobalSettings } from 'src/app/shared/globalsettings';
+import { DtoUpdateEmail } from '../models/dto-update-email';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
+  selector: 'app-editemail',
+  templateUrl: './editemail.component.html',
+  styleUrls: ['./editemail.component.scss']
 })
-export class EditUserComponent implements OnInit {
-  public registerForm: FormGroup;
+export class EditemailComponent implements OnInit {
+  public updateMailForm: FormGroup;
   public isSubmitted = false;
   public errorMessage: string;
   public apiError: boolean;
   constructor(private _userservice: UserService, private _formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-    // Designate registration form and configure validation
-    this.registerForm = this._formBuilder.group({
-      nickname: [this._userservice.user.nickname, Validators.maxLength(50)],
-      firstName: [this._userservice.user.firstName, [Validators.required, Validators.maxLength(100)]],
-      lastName: [this._userservice.user.lastName, [Validators.required, Validators.maxLength(100)]],
-      newsletter: [this._userservice.user.newsLetter]
+    this.updateMailForm = this._formBuilder.group({
+      oldEmail: [null, [Validators.required, Validators.email, Validators.maxLength(100)]],
+      newEmail: [null, [Validators.required, Validators.email, Validators.maxLength(100)]]
     })
   }
-  // Methods for validation
   public validateControl = (controlName: string) => {
-    return this.registerForm.controls[controlName].invalid && (this.registerForm.controls[controlName].touched || this.isSubmitted);
+    return this.updateMailForm.controls[controlName].invalid && (this.updateMailForm.controls[controlName].touched || this.isSubmitted);
   }
 
   public hasError = (controlName: string, errorName: string) => {
-    return this.registerForm.controls[controlName].hasError(errorName);
+    return this.updateMailForm.controls[controlName].hasError(errorName);
   }
-  public updateUser = (registerFormValue) => {
+
+  // Registration
+  public updatePassword = (updateMailForm) => {
+
     // Initialize properties
     this.errorMessage = '';
     this.apiError = false;
     this.isSubmitted = true;
 
     // Stop if form is invalid
-    if (this.registerForm.invalid) {
+    if (this.updateMailForm.invalid) {
       return;
     }
 
     // Get form values
-    const formValues = { ...registerFormValue };
+    const formValues = { ...updateMailForm };
 
     // Create instance of registration model
-    const user: DTOUpdateUser = {
+    const mail: DtoUpdateEmail = {
       id: this._userservice.user.id,
-      nickname: formValues.nickname,
-      firstName: formValues.firstName,
-      lastName: formValues.lastName,
-      picture: "",
-      newsletter: formValues.newsletter,
+      oldEmail: formValues.oldEmail,
+      newEmail: formValues.newEmail,
+      clientUri: GlobalSettings['UIServer'] + "/authentication/confirmemailaddress"
     }
-    this._userservice.updateUser(user)
-      .subscribe(
-        data => {
-          this._userservice.user = data;
-          this.router.navigateByUrl('/user/userdetails');
-        },
+
+    // Register user in API
+    this._userservice.updateEmail(mail)
+      .subscribe(_ => {
+        this.router.navigateByUrl('authentication/register/success');
+      },
         error => {
           // Handle errors not handled by the HTTP service
           this.handleError(error);
         })
   }
+
   private handleError = (error: HttpErrorResponse) => {
     // Email address already in use
     if (error.error.message == "User already exists") {
@@ -100,5 +97,4 @@ export class EditUserComponent implements OnInit {
     // Set apiError to true to display generic alert on page
     this.apiError = true;
   }
-
 }

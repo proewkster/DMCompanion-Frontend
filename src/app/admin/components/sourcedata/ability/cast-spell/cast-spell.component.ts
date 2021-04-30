@@ -12,7 +12,7 @@ import { AddCastSpellComponent } from './add-cast-spell/add-cast-spell.component
 @Component({
   selector: 'app-cast-spell',
   templateUrl: './cast-spell.component.html',
-  styleUrls: ['./cast-spell.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './cast-spell.component.scss']
 })
 export class CastSpellComponent implements OnInit {
 
@@ -38,9 +38,9 @@ export class CastSpellComponent implements OnInit {
       .subscribe(data => {
         this.sources = data;
       },
-      error => {
-        console.log("An error occurred while retrieving data from the server");
-      });
+        error => {
+          console.log("An error occurred while retrieving data from the server");
+        });
   }
 
   private getCastSpells = () => {
@@ -48,13 +48,13 @@ export class CastSpellComponent implements OnInit {
       .subscribe(data => {
         this.castSpells = data;
       },
-      error => {
-        console.log("An error occurred while retrieving data from the server");
-      })
+        error => {
+          console.log("An error occurred while retrieving data from the server");
+        })
   }
 
   public showEditCastSpellModal = (castSpell: SourceData_CastSpell) => {
-    
+
     // Open modal
     const modalRef = this._modalService.open(EditCastSpellComponent, this.options);
     modalRef.componentInstance.title = "Edit CastSpell";
@@ -79,17 +79,17 @@ export class CastSpellComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 
   public showDeleteCastSpellModal = (castSpell: SourceData_CastSpell) => {
-    
+
     // Open modal
     const modalRef = this._modalService.open(DeleteCastSpellComponent, this.options);
     modalRef.componentInstance.title = "Delete CastSpell";
@@ -106,7 +106,7 @@ export class CastSpellComponent implements OnInit {
         else { // Process succeeded
           // Remove item from array
           let index = this.castSpells.indexOf(castSpell);
-  
+
           this.castSpells.splice(index, 1);
 
           // Show success message
@@ -114,13 +114,13 @@ export class CastSpellComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 
   public showAddCastSpellModal = () => {
@@ -146,12 +146,12 @@ export class CastSpellComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 }

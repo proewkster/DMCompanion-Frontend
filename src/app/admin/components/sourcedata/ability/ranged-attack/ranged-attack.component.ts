@@ -12,7 +12,7 @@ import { EditRangedAttackComponent } from './edit-ranged-attack/edit-ranged-atta
 @Component({
   selector: 'app-ranged-attack',
   templateUrl: './ranged-attack.component.html',
-  styleUrls: ['./ranged-attack.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './ranged-attack.component.scss']
 })
 export class RangedAttackComponent implements OnInit {
 
@@ -47,9 +47,9 @@ export class RangedAttackComponent implements OnInit {
       .subscribe(data => {
         this.sources = data;
       },
-      error => {
-        console.log("An error occurred while retrieving data from the server");
-      });
+        error => {
+          console.log("An error occurred while retrieving data from the server");
+        });
   }
 
   private getRangedAttacks = () => {
@@ -58,13 +58,13 @@ export class RangedAttackComponent implements OnInit {
         console.log(data);
         this.rangedAttacks = data;
       },
-      error => {
-        console.log("An error occurred while retrieving data from the server");
-      })
+        error => {
+          console.log("An error occurred while retrieving data from the server");
+        })
   }
 
   public showEditRangedAttackModal = (rangedAttack: SourceData_RangedAttack) => {
-    
+
     // Open modal
     const modalRef = this._modalService.open(EditRangedAttackComponent, this.optionsLarge);
     modalRef.componentInstance.title = "Edit RangedAttack";
@@ -89,17 +89,17 @@ export class RangedAttackComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 
   public showDeleteRangedAttackModal = (rangedAttack: SourceData_RangedAttack) => {
-    
+
     // Open modal
     const modalRef = this._modalService.open(DeleteRangedAttackComponent, this.optionsSmall);
     modalRef.componentInstance.title = "Delete RangedAttack";
@@ -116,7 +116,7 @@ export class RangedAttackComponent implements OnInit {
         else { // Process succeeded
           // Remove item from array
           let index = this.rangedAttacks.indexOf(rangedAttack);
-  
+
           this.rangedAttacks.splice(index, 1);
 
           // Show success message
@@ -124,13 +124,13 @@ export class RangedAttackComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 
   public showAddRangedAttackModal = () => {
@@ -156,12 +156,12 @@ export class RangedAttackComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 }

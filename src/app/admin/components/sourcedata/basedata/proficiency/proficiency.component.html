@@ -2,7 +2,7 @@
     <div class="row text-center">
         <div class="col-12">
             <h1>Proficiencies</h1>
-            <hr/>
+            <hr />
         </div>
     </div>
     <div class="row text-center">
@@ -22,11 +22,15 @@
                         <td class="align-middle">{{item.id}}</td>
                         <td class="align-middle">{{item.type}}</td>
                         <td class="align-middle">{{item.name}}</td>
-                        <td class="align-middle">{{item.description}}</td>
+                        <td class="align-middle">
+                            <div>{{item.description}}</div>
+                        </td>
                         <td class="align-middle">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-action" (click)="showEditProficiencyModal(item)"><i class="fa fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-action" (click)="showDeleteProficiencyModal(item)"><i class="fa fa-trash"></i></button>
+                                <button type="button" class="btn btn-primary btn-action"
+                                    (click)="showEditProficiencyModal(item)"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger btn-action"
+                                    (click)="showDeleteProficiencyModal(item)"><i class="fa fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>
@@ -34,5 +38,6 @@
             </table>
         </div>
     </div>
-    <button type="button" class="btn btn-primary" (click)="showAddProficiencyModal()"><i class="fa fa-plus mr-2"></i>Add Proficiency</button>
+    <button type="button" class="btn btn-primary" (click)="showAddProficiencyModal()"><i class="fa fa-plus mr-2"></i>Add
+        Proficiency</button>
 </div>
