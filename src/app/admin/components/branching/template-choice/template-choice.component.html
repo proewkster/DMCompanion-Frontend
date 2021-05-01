@@ -1,0 +1,52 @@
+<div class="card m-2 border-dark">
+    <div class="card-header">
+        Choice - Level {{choice.level}}
+        <div class="float-right">
+            <button type="button" class="btn btn-action-small btn-primary mx-1 d-inline" (click)="editChoice()"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-action-small btn-danger mx-1 d-inline" (click)="deleteChoice()"><i class="fa fa-trash"></i></button>
+        </div>
+    </div>
+    <div class="card-body p-4">
+
+        <div [ngSwitch]="choice.discriminator">
+            <div *ngSwitchCase="0">
+                <div *ngFor="let option of choice.options">
+                    <branching-template-modifier [modifier]="option" [root]="false" (deleteModifierEvent)="onDeleteModifier($event)"></branching-template-modifier>
+                </div>
+            </div>
+            <div *ngSwitchCase="1">
+                <div *ngFor="let option of choice.options">
+                    <branching-template-spell [spell]="option" [root]="false" (deleteSpellEvent)="onDeleteSpell($event)"></branching-template-spell>
+                    
+                </div>
+            </div>
+            <div *ngSwitchCase="2">
+                <div *ngFor="let option of choice.options">
+                    <branching-template-ability [ability]="option" [root]="false" (deleteAbilityEvent)="onDeleteAbility($event)"></branching-template-ability>
+                </div>
+            </div>
+            <div *ngSwitchCase="3">
+                <div *ngFor="let option of choice.options">
+                    <branching-template-modifier [modifier]="option" [root]="false" (deleteModifierEvent)="onDeleteModifier($event)"></branching-template-modifier>
+                </div>
+            </div>
+            <div *ngSwitchCase="4">
+                <div *ngFor="let option of choice.options">
+                    <branching-template-feat [feat]="option" [root]="false" [isSubFeat]="true" (deleteFeatEvent)="onDeleteFeat($event)"></branching-template-feat>
+                </div>
+            </div>
+            <div *ngSwitchCase="5">
+                <div *ngFor="let option of choice.options">
+                    <branching-template-ability [ability]="option" [root]="false" (deleteModifierEvent)="onDeleteModifier($event)"></branching-template-ability>
+                </div>
+            </div>
+            <div *ngSwitchCase="6">
+                <div *ngFor="let option of choice.options">
+                    <branching-template-feat [feat]="option" [root]="false" (deleteFeatEvent)="onDeleteFeat($event)"></branching-template-feat>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary" (click)="addOption()"><i class="fa fa-plus">Add Option</i></button>
+    </div>
+</div>

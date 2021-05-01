@@ -1,7 +1,6 @@
 import { Observable, of } from 'rxjs';
 import { ModifierType } from 'src/app/enums/modifier-type.enum';
 import { DynamicFormControl_Base } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-base';
-import { DynamicFormControl_Number } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-number';
 import { DynamicFormControl_Select } from 'src/app/shared/models/dynamic-forms/dynamicformcontrol-select';
 import { DynamicFormConverters } from 'src/app/shared/services/dynamic-form-converters';
 import { SourceData_Condition } from './sourcedata_condition';
