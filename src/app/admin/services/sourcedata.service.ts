@@ -12,7 +12,6 @@ import { HttpService } from './../../shared/services/http.service';
 import { Injectable } from '@angular/core';
 import { ApiEndPoints } from 'src/app/shared/enums/api-endpoints';
 import { ApiMethod } from 'src/app/shared/enums/api-method';
-import { data } from 'jquery';
 import { DTO_SourceData_Sense } from '../models/sourcedata/dto_sourcedata_sense';
 import { DTO_SourceData_Skill } from '../models/sourcedata/dto_sourcedata_skill';
 import { DTO_SourceData_Race } from '../models/sourcedata/dto_sourcedata_race';

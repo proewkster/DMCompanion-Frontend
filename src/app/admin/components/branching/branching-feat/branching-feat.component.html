@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-12 col-md-4">
+        <div class="form-group text-left">
+            <label for="feat" class="form-label">Select a Feat:</label>
+            <select for="feat" id="feat" class="form-control selectpicker" (change)="onFeatSelection($event.target.value)"
+                data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Search..." data-live-search-style="contains">
+                <option></option>
+                <option *ngFor="let feat of feats" [value]="feat.id">
+                    {{feat.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="col-12 col-md-4 offset-md-2">
+        <button type="button" class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
+    </div>
+</div>
+
+<div *ngIf="loadingData">
+    <div class="row">
+        <hr/>
+        <div class="col-12 text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loadingComplete">
+    <div class="row">
+        <hr/>
+        <div class="col-12 text-left">
+            <branching-template-feat [feat]="selectedFeat" [root]="true"></branching-template-feat>
+        </div>
+    </div>
+</div>
