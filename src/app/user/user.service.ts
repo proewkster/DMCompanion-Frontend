@@ -1,7 +1,9 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiEndPoints } from '../shared/enums/api-endpoints';
 import { ApiMethod } from '../shared/enums/api-method';
+import { CustomEncoder } from '../shared/helpers/custom-encoder';
 import { HttpService } from '../shared/services/http.service';
 import { DtoUpdateEmail } from './models/dto-update-email';
 import { DtoUpdatePassword } from './models/dto-update-password';
@@ -26,5 +28,15 @@ export class UserService {
   }
   updateEmail(email: DtoUpdateEmail) {
     return this._http.requestCall(ApiEndPoints.USER_UPDATEEMAIL, ApiMethod.PUT, null, email)
+  }
+  public confirmEmail = (token: string, email: string, userId: string) => {
+    // Build query parameters
+    let params = new HttpParams({ encoder: new CustomEncoder() })
+      .set('userId', userId)
+      .set('email', email)
+      .set('token', token);
+
+    // Request API call
+    return this._http.requestCall(ApiEndPoints.CONFIRMUPDATEDEMAIL, ApiMethod.GET, null, { params: params });
   }
 }

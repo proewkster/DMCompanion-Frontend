@@ -2,5 +2,9 @@
     <a class="btn btn-primary m-3" routerLink="/user/edituser">Edit basic information</a>
     <a class="btn btn-primary m-3" routerLink="/user/editpassword">Edit password</a>
     <a class="btn btn-primary m-3" routerLink="/user/editemail">Edit email-adress</a>
-    <pre>{{user|json}}</pre>
+    <p>Your email address: {{user?.email}}</p>
+    <p>Your nickname: {{user?.nickname}}</p>
+    <p>Your name: {{user?.lastName}} {{user?.firstName}}</p>
+    <p *ngIf="user?.newsLetter">Your are subscribed to our newsletter.</p>
+    <p *ngIf="!user?.newsLetter">You are not subscribed to our newsletter</p>
 </div>

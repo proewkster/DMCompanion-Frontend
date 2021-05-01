@@ -53,13 +53,13 @@ export class EditemailComponent implements OnInit {
       id: this._userservice.user.id,
       oldEmail: formValues.oldEmail,
       newEmail: formValues.newEmail,
-      clientUri: GlobalSettings['UIServer'] + "/authentication/confirmemailaddress"
+      clientUri: GlobalSettings['UIServer'] + "/user/emailconfirmation"
     }
 
     // Register user in API
     this._userservice.updateEmail(mail)
       .subscribe(_ => {
-        this.router.navigateByUrl('authentication/register/success');
+        this.router.navigateByUrl('/user/emailconfirmed');
       },
         error => {
           // Handle errors not handled by the HTTP service

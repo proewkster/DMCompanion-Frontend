@@ -6,11 +6,13 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditPasswordComponent } from './edit-password/edit-password.component';
 import { EditemailComponent } from './editemail/editemail.component';
+import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
+import { UpdateSuccesComponent } from './update-succes/update-succes.component';
 
 
 
 @NgModule({
-  declarations: [DetailsComponent, EditUserComponent, EditPasswordComponent, EditemailComponent],
+  declarations: [DetailsComponent, EditUserComponent, EditPasswordComponent, EditemailComponent, EmailConfirmationComponent, UpdateSuccesComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -18,7 +20,9 @@ import { EditemailComponent } from './editemail/editemail.component';
       { path: 'userdetails', component: DetailsComponent },
       { path: 'edituser', component: EditUserComponent },
       { path: 'editpassword', component: EditPasswordComponent },
-      { path: 'editemail', component: EditemailComponent }
+      { path: 'editemail', component: EditemailComponent },
+      { path: 'emailconfirmation', component: EmailConfirmationComponent },
+      { path: 'emailconfirmed', component: UpdateSuccesComponent }
     ])
   ]
 })

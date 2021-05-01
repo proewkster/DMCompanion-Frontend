@@ -11,6 +11,7 @@ export enum ApiEndPoints {
     USER_UPDATE = "/User/UpdateUser",
     USER_UPDATEPASSWORD = "/User/UpdatePassword",
     USER_UPDATEEMAIL = "/User/UpdateEmail",
+    CONFIRMUPDATEDEMAIL = "/user/EmailConfirmation",
 
     // SourceData Endpoints
     SOURCEDATA_ABILITYSCORE = "/sourcedata/abilityscore",
