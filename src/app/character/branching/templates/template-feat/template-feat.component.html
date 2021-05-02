@@ -1,0 +1,37 @@
+<div class="card border-dark mb-2 text-left" *ngIf="featOptions.length == 1">
+    <div class="card-header bg-dark text-light">
+        <a data-toggle="collapse" [href]="'#feat-' + featOptions[0].id" aria-expanded="true" class="mr-2">
+            <i class="fa fa-chevron-down text-light"></i>
+        </a> 
+        <strong>{{featOptions[0].name}}</strong>
+    </div>
+    <div class="collapse show" [id]="'feat-' + featOptions[0].id">
+        <div class="card-body border-secondary p-4">
+            {{featOptions[0].description}}
+
+            <div class="m-1" *ngFor="let choice of featOptions[0].modifiers">
+                <character-branching-template-modifier [modifierOptions]="choice.options"></character-branching-template-modifier>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div class="card border-dark mb-2 text-left" *ngIf="featOptions.length > 1 && selectedFeat == undefined">
+    <div class="card-header bg-dark text-light">
+        {{featOptions.length}} options (<span class="btn-as-link" (click)="selectFeat()">change feat</span>)
+    </div>
+</div>
+
+<div class="card border-dark mb-2 text-left" *ngIf="featOptions.length > 1 && selectedFeat != undefined">
+    <div class="card-header bg-dark text-light">
+        <a data-toggle="collapse" [href]="'#feat-' + selectedFeat.id" aria-expanded="true" class="mr-2">
+            <i class="fa fa-chevron-down text-light"></i>
+        </a> 
+        <strong>{{selectedFeat.name}}</strong> - {{featOptions.length}} option (<span class="btn-as-link" (click)="selectFeat()">change feat</span>)
+    </div>
+    <div class="collapse show" [id]="'feat-' + selectedFeat.id">
+        <div class="card-body border-secondary p-4">
+            {{selectedFeat.description}}
+        </div>
+    </div>    
+</div>
