@@ -1,5 +1,3 @@
-import { SelectedCharacterComponent } from './../../../characterlist/selected-character/selected-character.component';
-import { nextTick } from 'node:process';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Branching_Feat } from 'src/app/admin/models/branching/branching_feat';

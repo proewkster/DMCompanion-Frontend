@@ -10,7 +10,7 @@ import { DynamicFormComponent } from './components/dynamic-forms/dynamic-form/dy
 
 
 @NgModule({
-  declarations: [ForbiddenComponent, ModalComponent, DynamicFormControlComponent, DynamicFormComponent],
+  declarations: [ForbiddenComponent, ModalComponent,DynamicFormControlComponent, DynamicFormComponent],
   imports: [
     CommonModule,
     FormsModule,

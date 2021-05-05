@@ -6,8 +6,8 @@
             <option [ngValue]="null">-None-</option>
             <option *ngFor="let option of modifierOptions" [ngValue]="option">
                 <div *ngSwitch="option.discriminator">
-                    <option *ngSwitchCase="0">{{option.abilityScoreName}} {{option.value >= 0 ? "+" : "-"}} {{option.value}} test</option>
-                    <option *ngSwitchCase="6">{{option.name}}</option>
+                    <div *ngSwitchCase="0">{{option.abilityScoreName}} {{option.value >= 0 ? "+" : "-"}} {{option.value}} test</div>
+                    <div *ngSwitchCase="6">{{option.name}}</div>
                 </div>
             </option>
         </select>
