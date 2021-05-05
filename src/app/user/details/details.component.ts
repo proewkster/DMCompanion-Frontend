@@ -19,5 +19,22 @@ export class DetailsComponent implements OnInit {
       }
     )
   }
+  downloadPersonalData() {
+    this._userservice.downloadPersonalData().subscribe(x => {
+
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(x)));
+      element.setAttribute('download', "personalData");
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+
+      element.click();
+
+      document.body.removeChild(element);
+    }
+    );
+  }
+
 
 }

@@ -20,6 +20,9 @@ export class UserService {
 
     return this._http.requestCall(ApiEndPoints.USER_DATA, ApiMethod.GET);
   }
+  downloadPersonalData(){
+    return this._http.requestCall(ApiEndPoints.DOWNLOADPERSONALDATA,ApiMethod.GET);
+  }
   updateUser(user: DTOUpdateUser) {
     return this._http.requestCall(ApiEndPoints.USER_UPDATE, ApiMethod.PUT, null, user);
   }

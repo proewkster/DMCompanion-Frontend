@@ -2,6 +2,7 @@
     <a class="btn btn-primary m-3" routerLink="/user/edituser">Edit basic information</a>
     <a class="btn btn-primary m-3" routerLink="/user/editpassword">Edit password</a>
     <a class="btn btn-primary m-3" routerLink="/user/editemail">Edit email-adress</a>
+    <button class="btn btn-primary m-3" (click)="downloadPersonalData()">Download Personal Data</button>
     <p>Your email address: {{user?.email}}</p>
     <p>Your nickname: {{user?.nickname}}</p>
     <p>Your name: {{user?.lastName}} {{user?.firstName}}</p>
