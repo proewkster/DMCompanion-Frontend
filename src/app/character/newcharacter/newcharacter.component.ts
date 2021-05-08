@@ -32,7 +32,6 @@ export class NewcharacterComponent implements OnInit {
   selectedRace: DtoNewRace = null;
   selectedSubrace: DtoNewRace = null;
   subracesForMainRace: DtoNewRace[] = [];
-  //character: DtoNewcharacter = new DtoNewcharacter(null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
   character: DtoNewcharacter;
 
   //selectedrace: DtoNewRace = new DtoNewRace(null)
@@ -75,8 +74,7 @@ export class NewcharacterComponent implements OnInit {
       });
       if (this.createForm) {
         this.abscoreService.getAbilityScores().forEach(element => {
-          this.abilityScores.push(new DtoNewABScores(element, 13));
-          //this.abScores.push(new DtoNewABScores(element, null));
+          this.abilityScores.push(new DtoNewABScores(element, null));
         });
       }
 
@@ -97,9 +95,9 @@ export class NewcharacterComponent implements OnInit {
           })
       }
       else {
-        this.character = new DtoNewcharacter("testchar", 1, "https://cdn1.dotesports.com/wp-content/uploads/2020/09/01144749/Zendikar-Rising-Nissa.jpg",
-          Alignment['1'], Gender["2"], "Blue", 15, Size["2"],
-          "Flying Spaghetti Monster", "Brown", "Pale", 80, 50, "It's an Elf", "Born with the elfs", "No notes Available", this.abilityScores, [this.selectedRace, this.selectedSubrace]);
+        this.character = new DtoNewcharacter(null, 1, null,
+          null, null, null, null, null,
+          null, null, null, null, null, null, null, null, this.abilityScores, null);
       }
     });
   }
