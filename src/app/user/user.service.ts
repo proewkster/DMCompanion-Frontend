@@ -5,6 +5,7 @@ import { ApiEndPoints } from '../shared/enums/api-endpoints';
 import { ApiMethod } from '../shared/enums/api-method';
 import { CustomEncoder } from '../shared/helpers/custom-encoder';
 import { HttpService } from '../shared/services/http.service';
+import { RemoveUser } from './models/dto-remove-user';
 import { DtoUpdateEmail } from './models/dto-update-email';
 import { DtoUpdatePassword } from './models/dto-update-password';
 import { DTOUpdateUser } from './models/dto-update-user';
@@ -20,8 +21,11 @@ export class UserService {
 
     return this._http.requestCall(ApiEndPoints.USER_DATA, ApiMethod.GET);
   }
-  downloadPersonalData(){
-    return this._http.requestCall(ApiEndPoints.DOWNLOADPERSONALDATA,ApiMethod.GET);
+  downloadPersonalData() {
+    return this._http.requestCall(ApiEndPoints.DOWNLOADPERSONALDATA, ApiMethod.GET);
+  }
+  deletePersonalData(userDelete: RemoveUser) {
+    return this._http.requestCall(ApiEndPoints.DELETEPERSONALDATA, ApiMethod.POST, null, userDelete);
   }
   updateUser(user: DTOUpdateUser) {
     return this._http.requestCall(ApiEndPoints.USER_UPDATE, ApiMethod.PUT, null, user);

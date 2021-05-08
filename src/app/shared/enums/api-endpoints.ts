@@ -13,6 +13,7 @@ export enum ApiEndPoints {
     USER_UPDATEEMAIL = "/User/UpdateEmail",
     CONFIRMUPDATEDEMAIL = "/user/EmailConfirmation",
     DOWNLOADPERSONALDATA = "/user/DownloadUserData",
+    DELETEPERSONALDATA = "/user/DeleteUser",
 
     // SourceData Endpoints
     SOURCEDATA_ABILITYSCORE = "/sourcedata/abilityscore",

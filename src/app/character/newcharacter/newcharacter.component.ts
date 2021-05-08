@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Gender } from 'src/app/enums/gender.enum';
 import { Alignment } from 'src/app/enums/alignment.enum';
-import { Character } from 'src/app/models/character';
 import { Size } from 'src/app/enums/size.enum';
 import { CharacterService } from 'src/app/character/services/character.service';
 import { RaceService } from 'src/app/character/services/race.service';
@@ -10,7 +9,6 @@ import { AbilityscoreService } from 'src/app/character/services/abilityscore.ser
 import { DtoNewABScores } from '../models/dto-new-abscores';
 import { DtoNewcharacter } from '../models/dto-newcharacter';
 import { DtoNewRace } from '../models/dto-new-race';
-import { Race } from 'src/app/models/race';
 
 
 @Component({
