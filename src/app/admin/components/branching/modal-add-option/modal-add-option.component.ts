@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { of } from 'rxjs';
 import { Branching_Choice } from 'src/app/admin/models/branching/branching_choice';
 import { BranchingFeatValidationErrors } from 'src/app/enums/branching-feat-validation-errors.enum';
+import { BranchingChoiceTypes } from 'src/app/enums/branching-choice-type.enum';
 
 declare var $: any;
 
@@ -131,7 +132,7 @@ export class ModalAddOptionComponent implements OnInit {
       }
 
       // Verify if nested feat has no nested feats itself (max subfeats level is 1)
-      if (this.selectedOption.subFeats?.length > 0) {
+      if (this.choiceContainer.discriminator === BranchingChoiceTypes.FEAT_SUBFEATS && this.selectedOption.subFeats?.length > 0) {
         this._activeModal.dismiss(BranchingFeatValidationErrors.NESTEDBRANCHEDFEAT);
       }
     }

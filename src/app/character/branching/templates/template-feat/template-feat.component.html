@@ -22,6 +22,18 @@
             <div class="ml-5 mt-2" *ngFor="let child of selectedFeat.modifiers">
                 <character-branching-template-modifier [choice]="child" (validationChanged)="onValidationChanged()"></character-branching-template-modifier>
             </div>
+            <div class="ml-5 mt-3" *ngIf="selectedFeat.subFeats.length > 0">
+                <span><strong>Feats:</strong></span>
+                <div class="ml-3" *ngFor="let child of selectedFeat.subFeats">
+                    <character-branching-template-feat [choice]="child" (validationChanged)="onValidationChanged()"></character-branching-template-feat>
+                </div>
+            </div>
+            <div class="ml-5 mt-3" *ngIf="selectedFeat.abilities.length > 0">
+                <span><strong>Abilities:</strong></span>
+                <div class="ml-3" *ngFor="let child of selectedFeat.abilities">
+                    <character-branching-template-ability [choice]="child" (validationChanged)="onValidationChanged()"></character-branching-template-ability>
+                </div>
+            </div>
         </div>
     </div>    
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Branching_Choice } from 'src/app/admin/models/branching/branching_choice';
 import { Branching_Feat } from 'src/app/admin/models/branching/branching_feat';
@@ -12,6 +12,7 @@ import { TemplateSelectionModalComponent } from '../template-selection-modal/tem
 export class TemplateFeatComponent implements OnInit, AfterViewInit {
 
   @Input() choice: Branching_Choice<object, Branching_Feat>;
+  @Output() validationChanged = new EventEmitter<boolean>();
 
   selectedFeat: Branching_Feat;
   
@@ -38,6 +39,9 @@ export class TemplateFeatComponent implements OnInit, AfterViewInit {
 
       // Validate choice
       this.onValidationChanged();
+
+      // Trigger validationChanged event
+      this.validationChanged.emit(this.choice.isValid);
     }
   }
 
@@ -56,6 +60,9 @@ export class TemplateFeatComponent implements OnInit, AfterViewInit {
       // Validate object
       this.onValidationChanged();
       this._changeDetector.detectChanges();
+
+      // Trigger validationChanged event
+      this.validationChanged.emit(this.choice.isValid);
     },
     error => {
       if (error === "Close click" || error === "Cross click") {
@@ -68,6 +75,9 @@ export class TemplateFeatComponent implements OnInit, AfterViewInit {
   onValidationChanged = () => {
     // Validate entire object and update choice based on result
     this.choice.isValid = this.validateObject();
+
+    // Trigger validationChanged event
+    this.validationChanged.emit(this.choice.isValid);
   }
 
   private validateObject = (): boolean => {
@@ -81,6 +91,18 @@ export class TemplateFeatComponent implements OnInit, AfterViewInit {
       // Validate attached modifier choices
       if (this.selectedFeat.modifiers.some(x => x.isValid !== true)) { // Check against "not true", state may be "undefined" instead of "false"
         // At least one nested modifier is invalid, invalidate object
+        result = false;
+      }
+
+      // Validate attached subfeat choices
+      if (this.selectedFeat.subFeats?.some(x => x.isValid !== true)) { // Check against "not true", state may be "undefined" instead of "false"
+        // At least one nested feat is invalid, invalidate object
+        result = false;
+      }
+
+      // Validate attached ability choices
+      if (this.selectedFeat.abilities?.some(x => x.isValid !== true)) { // Check against "not true", state may be "undefined" instead of "false"
+        // At least one nested ability is invalid, invalidate object
         result = false;
       }
     }

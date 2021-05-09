@@ -1,5 +1,5 @@
 import { Branching_CastSpell } from './../../../../admin/models/branching/branching_castspell';
-import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { NgbModalOptions, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Branching_Ability } from 'src/app/admin/models/branching/branching_ability';
 import { Branching_Choice } from 'src/app/admin/models/branching/branching_choice';
@@ -13,6 +13,7 @@ import { TemplateSelectionModalComponent } from '../template-selection-modal/tem
 export class TemplateAbilityComponent implements OnInit, AfterViewInit {
 
   @Input() choice: Branching_Choice<object, Branching_Ability>;
+  @Output() validationChanged = new EventEmitter<boolean>();
 
   selectedAbility: Branching_Ability;
   
@@ -39,6 +40,9 @@ export class TemplateAbilityComponent implements OnInit, AfterViewInit {
 
       // Validate choice
       this.onValidationChanged();
+
+      // Trigger validationChanged event
+      this.validationChanged.emit(this.choice.isValid);
     }
   }
 
@@ -57,6 +61,9 @@ export class TemplateAbilityComponent implements OnInit, AfterViewInit {
       // Validate object
       this.onValidationChanged();
       this._changeDetector.detectChanges();
+
+      // Trigger validationChanged event
+      this.validationChanged.emit(this.choice.isValid);
     },
     error => {
       if (error === "Close click" || error === "Cross click") {
@@ -69,6 +76,9 @@ export class TemplateAbilityComponent implements OnInit, AfterViewInit {
   onValidationChanged = () => {
     // Validate entire object and update choice based on result
     this.choice.isValid = this.validateObject();
+
+    // Trigger validationChanged event
+    this.validationChanged.emit(this.choice.isValid);
   }
 
   private validateObject = (): boolean => {
