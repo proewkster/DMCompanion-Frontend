@@ -4,7 +4,7 @@
             <label for="selection" class="form-label">Select an option:</label>
             <select for="selection" id="selection" class="form-control selectpicker" [(ngModel)]="selection"
                 data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Search..." data-live-search-style="contains">
-                <option [ngValue]="null">-None-</option>
+                <option [ngValue]="undefined">-None-</option>
                 <option *ngFor="let option of options" [ngValue]="option">
                     {{option.name}}
                 </option>

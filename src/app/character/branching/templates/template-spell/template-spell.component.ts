@@ -1,20 +1,20 @@
-import { Component, Input, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Branching_Choice } from 'src/app/admin/models/branching/branching_choice';
-import { Branching_Modifier } from 'src/app/admin/models/branching/branching_modifier';
+import { Branching_Spell } from 'src/app/admin/models/branching/branching_spell';
 
 declare var $: any;
 
 @Component({
-  selector: 'character-branching-template-modifier',
-  templateUrl: './template-modifier.component.html',
-  styleUrls: ['./template-modifier.component.scss']
+  selector: 'character-branching-template-spell',
+  templateUrl: './template-spell.component.html',
+  styleUrls: ['./template-spell.component.scss']
 })
-export class TemplateModifierComponent implements OnInit, AfterViewInit {
+export class TemplateSpellComponent implements OnInit, AfterViewInit {
 
-  @Input() choice: Branching_Choice<object, Branching_Modifier>;
+  @Input() choice: Branching_Choice<object, Branching_Spell>;
   @Output() validationChanged = new EventEmitter<boolean>();
 
-  selectedModifier: Branching_Modifier;
+  selectedSpell: Branching_Spell;
 
   constructor() { }
 
@@ -25,7 +25,7 @@ export class TemplateModifierComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     if (this.choice.options.length === 1) {
       // Automatically select the only option in the list
-      this.selectedModifier = this.choice.options[0];
+      this.selectedSpell = this.choice.options[0];
 
       // Validate choice
       this.choice.isValid = true;
@@ -37,7 +37,7 @@ export class TemplateModifierComponent implements OnInit, AfterViewInit {
 
   resetSelection = () => {
     // Destroy current selection
-    this.selectedModifier = undefined;
+    this.selectedSpell = undefined;
 
     // Invalidate choice
     this.choice.isValid = false;
@@ -52,7 +52,7 @@ export class TemplateModifierComponent implements OnInit, AfterViewInit {
   }
 
   onSelectionChange = () => {
-    if (this.selectedModifier !== undefined) {
+    if (this.selectedSpell !== undefined) {
       // Validate choice
       this.choice.isValid = true;
     }

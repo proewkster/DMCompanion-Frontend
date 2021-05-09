@@ -1,5 +1,8 @@
 <div *ngIf="race != undefined">
     <div *ngFor="let feat of race.feats">
-        <character-branching-template-feat [featOptions]="feat.options"></character-branching-template-feat>
+        <character-branching-template-feat [choice]="feat"></character-branching-template-feat>
+    </div>
+    <div *ngFor="let ability of race.abilities">
+        <character-branching-template-ability [choice]="ability"></character-branching-template-ability>
     </div>
 </div>
