@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Gender } from 'src/app/enums/gender.enum';
 import { Alignment } from 'src/app/enums/alignment.enum';
-import { Character } from 'src/app/models/character';
 import { Size } from 'src/app/enums/size.enum';
 import { CharacterService } from 'src/app/character/services/character.service';
 import { RaceService } from 'src/app/character/services/race.service';
@@ -10,7 +9,6 @@ import { AbilityscoreService } from 'src/app/character/services/abilityscore.ser
 import { DtoNewABScores } from '../models/dto-new-abscores';
 import { DtoNewcharacter } from '../models/dto-newcharacter';
 import { DtoNewRace } from '../models/dto-new-race';
-import { Race } from 'src/app/models/race';
 
 
 @Component({
@@ -32,7 +30,6 @@ export class NewcharacterComponent implements OnInit {
   selectedRace: DtoNewRace = null;
   selectedSubrace: DtoNewRace = null;
   subracesForMainRace: DtoNewRace[] = [];
-  //character: DtoNewcharacter = new DtoNewcharacter(null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
   character: DtoNewcharacter;
 
   //selectedrace: DtoNewRace = new DtoNewRace(null)
@@ -75,8 +72,7 @@ export class NewcharacterComponent implements OnInit {
       });
       if (this.createForm) {
         this.abscoreService.getAbilityScores().forEach(element => {
-          this.abilityScores.push(new DtoNewABScores(element, 13));
-          //this.abScores.push(new DtoNewABScores(element, null));
+          this.abilityScores.push(new DtoNewABScores(element, null));
         });
       }
 
@@ -97,9 +93,9 @@ export class NewcharacterComponent implements OnInit {
           })
       }
       else {
-        this.character = new DtoNewcharacter("testchar", 1, "https://cdn1.dotesports.com/wp-content/uploads/2020/09/01144749/Zendikar-Rising-Nissa.jpg",
-          Alignment['1'], Gender["2"], "Blue", 15, Size["2"],
-          "Flying Spaghetti Monster", "Brown", "Pale", 80, 50, "It's an Elf", "Born with the elfs", "No notes Available", this.abilityScores, [this.selectedRace, this.selectedSubrace]);
+        this.character = new DtoNewcharacter(null, 1, null,
+          null, null, null, null, null,
+          null, null, null, null, null, null, null, null, this.abilityScores, null);
       }
     });
   }

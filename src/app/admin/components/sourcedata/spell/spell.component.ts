@@ -3,14 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalOptions, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { SourceData_AbilityScore } from 'src/app/admin/models/sourcedata/sourcedata_abilityscore';
-import { SourceData_Feat } from 'src/app/admin/models/sourcedata/sourcedata_feat';
 import { SourceData_MagicSchool } from 'src/app/admin/models/sourcedata/sourcedata_magicschool';
 import { SourceData_Source } from 'src/app/admin/models/sourcedata/sourcedata_source';
 import { SourceData_Spell } from 'src/app/admin/models/sourcedata/sourcedata_spell';
 import { SourcedataService } from 'src/app/admin/services/sourcedata.service';
-import { AddFeatComponent } from '../feat/add-feat/add-feat.component';
-import { DeleteFeatComponent } from '../feat/delete-feat/delete-feat.component';
-import { EditFeatComponent } from '../feat/edit-feat/edit-feat.component';
 import { AddSpellComponent } from './add-spell/add-spell.component';
 import { DeleteSpellComponent } from './delete-spell/delete-spell.component';
 import { EditSpellComponent } from './edit-spell/edit-spell.component';
@@ -40,7 +36,7 @@ export class SpellComponent implements OnInit {
     centered: true,
     keyboard: true,
     backdrop: "static",
-    size: "lg"
+    size: "sm"
   }
 
   constructor(private _sourcedataService: SourcedataService, private _modalService: NgbModal, private _toastrService: ToastrService) { }

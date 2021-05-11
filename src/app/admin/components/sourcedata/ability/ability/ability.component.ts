@@ -12,7 +12,7 @@ import { AddAbilityComponent } from './add-ability/add-ability.component';
 @Component({
   selector: 'app-ability',
   templateUrl: './ability.component.html',
-  styleUrls: ['./ability.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './ability.component.scss']
 })
 export class AbilityComponent implements OnInit {
 
@@ -38,9 +38,9 @@ export class AbilityComponent implements OnInit {
       .subscribe(data => {
         this.sources = data;
       },
-      error => {
-        console.log("An error occurred while retrieving data from the server");
-      });
+        error => {
+          console.log("An error occurred while retrieving data from the server");
+        });
   }
 
   private getAbilities = () => {
@@ -48,13 +48,13 @@ export class AbilityComponent implements OnInit {
       .subscribe(data => {
         this.abilities = data;
       },
-      error => {
-        console.log("An error occurred while retrieving data from the server");
-      })
+        error => {
+          console.log("An error occurred while retrieving data from the server");
+        })
   }
 
   public showEditAbilityModal = (ability: SourceData_Ability) => {
-    
+
     // Open modal
     const modalRef = this._modalService.open(EditAbilityComponent, this.options);
     modalRef.componentInstance.title = "Edit Ability";
@@ -79,17 +79,17 @@ export class AbilityComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 
   public showDeleteAbilityModal = (ability: SourceData_Ability) => {
-    
+
     // Open modal
     const modalRef = this._modalService.open(DeleteAbilityComponent, this.options);
     modalRef.componentInstance.title = "Delete Ability";
@@ -106,7 +106,7 @@ export class AbilityComponent implements OnInit {
         else { // Process succeeded
           // Remove item from array
           let index = this.abilities.indexOf(ability);
-  
+
           this.abilities.splice(index, 1);
 
           // Show success message
@@ -114,13 +114,13 @@ export class AbilityComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 
   public showAddAbilityModal = () => {
@@ -146,12 +146,12 @@ export class AbilityComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 }

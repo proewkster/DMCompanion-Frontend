@@ -1,0 +1,21 @@
+<shared-modal title={{title}}>
+    <div body>
+        <form [formGroup]="addChoiceForm" id="addChoiceForm" autocomplete="off" novalidate (ngSubmit)="createChoice(addChoiceForm.value)">
+            <div class="row text-center">
+                <div class="col-8 offset-2">
+                    <div class="form-group text-left">
+                        <label for="level" class="form-label">Level:</label>
+                        <input type="number" id="level" formControlName="level" min="1" max="20" class="form-control" />
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('level') && hasError('level', 'required')">Please enter a level</div>
+                            <div class="alert alert-danger" *ngIf="validateControl('level') && hasError('level', 'range')">Level must be between 1 and 20</div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </form>
+    </div>
+    <div footer>
+        <button type="submit" form="addChoiceForm" class="btn btn-primary btn-block">Submit</button>            
+    </div>
+</shared-modal>

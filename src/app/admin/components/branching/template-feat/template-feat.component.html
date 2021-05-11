@@ -1,0 +1,73 @@
+<div class="card border-dark mb-2">
+    <div class="card-header bg-dark text-light">
+        <a data-toggle="collapse" [href]="'#feat-' + feat.id" aria-expanded="true" class="mr-2">
+            <i class="fa fa-chevron-down text-light"></i>
+        </a> 
+        <strong>{{feat.name}}</strong>
+        <button type="button" class="btn btn-action-small btn-danger float-right" *ngIf="!root" (click)="deleteFeat()"><i class="fa fa-trash"></i></button>
+    </div>
+    <div class="collapse show" [id]="'feat-' + feat.id">
+        <div class="card-body border-secondary p-2">
+            <button type="button" class="btn btn-small btn-primary mr-2" (click)="addChoiceToAbilities()" *ngIf="feat.abilities.length == 0"><i class="fa fa-plus mr-2"></i>Add Ability</button>
+            <button type="button" class="btn btn-small btn-primary mr-2" (click)="addChoiceToModifiers()" *ngIf="feat.modifiers.length == 0"><i class="fa fa-plus mr-2"></i>Add Modifier</button>
+            <button type="button" class="btn btn-small btn-primary mr-2" (click)="addChoiceToFeats()" *ngIf="!isSubFeat && feat.subFeats.length == 0"><i class="fa fa-plus mr-2"></i>Add SubFeat</button>
+            <div class="card m-2" *ngIf="feat.abilities.length > 0">
+                <div class="card-header bg-secondary text-light">
+                    <a data-toggle="collapse" [href]="'#abilities-' + feat.id" aria-expanded="true" class="mr-2">
+                        <i class="fa fa-chevron-down text-light"></i>
+                    </a> 
+                    <strong>Abilities</strong>
+                    <div class="float-right">({{feat.abilities.length}})</div>
+                </div>
+                <div class="collapse show submenu" [id]="'abilities-' + feat.id">
+                    <div class="card-body p-4">
+
+                        <div *ngFor="let choice of feat.abilities">
+                            <branching-template-choice [choice]="choice" (deleteChoiceEvent)="onDeleteChoice($event)"></branching-template-choice>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" (click)="addChoiceToAbilities()"><i class="fa fa-plus mr-2"></i>Add Choice</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card m-2" *ngIf="feat.modifiers.length > 0">
+                <div class="card-header bg-secondary text-light">
+                    <a data-toggle="collapse" [href]="'#modifiers-' + feat.id" aria-expanded="true" class="mr-2">
+                        <i class="fa fa-chevron-down text-light"></i>
+                    </a> 
+                    <strong>Modifiers</strong>
+                    <div class="float-right">({{feat.modifiers.length}})</div>
+                </div>
+                <div class="collapse show submenu" [id]="'modifiers-' + feat.id">
+                    <div class="card-body p-4">
+
+                        <div *ngFor="let choice of feat.modifiers">
+                            <branching-template-choice [choice]="choice" (deleteChoiceEvent)="onDeleteChoice($event)"></branching-template-choice>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" (click)="addChoiceToModifiers()"><i class="fa fa-plus mr-2"></i>Add Choice</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card m-2" *ngIf="!isSubFeat && feat.subFeats.length > 0">
+                <div class="card-header bg-secondary text-light">
+                    <a data-toggle="collapse" [href]="'#feats-'+ feat.id" aria-expanded="true" class="mr-2">
+                        <i class="fa fa-chevron-down text-light"></i>
+                    </a> 
+                    <strong>SubFeats</strong>
+                    <div class="float-right">({{feat.subFeats.length}})</div>
+                </div>
+                <div class="collapse show submenu" [id]="'feats-' + feat.id">
+                    <div class="card-body p-4">
+
+                        <div *ngFor="let choice of feat.subFeats">
+                            <branching-template-choice [choice]="choice" (deleteChoiceEvent)="onDeleteChoice($event)"></branching-template-choice>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" (click)="addChoiceToFeats()"><i class="fa fa-plus mr-2"></i>Add Choice</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>

@@ -6,6 +6,15 @@ export enum ApiEndPoints {
     FORGOTPASSWORD = "/authentication/forgotpassword",
     RESETPASSWORD = "/authentication/resetpassword",
 
+    //User Endpoints
+    USER_DATA = "/User/GetUserData",
+    USER_UPDATE = "/User/UpdateUser",
+    USER_UPDATEPASSWORD = "/User/UpdatePassword",
+    USER_UPDATEEMAIL = "/User/UpdateEmail",
+    CONFIRMUPDATEDEMAIL = "/user/EmailConfirmation",
+    DOWNLOADPERSONALDATA = "/user/DownloadUserData",
+    DELETEPERSONALDATA = "/user/DeleteUser",
+
     // SourceData Endpoints
     SOURCEDATA_ABILITYSCORE = "/sourcedata/abilityscore",
     SOURCEDATA_CONDITION = "/sourcedata/condition",
@@ -24,6 +33,13 @@ export enum ApiEndPoints {
     SOURCEDATA_MODIFIER = '/sourcedata/modifier',
     SOURCEDATA_SPELL = '/sourcedata/spell',
     SOURCEDATA_SOURCE = "/sourcedata/source",
+
+    // Branching Endpoints
+    BRANCHING_RACE = "/branching/race",
+    BRANCHING_FEAT = "/branching/feat",
+    BRANCHING_ABILITY = "/branching/ability",
+    BRANCHING_MODIFIER = "/branching/modifier",
+    BRANCHING_SPELL = "/branching/spell",
 
     //Character endpoints
     CHARACTERDATA_CHARACTER = "/CharacterData/Character"
