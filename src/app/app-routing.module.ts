@@ -6,6 +6,7 @@ import { CharacterlistComponent } from './character/characterlist/characterlist.
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
 import { NewcharacterComponent } from './character/newcharacter/newcharacter.component';
 import { HomeComponent } from './main/home/home.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "home", pathMatch: "full" },
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'error', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
-  { path: "*", component: HomeComponent }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
