@@ -1,6 +1,7 @@
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { SharedModule } from './../shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SourcedataComponent } from './components/sourcedata/sourcedata.component';
 import { ConditionComponent } from './components/sourcedata/basedata/condition/condition.component';
@@ -84,11 +85,24 @@ import { DeleteSpellDamageComponent } from './components/sourcedata/damage/spell
 import { AddAreaEffectComponent } from './components/sourcedata/area-effect/add-area-effect/add-area-effect.component';
 import { EditAreaEffectComponent } from './components/sourcedata/area-effect/edit-area-effect/edit-area-effect.component';
 import { DeleteAreaEffectComponent } from './components/sourcedata/area-effect/delete-area-effect/delete-area-effect.component';
+import { BranchingComponent } from './components/branching/branching.component';
+import { BranchingRaceComponent } from './components/branching/branching-race/branching-race.component';
+import { BranchingClassComponent } from './components/branching/branching-class/branching-class.component';
+import { BranchingFeatComponent } from './components/branching/branching-feat/branching-feat.component';
+import { BranchingAbilityComponent } from './components/branching/branching-ability/branching-ability.component';
+import { TemplateRaceComponent } from './components/branching/template-race/template-race.component';
+import { TemplateAbilityComponent } from './components/branching/template-ability/template-ability.component';
+import { TemplateFeatComponent } from './components/branching/template-feat/template-feat.component';
+import { TemplateSpellComponent } from './components/branching/template-spell/template-spell.component';
+import { TemplateModifierComponent } from './components/branching/template-modifier/template-modifier.component';
+import { TemplateChoiceComponent } from './components/branching/template-choice/template-choice.component';
+import { ModalAddChoiceComponent } from './components/branching/modal-add-choice/modal-add-choice.component';
+import { ModalAddOptionComponent } from './components/branching/modal-add-option/modal-add-option.component';
 
 
 
 @NgModule({
-  declarations: [SourcedataComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent, ModifierComponent, AbilityComponent, FeatComponent, EquipmentComponent, SpellComponent, ClassComponent, RaceComponent, SpeedComponent, SkillComponent, SenseComponent, ProficiencyComponent, MagicSchoolComponent, DamageTypeComponent, AbilityScoreComponent, AddAbilityScoreComponent, EditAbilityScoreComponent, DeleteAbilityScoreComponent, AddConditionComponent, EditConditionComponent, DeleteConditionComponent, AddDamageTypeComponent, EditDamageTypeComponent, DeleteDamageTypeComponent, AddMagicSchoolComponent, EditMagicSchoolComponent, DeleteMagicSchoolComponent, AddProficiencyComponent, EditProficiencyComponent, DeleteProficiencyComponent, AddSenseComponent, EditSenseComponent, DeleteSenseComponent, AddSkillComponent, EditSkillComponent, DeleteSkillComponent, AddSpeedComponent, EditSpeedComponent, DeleteSpeedComponent, AddRaceComponent, EditRaceComponent, DeleteRaceComponent, AddFeatComponent, EditFeatComponent, DeleteFeatComponent, MeleeAttackComponent, RangedAttackComponent, CastSpellComponent, AddCastSpellComponent, EditCastSpellComponent, DeleteCastSpellComponent, AddRangedAttackComponent, EditRangedAttackComponent, DeleteRangedAttackComponent, AddMeleeAttackComponent, EditMeleeAttackComponent, DeleteMeleeAttackComponent, AddAbilityComponent, EditAbilityComponent, DeleteAbilityComponent, AddAttackDamageComponent, EditAttackDamageComponent, DeleteAttackDamageComponent, AddModifierComponent, GetModifierTypeComponent, EditModifierComponent, DeleteModifierComponent, AddSpellComponent, EditSpellComponent, DeleteSpellComponent, AddSpellDamageComponent, EditSpellDamageComponent, DeleteSpellDamageComponent, AddAreaEffectComponent, EditAreaEffectComponent, DeleteAreaEffectComponent],
+  declarations: [SourcedataComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent, ModifierComponent, AbilityComponent, FeatComponent, EquipmentComponent, SpellComponent, ClassComponent, RaceComponent, SpeedComponent, SkillComponent, SenseComponent, ProficiencyComponent, MagicSchoolComponent, DamageTypeComponent, AbilityScoreComponent, AddAbilityScoreComponent, EditAbilityScoreComponent, DeleteAbilityScoreComponent, AddConditionComponent, EditConditionComponent, DeleteConditionComponent, AddDamageTypeComponent, EditDamageTypeComponent, DeleteDamageTypeComponent, AddMagicSchoolComponent, EditMagicSchoolComponent, DeleteMagicSchoolComponent, AddProficiencyComponent, EditProficiencyComponent, DeleteProficiencyComponent, AddSenseComponent, EditSenseComponent, DeleteSenseComponent, AddSkillComponent, EditSkillComponent, DeleteSkillComponent, AddSpeedComponent, EditSpeedComponent, DeleteSpeedComponent, AddRaceComponent, EditRaceComponent, DeleteRaceComponent, AddFeatComponent, EditFeatComponent, DeleteFeatComponent, MeleeAttackComponent, RangedAttackComponent, CastSpellComponent, AddCastSpellComponent, EditCastSpellComponent, DeleteCastSpellComponent, AddRangedAttackComponent, EditRangedAttackComponent, DeleteRangedAttackComponent, AddMeleeAttackComponent, EditMeleeAttackComponent, DeleteMeleeAttackComponent, AddAbilityComponent, EditAbilityComponent, DeleteAbilityComponent, AddAttackDamageComponent, EditAttackDamageComponent, DeleteAttackDamageComponent, AddModifierComponent, GetModifierTypeComponent, EditModifierComponent, DeleteModifierComponent, AddSpellComponent, EditSpellComponent, DeleteSpellComponent, AddSpellDamageComponent, EditSpellDamageComponent, DeleteSpellDamageComponent, AddAreaEffectComponent, EditAreaEffectComponent, DeleteAreaEffectComponent, BranchingComponent, BranchingRaceComponent, BranchingClassComponent, BranchingFeatComponent, BranchingAbilityComponent, TemplateRaceComponent, TemplateAbilityComponent, TemplateFeatComponent, TemplateSpellComponent, TemplateModifierComponent, TemplateChoiceComponent, ModalAddChoiceComponent, ModalAddOptionComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -113,6 +127,13 @@ import { DeleteAreaEffectComponent } from './components/sourcedata/area-effect/d
           { path: 'modifier' , component: ModifierComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'spell' , component: SpellComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'source', component: SourceComponent, outlet: 'admin-sourcedata-outlet' }
+        ]},
+      { path: 'branching', component: BranchingComponent,
+        children: [
+          { path: 'race', component: BranchingRaceComponent, outlet: 'admin-branching-outlet' },
+          { path: 'class', component: BranchingClassComponent, outlet: 'admin-branching-outlet' },
+          { path: 'feat', component: BranchingFeatComponent, outlet: 'admin-branching-outlet' },
+          { path: 'ability', component: BranchingAbilityComponent, outlet: 'admin-branching-outlet' } 
         ]}
     ])
   ]

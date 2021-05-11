@@ -34,6 +34,13 @@ export enum ApiEndPoints {
     SOURCEDATA_SPELL = '/sourcedata/spell',
     SOURCEDATA_SOURCE = "/sourcedata/source",
 
+    // Branching Endpoints
+    BRANCHING_RACE = "/branching/race",
+    BRANCHING_FEAT = "/branching/feat",
+    BRANCHING_ABILITY = "/branching/ability",
+    BRANCHING_MODIFIER = "/branching/modifier",
+    BRANCHING_SPELL = "/branching/spell",
+
     //Character endpoints
     CHARACTERDATA_CHARACTER = "/CharacterData/Character"
 }

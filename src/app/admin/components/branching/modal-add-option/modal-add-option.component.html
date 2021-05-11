@@ -1,0 +1,80 @@
+<shared-modal title={{title}}>
+    <div body>
+        <form [formGroup]="addOptionForm" id="addOptionForm" autocomplete="off" novalidate (ngSubmit)="createOption()">
+            <div class="row text-center">
+                <div class="col-10 offset-1">
+                    <div class="form-group text-left">
+                        <label for="option" class="form-label">{{label}}</label>
+                        <select for="option" id="option" formControlName="option" class="form-control selectpicker" (change)="onOptionSelection($event.target.value)"
+                            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Search..." data-live-search-style="contains">
+                            <option></option>
+                            <option *ngFor="let item of options" [value]="item.id">
+                                {{item.name}}
+                            </option>
+                        </select>
+                        <div class="mt-1">
+                            <div class="alert alert-danger" *ngIf="validateControl('option') && hasError('option', 'required')">Please select an option</div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <div class="row" *ngIf="selectedOption !== undefined">
+                <div class="col-12 text-center">
+                    <hr/>
+                    <div [ngSwitch]="memberType">
+                        <div class="card m-2 text-left" *ngSwitchCase="0">
+                            <div class="card-header">
+                                Selected Ability
+                            </div>
+                            <div class="card-body">
+                                <p><strong>ID: </strong>{{selectedOption.id}}</p>
+                                <p><strong>Name: </strong>{{selectedOption.name}}</p>
+                                <p><strong>Type: </strong>{{selectedOption.type}}</p>
+                                <p><strong>Max Slots: </strong>{{selectedOption.maxSlots}}</p>
+                                <p><strong>Description: </strong>{{selectedOption.description}}</p>
+                            </div>
+                        </div>
+
+                        <div class="card m-2 text-left" *ngSwitchCase="1">
+                            <div class="card-header">
+                                Selected Feat
+                            </div>
+                            <div class="card-body">
+                                <p><strong>ID: </strong>{{selectedOption.id}}</p>
+                                <p><strong>Name: </strong>{{selectedOption.name}}</p>
+                                <p><strong>Type: </strong>{{selectedOption.type}}</p>
+                                <p><strong>Description: </strong>{{selectedOption.description}}</p>
+                            </div>
+                        </div>
+
+                        <div class="card m-2 text-left" *ngSwitchCase="2">
+                            <div class="card-header">
+                                Selected Modifier
+                            </div>
+                            <div class="card-body">
+                                <p><strong>ID: </strong>{{selectedOption.id}}</p>
+                                <p><strong>Name: </strong>{{selectedOption.name}}</p>
+                                <p><strong>Description: </strong>{{selectedOption.description}}</p>
+                            </div>
+                        </div>
+
+                        <div class="card m-2 text-left" *ngSwitchCase="3">
+                            <div class="card-header">
+                                Selected Spell
+                            </div>
+                            <div class="card-body">
+                                <p><strong>ID: </strong>{{selectedOption.id}}</p>
+                                <p><strong>Name: </strong>{{selectedOption.name}}</p>
+                                <p><strong>Spell Level: </strong>{{selectedOption.level}}</p>
+                                <p><strong>Magic School: </strong>{{selectedOption.magicSchool}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div footer>
+        <button type="submit" form="addOptionForm" class="btn btn-primary btn-block">Submit</button>            
+    </div>
+</shared-modal>
