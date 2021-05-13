@@ -14,15 +14,15 @@
                 href="#race" aria-controls="race" aria-selected="false">Race</a>
         </li>
         <li class="nav-item">
-            <a [class.disabled]="f1.invalid||f2.invalid||f3.invalid" class="nav-link" id="profile-tab2"
+            <a [class.disabled]="f1.invalid || f2.invalid || raceIsValid === false" class="nav-link" id="profile-tab2"
                 data-toggle="tab" href="#description" aria-controls="description" aria-selected="false">Description</a>
         </li>
         <li class="nav-item">
-            <a [class.disabled]="f1.invalid||f2.invalid||f3.invalid||f4.invalid" class="nav-link" id="contact-tab3"
+            <a [class.disabled]="f1.invalid || f2.invalid || raceIsValid === false || f4.invalid" class="nav-link" id="contact-tab3"
                 data-toggle="tab" href="#personality" aria-controls="personality" aria-selected="false">Personality</a>
         </li>
         <li class="nav-item">
-            <a [class.disabled]="f1.invalid||f2.invalid||f3.invalid||f4.invalid||f5.invalid" class="nav-link"
+            <a [class.disabled]="f1.invalid||f2.invalid|| raceIsValid === false ||f4.invalid||f5.invalid" class="nav-link"
                 id="contact-tab4" data-toggle="tab" href="#backstory" aria-controls="backstory"
                 aria-selected="false">Backstory</a>
         </li>
@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" required minlength="3" placeholder="Name"
-                        [(ngModel)]="character.name" #name="ngModel" name="name">
+                        [(ngModel)]="newCharacter.name" #name="ngModel" name="name">
                 </div>
                 <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
                     <div *ngIf="name.errors.required">
@@ -47,7 +47,7 @@
                 <div class="form-group">
                     <label for="level">Level</label>
                     <input type="number" class="form-control" id="level" required placeholder="Enter level"
-                        [(ngModel)]="character.level" #level="ngModel" name="level">
+                        [(ngModel)]="newCharacter.level" #level="ngModel" name="level">
                 </div>
                 <div *ngIf="level.invalid && (level.dirty || level.touched)" class="alert alert-danger">
                     <div *ngIf="level.errors.required">
@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group">
                     <label for="picture">Picture</label>
-                    <input type="text" class="form-control" id="picture" required [(ngModel)]="character.picture"
+                    <input type="text" class="form-control" id="picture" required [(ngModel)]="newCharacter.picture"
                         placeholder="picture" #picture="ngModel" name="picture">
                 </div>
                 <div *ngIf="picture.invalid && (picture.dirty || picture.touched)" class="alert alert-danger">
@@ -131,10 +131,10 @@
                 -->
             </form>
             
-            <character-race></character-race>
+            <character-race [characterModel]="newCharacter" (validationChanged)="onRaceValidationChanged($event)"></character-race>
 
             <div class="d-flex justify-content-end">
-                <button [disabled]="f1.invalid||f2.invalid||f3.invalid" (click)="next()"
+                <button [disabled]="f1.invalid || f2.invalid || raceIsValid === false" (click)="next()"
                     class="btn btn-primary">Next</button>
             </div>
         </div>
@@ -143,7 +143,7 @@
             <form #f4="ngForm">
                 <div class="form-group">
                     <label for="gender">Gender</label>
-                    <select class="form-control" #gender="ngModel" [(ngModel)]="character.gender" required
+                    <select class="form-control" #gender="ngModel" [(ngModel)]="newCharacter.gender" required
                         name="gender">
                         <option value="" disabled>Choose your gender</option>
                         <option *ngFor=" let gender of genders | keyvalue" [ngValue]="gender.value">
@@ -154,7 +154,7 @@
                 <div class="form-group">
                     <label for="eye_Color">Eye color</label>
                     <input type="text" class="form-control" id="eye_Color" required placeholder="eye color"
-                        [(ngModel)]="character.eye_Color" #eye_Color="ngModel" name="eye_Color">
+                        [(ngModel)]="newCharacter.eye_Color" #eye_Color="ngModel" name="eye_Color">
                 </div>
                 <div *ngIf="eye_Color.invalid && (eye_Color.dirty || eye_Color.touched)" class="alert alert-danger">
                     <div *ngIf="eye_Color.errors.required">
@@ -164,7 +164,7 @@
                 <div class="form-group">
                     <label for="height">Height</label>
                     <input type="number" class="form-control" id="height" required placeholder="height"
-                         [(ngModel)]="character.height"  #height="ngModel" name="height">
+                         [(ngModel)]="newCharacter.height"  #height="ngModel" name="height">
                 </div>
                 <div *ngIf="height.invalid && (height.dirty ||height.touched)"class="alert alert-danger">
                     <div *ngIf="height.errors.required">The height is required.</div>
@@ -172,14 +172,14 @@
                 <div class="form-group">
                     <label for="weight">Weight</label>
                     <input type="number" class="form-control" id="weight" required placeholder="weight"
-                         [(ngModel)]="character.weight"  #weight="ngModel" name="weight">
+                         [(ngModel)]="newCharacter.weight"  #weight="ngModel" name="weight">
                 </div>
                 <div *ngIf="weight.invalid && (weight.dirty ||weight.touched)"class="alert alert-danger">
                     <div *ngIf="weight.errors.required">The weight is required.</div>
                 </div>
                 <div class="form-group">
                     <label for="size">Size</label>
-                    <select class="form-control" #size="ngModel" [(ngModel)]="character.size" required name="size">
+                    <select class="form-control" #size="ngModel" [(ngModel)]="newCharacter.size" required name="size">
                         <option value="" disabled>Choose your size</option>
                         <option *ngFor=" let size of sizes | keyvalue" [ngValue]="size.value">
                             {{size.value}}
@@ -189,7 +189,7 @@
                 <div class="form-group">
                     <label for="hair_Color">Hair color</label>
                     <input type="text" class="form-control" id="hair_Color" required placeholder="hair color"
-                        [(ngModel)]="character.hair_Color" #hair_Color="ngModel" name="hair_Color">
+                        [(ngModel)]="newCharacter.hair_Color" #hair_Color="ngModel" name="hair_Color">
                 </div>
                 <div *ngIf="hair_Color.invalid && (hair_Color.dirty || hair_Color.touched)" class="alert alert-danger">
                     <div *ngIf="hair_Color.errors.required">
@@ -199,7 +199,7 @@
                 <div class="form-group">
                     <label for="skin_Color">Skin color</label>
                     <input type="text" class="form-control" id="skin_Color" required placeholder="skin color"
-                        [(ngModel)]="character.skin_Color" #skin_Color="ngModel" name="skin_Color">
+                        [(ngModel)]="newCharacter.skin_Color" #skin_Color="ngModel" name="skin_Color">
                 </div>
                 <div *ngIf="skin_Color.invalid && (skin_Color.dirty || skin_Color.touched)" class="alert alert-danger">
                     <div *ngIf="skin_Color.errors.required">
@@ -209,7 +209,7 @@
                 <div class="form-group">
                     <label for="age">Age</label>
                     <input type="number" class="form-control" id="age" required placeholder="age"
-                         [(ngModel)]="character.age"  #age="ngModel" name="age">
+                         [(ngModel)]="newCharacter.age"  #age="ngModel" name="age">
                 </div>
                 <div *ngIf="age.invalid && (age.dirty ||age.touched)"class="alert alert-danger">
                     <div *ngIf="age.errors.required">The age is required.</div>
@@ -218,7 +218,7 @@
                     <label for="appearance">Appearance</label>
                     <textarea rows="3" type="text" class="form-control" id="appearance" required
                         placeholder="Write a description of your characters general appearance here."
-                        [(ngModel)]="character.appearance" #appearance="ngModel" name="appearance">
+                        [(ngModel)]="newCharacter.appearance" #appearance="ngModel" name="appearance">
             </textarea>
                 </div>
                 <div *ngIf="appearance.invalid && (appearance.dirty || appearance.touched)" class="alert alert-danger">
@@ -228,7 +228,7 @@
                 </div>
             </form>
             <div class="d-flex justify-content-end">
-                <button [disabled]="f1.invalid||f2.invalid||f3.invalid||f4.invalid" (click)="next()"
+                <button [disabled]="f1.invalid || f2.invalid || raceIsValid === false || f4.invalid" (click)="next()"
                     class="btn btn-primary">Next</button>
             </div>
         </div>
@@ -237,7 +237,7 @@
             <form #f5="ngForm">
                 <div class="form-group">
                     <label for="alignment">Alignment</label>
-                    <select class="form-control" #alignment [(ngModel)]="character.alignment" name="alignment">
+                    <select class="form-control" #alignment [(ngModel)]="newCharacter.alignment" name="alignment">
                         <option value="" disabled>Choose your alignment</option>
                         <option *ngFor=" let alignment of alignments | keyvalue" [ngValue]="alignment.value">
                             {{alignment.value}}
@@ -247,7 +247,7 @@
                 <div class="form-group">
                     <label for="faith">Faith</label>
                     <input type="text" class="form-control" id="faith" required placeholder="faith"
-                        [(ngModel)]="character.faith" #faith="ngModel" name="faith">
+                        [(ngModel)]="newCharacter.faith" #faith="ngModel" name="faith">
                 </div>
                 <div *ngIf="faith.invalid && (faith.dirty || faith.touched)" class="alert alert-danger">
                     <div *ngIf="faith.errors.required">
@@ -257,13 +257,13 @@
                 <div class="form-group">
                     <label for="notes">Other notes</label>
                     <textarea rows="3" type="text" class="form-control" id="notes"
-                        placeholder="Write some character notes here." [(ngModel)]="character.notes" #notes="ngModel"
+                        placeholder="Write some character notes here." [(ngModel)]="newCharacter.notes" #notes="ngModel"
                         name="notes">
             </textarea>
                 </div>
             </form>
             <div class="d-flex justify-content-end">
-                <button [disabled]="f1.invalid||f2.invalid||f3.invalid||f4.invalid||f5.invalid" (click)="next()"
+                <button [disabled]="f1.invalid || f2.invalid || raceIsValid === false || f4.invalid || f5.invalid" (click)="next()"
                     class="btn btn-primary">Next</button>
             </div>
         </div>
@@ -273,7 +273,7 @@
                 <div class="form-group">
                     <label for="backstory">Your backstory</label>
                     <textarea rows="8" type="text" class="form-control" id="backstory" required
-                        placeholder="Write your characters backstory here." [(ngModel)]="character.backstory"
+                        placeholder="Write your characters backstory here." [(ngModel)]="newCharacter.backstory"
                         #backstory="ngModel" name="backstory">
             </textarea>
                 </div>
@@ -284,10 +284,10 @@
                 </div>
             </form>
             <div class="d-flex justify-content-end">
-                <button [disabled]="f1.invalid||f2.invalid||f3.invalid||f4.invalid||f5.invalid||f6.invalid"
+                <button [disabled]="f1.invalid || f2.invalid || raceIsValid === false || f4.invalid || f5.invalid || f6.invalid"
                     (click)="save()" class="btn btn-primary">Save</button>
             </div>
-            <pre>{{character|json}}</pre>
+            <pre>{{newCharacter|json}}</pre>
         </div>
     </div>
 </div>

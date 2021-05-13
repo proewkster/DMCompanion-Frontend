@@ -17,9 +17,9 @@
         </div>
     </div>
 </div>
-<div class="row mt-2" *ngIf="selectedMainRace != undefined">
+<div class="row mt-2" *ngIf="fullMainRace != undefined">
     <div class="col-10 offset-1 p-3 text-center">
-        <character-branching-root [race]="fullMainRace"></character-branching-root>
+        <character-branching-root [race]="fullMainRace" [characterModel]="characterModel" (validationChanged)="onMainRaceValidationChanged($event)"></character-branching-root>
     </div>
 </div>
 <div class="row">
