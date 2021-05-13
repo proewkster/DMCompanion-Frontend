@@ -1,13 +1,16 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary w-100">
-        <i class="fas fa-dice-d20 fa-2x text-white mr-2"></i>
-        <a class="navbar-brand dm-reg-font" href="#"> {{title}}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary w-100">
+        <div class="order-2 order-md-0">
+            <i class="fas fa-dice-d20 fa-2x text-white mr-2"></i>
+            <a class="navbar-brand dm-reg-font" href="#"> {{title}}</a>
+        </div>
+        <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse order-4 order-md-0" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
@@ -34,19 +37,22 @@
         </ul>
         </div>
 
-        <div *ngIf="isAuthenticated; else loginMenu">
-            <div class="nav-item dropdown-toggle pl-0 text-light ml-auto" href="#" id="userMenu" role="button"
-                data-toggle="dropdown">
-                <i class="fa fa-user mr-2"></i>{{ username }}
-            </div>
+        <div class="order-3 order-md-0">
+            <div *ngIf="isAuthenticated; else loginMenu">
+                <div class="nav-item dropdown-toggle pl-0 text-light ml-auto" href="#" id="userMenu" role="button"
+                    data-toggle="dropdown">
+                    <i class="fa fa-user mr-2"></i>{{ username }}
+                </div>
 
-            <div class="dropdown-menu dropdown-menu-right dropdown-default p-2 login-menu" aria-labelledby="userMenu">
-                <a class="btn btn-link" routerLink="/user/userdetails">Details</a><br>
-                <button class="btn btn-link" (click)="logout()">Logout</button>
+                <div class="dropdown-menu dropdown-menu-right dropdown-default p-2 login-menu"
+                    aria-labelledby="userMenu">
+                    <a class="btn btn-link" routerLink="/user/userdetails">Details</a><br>
+                    <button class="btn btn-link" (click)="logout()">Logout</button>
+                </div>
             </div>
+            <ng-template #loginMenu>
+                <auth-login displayAsMenu="true"></auth-login>
+            </ng-template>
         </div>
-        <ng-template #loginMenu>
-            <auth-login displayAsMenu="true"></auth-login>
-        </ng-template>
     </nav>
 </header>
