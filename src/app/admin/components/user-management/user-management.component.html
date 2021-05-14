@@ -1,0 +1,49 @@
+<div class="container p-3 mx-auto">
+    <div class="row text-center">
+        <div class="col-12">
+            <h1>Users</h1>
+            <hr />
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-12">
+            <table class="table table-striped table-hover table-bordered table-responsive-lg ">
+                <thead>
+                    <tr>
+                        <th class="text-center" width="20%">ID</th>
+                        <th class="text-center" width="20%">First name</th>
+                        <th class="text-center" width="20%">Last name</th>
+                        <th class="text-center" width="20%">Email</th>
+                        <th class="text-center" width="10%">Admin</th>
+                        <th class="text-center" width="10%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of userlist">
+                        <td class="align-middle">{{item.id}}</td>
+                        <td class="align-middle">{{item.firstName}}</td>
+                        <td class="align-middle">
+                            <div>{{item.lastName}}</div>
+                        </td>
+                        <td class="align-middle">{{item.email}}</td>
+                        <td class="align-middle">
+                            <form>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="switch{{item.id}}"
+                                        [checked]=item.isAdmin (change)="changeAdmin(item.id,item.isAdmin)">
+                                    <label class="custom-control-label" for="switch{{item.id}}"></label>
+                                </div>
+                            </form>
+                        </td>
+                        <td class="align-middle">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger btn-action"
+                                    (click)="showDeleteUserModal(item)"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

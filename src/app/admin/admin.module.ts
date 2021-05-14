@@ -98,17 +98,20 @@ import { TemplateModifierComponent } from './components/branching/template-modif
 import { TemplateChoiceComponent } from './components/branching/template-choice/template-choice.component';
 import { ModalAddChoiceComponent } from './components/branching/modal-add-choice/modal-add-choice.component';
 import { ModalAddOptionComponent } from './components/branching/modal-add-option/modal-add-option.component';
+import { UserManagementComponent } from './components/user-management/user-management.component';
+import { DeleteUserComponent } from './components/user-management/delete-user/delete-user.component';
 
 
 
 @NgModule({
-  declarations: [SourcedataComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent, ModifierComponent, AbilityComponent, FeatComponent, EquipmentComponent, SpellComponent, ClassComponent, RaceComponent, SpeedComponent, SkillComponent, SenseComponent, ProficiencyComponent, MagicSchoolComponent, DamageTypeComponent, AbilityScoreComponent, AddAbilityScoreComponent, EditAbilityScoreComponent, DeleteAbilityScoreComponent, AddConditionComponent, EditConditionComponent, DeleteConditionComponent, AddDamageTypeComponent, EditDamageTypeComponent, DeleteDamageTypeComponent, AddMagicSchoolComponent, EditMagicSchoolComponent, DeleteMagicSchoolComponent, AddProficiencyComponent, EditProficiencyComponent, DeleteProficiencyComponent, AddSenseComponent, EditSenseComponent, DeleteSenseComponent, AddSkillComponent, EditSkillComponent, DeleteSkillComponent, AddSpeedComponent, EditSpeedComponent, DeleteSpeedComponent, AddRaceComponent, EditRaceComponent, DeleteRaceComponent, AddFeatComponent, EditFeatComponent, DeleteFeatComponent, MeleeAttackComponent, RangedAttackComponent, CastSpellComponent, AddCastSpellComponent, EditCastSpellComponent, DeleteCastSpellComponent, AddRangedAttackComponent, EditRangedAttackComponent, DeleteRangedAttackComponent, AddMeleeAttackComponent, EditMeleeAttackComponent, DeleteMeleeAttackComponent, AddAbilityComponent, EditAbilityComponent, DeleteAbilityComponent, AddAttackDamageComponent, EditAttackDamageComponent, DeleteAttackDamageComponent, AddModifierComponent, GetModifierTypeComponent, EditModifierComponent, DeleteModifierComponent, AddSpellComponent, EditSpellComponent, DeleteSpellComponent, AddSpellDamageComponent, EditSpellDamageComponent, DeleteSpellDamageComponent, AddAreaEffectComponent, EditAreaEffectComponent, DeleteAreaEffectComponent, BranchingComponent, BranchingRaceComponent, BranchingClassComponent, BranchingFeatComponent, BranchingAbilityComponent, TemplateRaceComponent, TemplateAbilityComponent, TemplateFeatComponent, TemplateSpellComponent, TemplateModifierComponent, TemplateChoiceComponent, ModalAddChoiceComponent, ModalAddOptionComponent],
+  declarations: [SourcedataComponent, ConditionComponent, SourceComponent, AddSourceComponent, EditSourceComponent, DeleteSourceComponent, ModifierComponent, AbilityComponent, FeatComponent, EquipmentComponent, SpellComponent, ClassComponent, RaceComponent, SpeedComponent, SkillComponent, SenseComponent, ProficiencyComponent, MagicSchoolComponent, DamageTypeComponent, AbilityScoreComponent, AddAbilityScoreComponent, EditAbilityScoreComponent, DeleteAbilityScoreComponent, AddConditionComponent, EditConditionComponent, DeleteConditionComponent, AddDamageTypeComponent, EditDamageTypeComponent, DeleteDamageTypeComponent, AddMagicSchoolComponent, EditMagicSchoolComponent, DeleteMagicSchoolComponent, AddProficiencyComponent, EditProficiencyComponent, DeleteProficiencyComponent, AddSenseComponent, EditSenseComponent, DeleteSenseComponent, AddSkillComponent, EditSkillComponent, DeleteSkillComponent, AddSpeedComponent, EditSpeedComponent, DeleteSpeedComponent, AddRaceComponent, EditRaceComponent, DeleteRaceComponent, AddFeatComponent, EditFeatComponent, DeleteFeatComponent, MeleeAttackComponent, RangedAttackComponent, CastSpellComponent, AddCastSpellComponent, EditCastSpellComponent, DeleteCastSpellComponent, AddRangedAttackComponent, EditRangedAttackComponent, DeleteRangedAttackComponent, AddMeleeAttackComponent, EditMeleeAttackComponent, DeleteMeleeAttackComponent, AddAbilityComponent, EditAbilityComponent, DeleteAbilityComponent, AddAttackDamageComponent, EditAttackDamageComponent, DeleteAttackDamageComponent, AddModifierComponent, GetModifierTypeComponent, EditModifierComponent, DeleteModifierComponent, AddSpellComponent, EditSpellComponent, DeleteSpellComponent, AddSpellDamageComponent, EditSpellDamageComponent, DeleteSpellDamageComponent, AddAreaEffectComponent, EditAreaEffectComponent, DeleteAreaEffectComponent, BranchingComponent, BranchingRaceComponent, BranchingClassComponent, BranchingFeatComponent, BranchingAbilityComponent, TemplateRaceComponent, TemplateAbilityComponent, TemplateFeatComponent, TemplateSpellComponent, TemplateModifierComponent, TemplateChoiceComponent, ModalAddChoiceComponent, ModalAddOptionComponent, UserManagementComponent, DeleteUserComponent],
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: 'sourcedata', component: SourcedataComponent,
+      {
+        path: 'sourcedata', component: SourcedataComponent,
         children: [
           { path: 'abilityscore', component: AbilityScoreComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'condition', component: ConditionComponent, outlet: 'admin-sourcedata-outlet' },
@@ -118,23 +121,29 @@ import { ModalAddOptionComponent } from './components/branching/modal-add-option
           { path: 'sense', component: SenseComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'skill', component: SkillComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'speed', component: SpeedComponent, outlet: 'admin-sourcedata-outlet' },
-          { path: 'race' , component: RaceComponent, outlet: 'admin-sourcedata-outlet' },
-          { path: 'feat' , component: FeatComponent, outlet: 'admin-sourcedata-outlet' },
-          { path: 'ability' , component: AbilityComponent, outlet: 'admin-sourcedata-outlet' },
-          { path: 'meleeattack' , component: MeleeAttackComponent, outlet: 'admin-sourcedata-outlet' },
-          { path: 'rangedattack' , component: RangedAttackComponent, outlet: 'admin-sourcedata-outlet' },
-          { path: 'castspell' , component: CastSpellComponent, outlet: 'admin-sourcedata-outlet' },
-          { path: 'modifier' , component: ModifierComponent, outlet: 'admin-sourcedata-outlet' },
-          { path: 'spell' , component: SpellComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'race', component: RaceComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'feat', component: FeatComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'ability', component: AbilityComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'meleeattack', component: MeleeAttackComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'rangedattack', component: RangedAttackComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'castspell', component: CastSpellComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'modifier', component: ModifierComponent, outlet: 'admin-sourcedata-outlet' },
+          { path: 'spell', component: SpellComponent, outlet: 'admin-sourcedata-outlet' },
           { path: 'source', component: SourceComponent, outlet: 'admin-sourcedata-outlet' }
-        ]},
-      { path: 'branching', component: BranchingComponent,
+        ]
+      },
+      {
+        path: 'branching', component: BranchingComponent,
         children: [
           { path: 'race', component: BranchingRaceComponent, outlet: 'admin-branching-outlet' },
           { path: 'class', component: BranchingClassComponent, outlet: 'admin-branching-outlet' },
           { path: 'feat', component: BranchingFeatComponent, outlet: 'admin-branching-outlet' },
-          { path: 'ability', component: BranchingAbilityComponent, outlet: 'admin-branching-outlet' } 
-        ]}
+          { path: 'ability', component: BranchingAbilityComponent, outlet: 'admin-branching-outlet' }
+        ]
+      },
+      {
+        path: 'usermanagement', component: UserManagementComponent
+      }
     ])
   ]
 })
