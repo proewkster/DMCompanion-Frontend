@@ -1,0 +1,14 @@
+<div *ngIf="race != undefined">
+    <div class="text-left mb-5" *ngIf="race.feats?.length > 0">
+        <span><strong>Feats:</strong></span>
+        <div class="mt-3" *ngFor="let feat of race.feats">
+            <character-branching-template-feat [choice]="feat" [characterModel]="characterModel" [rootId]="race.id" (validationChanged)="onValidationChanged()"></character-branching-template-feat>
+        </div>
+    </div>
+    <div class="text-left mb-5" *ngIf="race.abilities?.length > 0">
+        <span><strong>Abilities:</strong></span>
+        <div class="mt-3"  *ngFor="let ability of race.abilities">
+            <character-branching-template-ability [choice]="ability" [characterModel]="characterModel" [rootId]="race.id" (validationChanged)="onValidationChanged()"></character-branching-template-ability>
+        </div>
+    </div>
+</div>

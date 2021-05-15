@@ -19,7 +19,14 @@ import { SelectedCharacterComponent } from './character/characterlist/selected-c
 import { AuthenticationModule } from './authentication/authentication.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import * as $ from 'jquery';
-import { DeleteCharacterComponent } from './character/characterlist/delete-character/delete-character.component';//NODIG voor de $ in create char next button. is in gebruik ook al is et hier niet highlighted.
+import { DeleteCharacterComponent } from './character/characterlist/delete-character/delete-character.component';
+import { RaceComponent } from './character/newcharacter/race/race.component';
+import { RootComponent } from './character/branching/root/root.component';
+import { TemplateFeatComponent } from './character/branching/templates/template-feat/template-feat.component';
+import { TemplateAbilityComponent } from './character/branching/templates/template-ability/template-ability.component';
+import { TemplateSelectionModalComponent } from './character/branching/templates/template-selection-modal/template-selection-modal.component';
+import { TemplateModifierComponent } from './character/branching/templates/template-modifier/template-modifier.component';
+import { TemplateSpellComponent } from './character/branching/templates/template-spell/template-spell.component';//NODIG voor de $ in create char next button. is in gebruik ook al is et hier niet highlighted.
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -35,6 +42,13 @@ export function tokenGetter() {
     NewcharacterComponent,
     SelectedCharacterComponent,
     DeleteCharacterComponent,
+    RaceComponent,
+    RootComponent,
+    TemplateFeatComponent,
+    TemplateAbilityComponent,
+    TemplateSelectionModalComponent,
+    TemplateModifierComponent,
+    TemplateSpellComponent,
 
   ],
   imports: [

@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { DTO_NewCharacter_AbilityScore } from './../models/dto_newcharacter_abilityscore';
+import { DTO_NewCharacter } from 'src/app/character/models/dto-newcharacter';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Gender } from 'src/app/enums/gender.enum';
 import { Alignment } from 'src/app/enums/alignment.enum';
 import { Size } from 'src/app/enums/size.enum';
 import { CharacterService } from 'src/app/character/services/character.service';
 import { RaceService } from 'src/app/character/services/race.service';
-import { AbilityscoreService } from 'src/app/character/services/abilityscore.service';
-import { DtoNewABScores } from '../models/dto-new-abscores';
-import { DtoNewcharacter } from '../models/dto-newcharacter';
 import { DtoNewRace } from '../models/dto-new-race';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef, Pipe } from '@angular/core';
+import { SourcedataService } from 'src/app/admin/services/sourcedata.service';
+import { map } from 'rxjs/operators';
+import { SourceData_AbilityScore } from 'src/app/admin/models/sourcedata/sourcedata_abilityscore';
 
 
 @Component({
@@ -16,143 +18,88 @@ import { DtoNewRace } from '../models/dto-new-race';
   templateUrl: './newcharacter.component.html',
   styleUrls: ['./newcharacter.component.scss']
 })
-export class NewcharacterComponent implements OnInit {
+export class NewcharacterComponent implements OnInit, AfterViewInit {
 
-  constructor(private router: Router, private route: ActivatedRoute, private characterService: CharacterService, private raceService: RaceService, private abscoreService: AbilityscoreService) { }
-
-  //form shared voor update en create
+  // Form is shared for create and update, properties below are used for process identification
   createForm: boolean;
   id: string;
 
-  abilityScores: DtoNewABScores[] = [];
-  mainRaces: DtoNewRace[] = [];
-  subRaces: DtoNewRace[] = [];
-  selectedRace: DtoNewRace = null;
-  selectedSubrace: DtoNewRace = null;
-  subracesForMainRace: DtoNewRace[] = [];
-  character: DtoNewcharacter;
+  newCharacter: DTO_NewCharacter;
 
-  //selectedrace: DtoNewRace = new DtoNewRace(null)
-  public alignments = Object.values(Alignment).filter(value => typeof value != 'number');
-  public genders = Object.values(Gender).filter(value => typeof value != 'number');
-  public sizes = Object.values(Size).filter(value => typeof value != 'number');
-  public addCharacter() {
+  abilityScores: DTO_NewCharacter_AbilityScore[] = [];
+  alignments = Object.values(Alignment).filter(value => typeof value != 'number');
+  genders = Object.values(Gender).filter(value => typeof value != 'number');
+  sizes = Object.values(Size).filter(value => typeof value != 'number');
 
-  }
+  // Validation specific properties
+  raceIsValid = false;
+
+  constructor(private router: Router, private route: ActivatedRoute, private characterService: CharacterService, private raceService: RaceService, private _sourceDataService: SourcedataService,
+    private _changeDetector: ChangeDetectorRef) { }
+
   backToList(): void {
     this.router.navigateByUrl("/Characters");
   }
 
-  //stuurt de tabs aan.
+  // Drive tab controls
   next() {
     $('.nav-tabs > .nav-item > .active').parent().next('li').find('a').trigger('click');
   }
 
-
+  ngAfterViewInit(): void {
+    // Manually trigger change detection on view elements to check if classes have been changed through triggered validation of child elements
+    // Not doing this causes an ExpressionChangedAfterItHasBeenCheckedError
+    this._changeDetector.detectChanges();
+  }
 
   ngOnInit(): void {
+    // Get id value from route parameter, if present
     this.id = this.route.snapshot.params['id'];
+
+    // Set variable based on presence of ID parameter. This boolean variable is used to determine if a character is created or edited
     this.createForm = !this.id;
-    this.loadraces();
 
+    // Create new instance of character model
+    if (this.createForm) {
+      this.newCharacter = new DTO_NewCharacter("Test",1,"somepicture",Alignment['Neutral (NN)'],Gender['Undetermined (X)'],"blue",6,Size.Medium,"none","black","pale",35,58,"something","Backstory goes here",null,[]);
 
+      // Populate lists
+      this.getAbilityScores();
+    }
+      
   }
 
-  loadraces() {
-    this.raceService.getMainRaces().subscribe(x => {
-      x.forEach(element => {
-        this.mainRaces.push(element);
-        if (element.subRaces.length == 0) {
-          return;
-        }
-        element.subRaces.forEach(subrace => {
-          this.subRaces.push(subrace);
-        });
-
-      });
-      if (this.createForm) {
-        this.abscoreService.getAbilityScores().forEach(element => {
-          this.abilityScores.push(new DtoNewABScores(element, null));
-        });
-      }
-
-      if (!this.createForm) {
-        this.characterService.getCharacter(this.id)
-          .subscribe(data => {
-            this.character = data;
-            this.selectedRace = this.character.races[0];
-            if (this.character.races.length > 1) {
-              this.selectedSubrace = this.character.races[1];
-            }
-            this.subRaces.forEach(element => {
-              if (element.parentId == this.selectedRace.raceId) {
-                this.subracesForMainRace.push(element);
-              }
-            });
-            this.abilityScores = this.character.abilityScores;
-          })
-      }
-      else {
-        this.character = new DtoNewcharacter(null, 1, null,
-          null, null, null, null, null,
-          null, null, null, null, null, null, null, null, this.abilityScores, null);
-      }
-    });
-  }
-  mainRaceChanged() {
-    this.selectedSubrace = null;
-    this.subracesForMainRace = [];
-    this.subRaces.forEach(element => {
-      if (element.parentId == this.selectedRace.id) {
-        this.subracesForMainRace.push(element);
-      }
-    });
+  getAbilityScores = () => {
+    // Get data from database
+    this._sourceDataService.getAbilityScores().pipe(
+      // Map each element to a Ability Score object and inject it in the property list
+      map((data:SourceData_AbilityScore[]) => data.forEach(element => {
+        this.newCharacter.abilityScores.push(new DTO_NewCharacter_AbilityScore(element.id, element.name, 10));
+        return data;
+      })))
+      .subscribe();
   }
 
-  //in UPDATE de juiste velden selecteren van de form
-  compareRace(race1: DtoNewRace, race2: DtoNewRace) {
-    return race1 && race2 ? race1.name == race2.name : race1 == race2;
-  }
-  compareSubrace(race1: DtoNewRace, race2: DtoNewRace) {
-    return race1 && race2 ? race1.name == race2.name : race1 == race2;
+  onRaceValidationChanged = (result: boolean) => {
+    this.raceIsValid = result;
+
+    // Trigger change detection to prevent ExpressionChangedAfterItHasBeenCheckedError
+    this._changeDetector.detectChanges();
   }
 
   save() {
-
-
     if (this.createForm) {
-      if (this.selectedSubrace == null) {
-        this.character.races = [this.selectedRace]
-      }
-      else {
-        this.character.races = [this.selectedRace, this.selectedSubrace]
-      }
-      this.characterService.createNewCharacter(this.character)
+      // New character detected, contact API accordingly
+      this.characterService.createNewCharacter(this.newCharacter)
         .subscribe(data => {
           this.router.navigateByUrl('/Characters');
         })
     }
     else {
-      this.character.races[0].raceId = this.selectedRace.id;
-      this.character.races[0].name = this.selectedRace.name;
-      this.character.races[0].description = this.selectedRace.description;
-      if (this.selectedSubrace != null) {
-        if (this.character.races.length == 1) {
-          this.character.races.push(this.selectedSubrace)
-          this.character.races[1].id = null;
-        }
-        this.character.races[1].raceId = this.selectedSubrace.id;
-        this.character.races[1].name = this.selectedSubrace.name;
-        this.character.races[1].description = this.selectedSubrace.description;
-        this.character.races[1].parentId = this.selectedSubrace.parentId;
-      }
-      else {
-        this.character.races = this.character.races.slice(0, 1);
-      }
-      this.characterService.updateCharacter(this.character)
-        .subscribe(data => {
-          this.router.navigateByUrl('/Characters');
-        })
+      // this.characterService.updateCharacter(this.newCharacter)
+      //   .subscribe(data => {
+      //     this.router.navigateByUrl('/Characters');
+      //   })
     }
   }
 }

@@ -8,4 +8,6 @@ export class Branching_Choice<T,U> {
 
     parent?: T;
     options?: U[] = [];
+
+    isValid: boolean;
 }

@@ -37,7 +37,7 @@ export class AddFeatComponent implements OnInit, AfterViewInit {
       name: [null, [Validators.required, Validators.maxLength(100)]],
       description: [null, [Validators.required, Validators.maxLength(1000)]],
       type: [null, [Validators.required]],
-      stacking: [null],
+      stacking: [false],
       sourceId: [null, [Validators.required]]
     });
   }

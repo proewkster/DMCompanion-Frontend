@@ -1,0 +1,15 @@
+<div class="text-left">
+    <div class="form-group text-left" *ngIf="selectedSpell === undefined">
+        <label for="selection" class="form-label">Select an option:</label>
+        <select for="selection" id="selection" class="form-control selectpicker" [(ngModel)]="selectedSpell" (change)="onSelectionChange()"
+            data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Search..." data-live-search-style="contains">
+            <option [ngValue]="undefined">-None-</option>
+            <option *ngFor="let option of choice.options" [ngValue]="option">
+                {{option.name}}
+            </option>
+        </select>
+    </div>
+    <span *ngIf="selectedSpell !== undefined">{{selectedSpell.name}} 
+        <span *ngIf="choice.options.length > 1"><i class="fa fa-undo ml-3 btn-as-link" (click)="resetSelection()"></i> ({{choice.options.length}} options)</span>
+    </span> 
+</div>

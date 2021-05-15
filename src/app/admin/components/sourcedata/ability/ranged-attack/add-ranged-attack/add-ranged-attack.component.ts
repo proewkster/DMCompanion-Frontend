@@ -20,7 +20,7 @@ declare var $: any;
 @Component({
   selector: 'app-add-ranged-attack',
   templateUrl: './add-ranged-attack.component.html',
-  styleUrls: ['./add-ranged-attack.component.scss']
+  styleUrls: ['../../../sourcedata.component.scss', './add-ranged-attack.component.scss']
 })
 export class AddRangedAttackComponent implements OnInit, AfterViewInit {
 

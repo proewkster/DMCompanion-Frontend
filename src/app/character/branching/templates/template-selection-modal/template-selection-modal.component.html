@@ -1,0 +1,17 @@
+<shared-modal title={{title}}>
+    <div body>
+        <div class="form-group text-left">
+            <label for="selection" class="form-label">Select an option:</label>
+            <select for="selection" id="selection" class="form-control selectpicker" [(ngModel)]="selection"
+                data-live-search="true" data-size="7" dropupAuto="false" data-live-search-placeholder="Search..." data-live-search-style="contains">
+                <option [ngValue]="undefined">-None-</option>
+                <option *ngFor="let option of options" [ngValue]="option">
+                    {{option.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div footer>
+        <button type="button" class="btn btn-primary btn-block" (click)="onSubmit()">Confirm</button>            
+    </div>
+</shared-modal>

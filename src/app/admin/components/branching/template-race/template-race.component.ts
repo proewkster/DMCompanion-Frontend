@@ -14,7 +14,7 @@ declare var $: any;
   templateUrl: './template-race.component.html',
   styleUrls: ['../branching.component.scss', './template-race.component.scss']
 })
-export class TemplateRaceComponent implements OnInit, AfterViewInit {
+export class TemplateRaceComponent implements OnInit {
 
   @Input() race: Branching_Race;
   @Input() root: boolean;
@@ -28,11 +28,6 @@ export class TemplateRaceComponent implements OnInit, AfterViewInit {
   }
 
   constructor(private _modalService: NgbModal) { }
-
-  ngAfterViewInit(): void {
-    // Collapse submenus
-    $('.submenu').collapse();
-  }
 
   ngOnInit(): void {
   }

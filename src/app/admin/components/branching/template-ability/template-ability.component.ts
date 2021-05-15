@@ -14,7 +14,7 @@ declare var $: any;
   templateUrl: './template-ability.component.html',
   styleUrls: ['../branching.component.scss', './template-ability.component.scss']
 })
-export class TemplateAbilityComponent implements OnInit, AfterViewInit {
+export class TemplateAbilityComponent implements OnInit {
 
   @Input() ability: any;
   @Input() root: boolean;
@@ -31,11 +31,6 @@ export class TemplateAbilityComponent implements OnInit, AfterViewInit {
   }
 
   constructor(private _modalService: NgbModal) { }
-
-  ngAfterViewInit(): void {
-    // Collapse submenus
-    $('.submenu').collapse();
-  }
 
   ngOnInit(): void {
     if (this.ability.castingLevel !== undefined) {

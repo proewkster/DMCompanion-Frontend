@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiEndPoints } from 'src/app/shared/enums/api-endpoints';
 import { ApiMethod } from 'src/app/shared/enums/api-method';
@@ -11,7 +12,7 @@ import { Branching_Race } from '../models/branching/branching_race';
 })
 export class BranchingService {
 
-  constructor(private _http: HttpService) { }
+  constructor(private _http: HttpService, private _httpClient: HttpClient) { }
 
   // Races
 
