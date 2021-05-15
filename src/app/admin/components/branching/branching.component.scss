@@ -8,6 +8,7 @@ body {
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
+    background-color: #9A8C98;
 }
 
 .sidebar {
@@ -24,7 +25,7 @@ body {
 }
 
 .nav-link {
-    color: white;
+    color: black;
 }
 
 .nav-link[data-toggle].collapsed:after {
@@ -41,8 +42,11 @@ body {
 
 .active {
     font-weight: bold;
-    text-shadow: 0 0 3px white;
+    text-shadow: 0 0 3px black;
 }
+
+.navcolor{background-color: #9A8C98;
+    border-color: #9A8C98;}
 
 .btn-action {
     display: flex;

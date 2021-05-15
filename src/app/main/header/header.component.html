@@ -1,7 +1,7 @@
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary w-100">
+    <nav class="navbar navbar-expand-md navbar-light w-100">
         <div class="order-2 order-md-0">
-            <i class="fas fa-dice-d20 fa-2x text-white mr-2"></i>
+            <i class="fas fa-dice-d20 fa-2x mr-2"></i>
             <a class="navbar-brand dm-reg-font" href="#"> {{title}}</a>
         </div>
         <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
@@ -42,7 +42,7 @@
 
         <div class="order-3 order-md-0">
             <div *ngIf="isAuthenticated; else loginMenu">
-                <div class="nav-item dropdown-toggle pl-0 text-light ml-auto" href="#" id="userMenu" role="button"
+                <div class="nav-item dropdown-toggle pl-0 ml-auto" href="#" id="userMenu" role="button"
                     data-toggle="dropdown">
                     <i class="fa fa-user mr-2"></i>{{ username }}
                 </div>
