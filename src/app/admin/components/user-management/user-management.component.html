@@ -14,31 +14,38 @@
                         <th class="text-center" width="20%">First name</th>
                         <th class="text-center" width="20%">Last name</th>
                         <th class="text-center" width="20%">Email</th>
-                        <th class="text-center" width="10%">Admin</th>
-                        <th class="text-center" width="10%">Actions</th>
+                        <th class="text-center" width="5%">Admin</th>
+                        <th class="text-center" width="15%">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of userlist">
-                        <td class="align-middle">{{item.id}}</td>
-                        <td class="align-middle">{{item.firstName}}</td>
+                    <tr *ngFor="let user of userlist">
+                        <td class="align-middle">{{user.id}}</td>
+                        <td class="align-middle">{{user.firstName}}</td>
                         <td class="align-middle">
-                            <div>{{item.lastName}}</div>
+                            <div>{{user.lastName}}</div>
                         </td>
-                        <td class="align-middle">{{item.email}}</td>
+                        <td class="align-middle">{{user.email}}</td>
                         <td class="align-middle">
                             <form>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="switch{{item.id}}"
-                                        [checked]=item.isAdmin (change)="changeAdmin(item.id,item.isAdmin)">
-                                    <label class="custom-control-label" for="switch{{item.id}}"></label>
+                                    <input type="checkbox" class="custom-control-input" id="switch{{user.id}}"
+                                        [checked]=user.isAdmin (change)="changeAdmin(user.id,user.isAdmin)">
+                                    <label class="custom-control-label" for="switch{{user.id}}"></label>
                                 </div>
                             </form>
                         </td>
                         <td class="align-middle">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-danger btn-action"
-                                    (click)="showDeleteUserModal(item)"><i class="fa fa-trash"></i></button>
+                                <button type="button" class="btn btn-success btn-action" data-toggle="tooltip"
+                                    title="Resend confirmation mail" (click)="showResendConfirmationModal(user)"><i
+                                        class="fas fa-at"></i></button>
+                                <button type="button" class="btn btn-secondary btn-action" data-toggle="tooltip"
+                                    title="Send reset password mail" (click)="showResetPassMailModal(user)"><i
+                                        class="fas fa-key"></i></button>
+                                <button type="button" class="btn btn-danger btn-action" data-toggle="tooltip"
+                                    title="Delete this user" (click)="showDeleteUserModal(user)"><i
+                                        class="fa fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>

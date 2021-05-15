@@ -6,6 +6,8 @@ import { DTOChangeAdmin } from '../../models/UserManagement/dtochange-admin';
 import { DTOUserlist } from '../../models/UserManagement/dtouserlist';
 import { UserManagementService } from '../../services/user-management.service';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResendConfirmationComponent } from './resend-confirmation/resend-confirmation.component';
 
 @Component({
   selector: 'app-user-management',
@@ -14,6 +16,7 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
 })
 export class UserManagementComponent implements OnInit {
   userlist: DTOUserlist[];
+
   constructor(private _usermanagement: UserManagementService, private _modalService: NgbModal, private _toastrService: ToastrService) { }
   private options: NgbModalOptions = {
     animation: true,
@@ -57,6 +60,68 @@ export class UserManagementComponent implements OnInit {
 
           // Show success message
           this._toastrService.success("User successfully removed");
+        }
+      }
+    },
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
+  }
+
+  public showResendConfirmationModal = (user: DTOUserlist) => {
+
+    // Open modal
+    const modalRef = this._modalService.open(ResendConfirmationComponent, this.options);
+    modalRef.componentInstance.title = "Resend mail confirmation";
+    modalRef.componentInstance.user = user;
+
+    // Subscribe to the response of the modal
+    modalRef.result.then(data => {
+      if (data) {
+
+        if (data instanceof HttpErrorResponse) { // Error response, process generic error
+          //Show error message
+          this._toastrService.error("The mail could not be send");
+        }
+        else { // Process succeeded
+        
+          // Show success message
+          this._toastrService.success("Mail successfully send");
+        }
+      }
+    },
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
+  }
+
+  public showResetPassMailModal = (user: DTOUserlist) => {
+
+    // Open modal
+    const modalRef = this._modalService.open(ForgotPasswordComponent, this.options);
+    modalRef.componentInstance.title = "Send reset password mail";
+    modalRef.componentInstance.user = user;
+
+    // Subscribe to the response of the modal
+    modalRef.result.then(data => {
+      if (data) {
+
+        if (data instanceof HttpErrorResponse) { // Error response, process generic error
+          //Show error message
+          this._toastrService.error("The mail could not be send");
+        }
+        else { // Process succeeded
+         
+          // Show success message
+          this._toastrService.success("Mail successfully send");
         }
       }
     },
