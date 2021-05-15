@@ -1,6 +1,5 @@
 <div *ngIf="displayAsMenu; else displayAsPage">
-    <div class="nav-item dropdown-toggle pl-0 text-light ml-auto" href="#" id="userMenu" role="button"
-        data-toggle="dropdown">
+    <div class="nav-item dropdown-toggle pl-0  ml-auto" href="#" id="userMenu" role="button" data-toggle="dropdown">
         <i class="fa fa-user mr-2"></i>
     </div>
 
@@ -35,9 +34,10 @@
 
             <button type="submit" class="btn btn-primary btn-block my-2" (click)="onClick($event)">Login</button>
 
-            <p class="text-center"><a routerLink="/authentication/forgotpassword">Forgot your password?</a></p>
+            <p class="text-center"><a class="btn btn-link" routerLink="/authentication/forgotpassword">Forgot your
+                    password?</a></p>
 
-            <div class="dropdown-divider"></div>
+            <hr class="text-black">
 
             <a class="nav-link dropdown-item text-dark" routerLink="/authentication/register">
                 <i class="fa fa-user-plus mr-2"></i>Register

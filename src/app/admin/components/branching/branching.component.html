@@ -1,41 +1,46 @@
 <div id="wrapper" class="d-flex flex-row h-100 m-0 p-0">
     <div id="sidebar-wrapper">
-        <nav id="sidebar" class="sidebar bg-primary pt-2 h-100">
-            <div class="mx-3 border-top border-bottom border-white text-center py-2">
-                <span class="text-white text-center"><strong>Branching Management</strong></span>
+        <nav id="sidebar" class="sidebar  pt-2 h-100">
+            <div class="mx-3 border-top border-bottom border-dark text-center py-2">
+                <span class="text-center"><strong>Branching Management</strong></span>
             </div>
             <div class="nav">
                 <div class="p-2 pl-3" id="branchingNavbar">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" [routerLink]="[{ outlets: { 'admin-branching-outlet': ['race'] } }]" routerLinkActive="active">Races</a>
+                            <a class="nav-link" [routerLink]="[{ outlets: { 'admin-branching-outlet': ['race'] } }]"
+                                routerLinkActive="active">Races</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" [routerLink]="[{ outlets: { 'admin-branching-outlet': ['class'] } }]" routerLinkActive="active">Classes</a>
+                            <a class="nav-link" [routerLink]="[{ outlets: { 'admin-branching-outlet': ['class'] } }]"
+                                routerLinkActive="active">Classes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" [routerLink]="[{ outlets: { 'admin-branching-outlet': ['feat'] } }]" routerLinkActive="active">Feats</a>
+                            <a class="nav-link" [routerLink]="[{ outlets: { 'admin-branching-outlet': ['feat'] } }]"
+                                routerLinkActive="active">Feats</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" [routerLink]="[{ outlets: { 'admin-branching-outlet': ['ability'] } }]" routerLinkActive="active">Abilities</a>
+                            <a class="nav-link" [routerLink]="[{ outlets: { 'admin-branching-outlet': ['ability'] } }]"
+                                routerLinkActive="active">Abilities</a>
                         </li>
                     </ul>
                 </div>
-            </div>    
-        </nav> 
+            </div>
+        </nav>
     </div>
-    
+
     <div class="pt-4">
-        <button type="button" class="btn border border-primary d-md-none sidebar-toggler text-primary" (click)="toggleSidebar($event)">
+        <button type="button" class="btn d-md-none sidebar-toggler" (click)="toggleSidebar($event)">
             <i id="sidebar-toggler-icon-sm-collapsed" class="fa fa-angle-double-right"></i>
             <i id="sidebar-toggler-icon-sm-expanded" class="fa fa-angle-double-left d-none"></i>
         </button>
-        
-        <button type="button" class="btn border border-primary d-none d-md-block sidebar-toggler text-primary" (click)="toggleSidebar($event)">
+
+        <button type="button" class="btn border border-dark navcolor d-none d-md-block sidebar-toggler "
+            (click)="toggleSidebar($event)">
             <i id="sidebar-toggler-icon-md-collapsed" class="fa fa-angle-double-right d-none"></i>
             <i id="sidebar-toggler-icon-md-expanded" class="fa fa-angle-double-left"></i>
         </button>
-    </div>  
+    </div>
     <div id="page-content-wrapper" class="align-self-stretch p-3 container-fluid">
         <router-outlet name="admin-branching-outlet"></router-outlet>
     </div>
