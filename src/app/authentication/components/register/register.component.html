@@ -1,113 +1,147 @@
-<form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="registerUser(registerForm.value)">
-    <div class="row text-center mt-3">
-        <div class="col-12 text-center">
-            <h1 class="display-2">Register</h1>
-            <h2>for a new account</h2>
-            <p>Already have an account? <a routerLink="/authentication/login" routerLinkActive="active">Sign in</a></p>
-        </div>
-    </div>
-
-    <hr/>
-
-    <div class="row my-3">
-        <div class="col-12 col-md-8 offset-md-2">
-            <div class="alert alert-danger" *ngIf="apiError">
-                <span [innerHTML]="errorMessage"></span>
+<div class="container">
+    <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="registerUser(registerForm.value)">
+        <div class="row text-center mt-3">
+            <div class="col-12 text-center">
+                <h1 class="display-2">Register</h1>
+                <h2>for a new account</h2>
+                <p>Already have an account? <a routerLink="/authentication/login" routerLinkActive="active">Sign in</a>
+                </p>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-12 col-md-6 p-3">
-            <div class="form-group">
-                <label for="email" class="form-label">Email Address:</label>
-                <div>
-                    <input type="text" formControlName="email" id="email" class="form-control" />
-                </div>
-                <div class="mt-2">
-                    <div class="alert alert-danger" *ngIf="validateControl('email') && hasError('email', 'required')">Email address is required</div>
-                    <div class="alert alert-danger" *ngIf="validateControl('email') && hasError('email', 'email')">Enter a valid email address</div>
-                    <div class="alert alert-danger" *ngIf="validateControl('email') && hasError('email', 'maxlength')">Email address can be maximum {{ registerForm.controls['email'].errors.maxlength.requiredLength }} characters long</div>
-                </div>
-            </div>  
+        <hr />
 
-            <div class="form-group">
-                <label for="nickname" class="form-label">Nickname:</label>
-                <div>
-                    <input type="text" formControlName="nickname" id="nickname" class="form-control" />
+        <div class="row my-3">
+            <div class="col-12 col-md-8 offset-md-2">
+                <div class="alert alert-danger" *ngIf="apiError">
+                    <span [innerHTML]="errorMessage"></span>
                 </div>
-                <div class="mt-2">
-                    <div class="alert alert-danger" *ngIf="validateControl('nickname') && hasError('nickname', 'maxlength')">Nickname can be maximum {{ registerForm.controls['nickname'].errors.maxlength.requiredLength }} characters long</div>
-                </div>
-            </div>  
-
-            <div class="form-group">
-                <label for="firstName" class="form-label">First Name:</label>
-                <div>
-                    <input type="text" formControlName="firstName" id="firstName" class="form-control" />
-                </div>
-                <div class="mt-2">
-                    <div class="alert alert-danger" *ngIf="validateControl('firstName') && hasError('firstName', 'required')">First name is required</div>
-                    <div class="alert alert-danger" *ngIf="validateControl('firstName') && hasError('firstName', 'maxlength')">First name can be maximum {{ registerForm.controls['firstname'].errors.maxlength.requiredLength }} characters long</div>
-                </div>
-            </div>  
-
-            <div class="form-group">
-                <label for="lastName" class="form-label">Last name:</label>
-                <div>
-                    <input type="text" formControlName="lastName" id="lastName" class="form-control" />
-                </div>
-                <div class="mt-2">
-                    <div class="alert alert-danger" *ngIf="validateControl('lastName') && hasError('lastName', 'required')">Last name is required</div>
-                    <div class="alert alert-danger" *ngIf="validateControl('lastName') && hasError('lastName', 'maxlength')">Last name can be maximum {{ registerForm.controls['lastname'].errors.maxlength.requiredLength }} characters long</div>
-                </div>
-            </div>  
-        </div> 
-        
-        <div class="col-12 col-md-6 p-3">
-            <div class="form-group">
-                <label for="password" class="form-label">Password:</label>
-                <div>
-                    <input type="password" formControlName="password" id="password" class="form-control" />
-                </div>
-                <div class="mt-2">
-                    <div class="alert alert-danger" *ngIf="validateControl('password') && hasError('password', 'required')">Password is required</div>
-                    <div class="alert alert-danger" *ngIf="validateControl('password') && hasError('password', 'minlength')">Password must be minimum {{ registerForm.controls['password'].errors.minlength.requiredLength }} characters long</div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="confirmPassword" class="form-label">Confirm Password:</label>
-                <div>
-                    <input type="password" formControlName="confirmPassword" id="confirmPassword" class="form-control" />
-                </div>
-                <div class="mt-2">
-                    <div class="alert alert-danger" *ngIf="validateControl('confirmPassword') && hasError('confirmPassword', 'mustMatch')">Passwords do not match</div>
-                </div>
-            </div> 
-        </div>
-    </div>
-
-    <div class="row mt-2">
-        <div class="col-12 col-md-8 offset-md-2">
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" formControlName="newsletter" id="newsletter">
-                <label for="newsletter" class="form-check-label">I would like to subscribe to the newsletter to receive news about updates and new content from DMCompanion</label>
-            </div>
-
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" formControlName="privacyStatement" id="privacyStatement">
-                <label for="privacyStatement" class="form-check-label">I agree to the terms in the <a href="#">Privacy Statement</a>.</label>
-            </div>
-            <div class="mt-2">
-                <div class="alert alert-danger" *ngIf="validateControl('privacyStatement')">You must agree to the terms to create an account</div>
             </div>
         </div>
-    </div>
 
-    <div class="row mt-2">
-        <div class="col-12 col-md-6 offset-md-3">
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        <div class="row">
+            <div class="col-12 col-md-6 p-3">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address:</label>
+                    <div>
+                        <input type="text" formControlName="email" id="email" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('email') && hasError('email', 'required')">Email address is required
+                        </div>
+                        <div class="alert alert-danger" *ngIf="validateControl('email') && hasError('email', 'email')">
+                            Enter a valid email address</div>
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('email') && hasError('email', 'maxlength')">Email address can be
+                            maximum {{ registerForm.controls['email'].errors.maxlength.requiredLength }} characters long
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nickname" class="form-label">Nickname:</label>
+                    <div>
+                        <input type="text" formControlName="nickname" id="nickname" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('nickname') && hasError('nickname', 'maxlength')">Nickname can be
+                            maximum {{ registerForm.controls['nickname'].errors.maxlength.requiredLength }} characters
+                            long</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName" class="form-label">First Name:</label>
+                    <div>
+                        <input type="text" formControlName="firstName" id="firstName" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('firstName') && hasError('firstName', 'required')">First name is
+                            required</div>
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('firstName') && hasError('firstName', 'maxlength')">First name can be
+                            maximum {{ registerForm.controls['firstname'].errors.maxlength.requiredLength }} characters
+                            long</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="form-label">Last name:</label>
+                    <div>
+                        <input type="text" formControlName="lastName" id="lastName" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('lastName') && hasError('lastName', 'required')">Last name is
+                            required</div>
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('lastName') && hasError('lastName', 'maxlength')">Last name can be
+                            maximum {{ registerForm.controls['lastname'].errors.maxlength.requiredLength }} characters
+                            long</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 p-3">
+                <div class="form-group">
+                    <label for="password" class="form-label">Password:</label>
+                    <div>
+                        <input type="password" formControlName="password" id="password" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('password') && hasError('password', 'required')">Password is required
+                        </div>
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('password') && hasError('password', 'minlength')">Password must be
+                            minimum {{ registerForm.controls['password'].errors.minlength.requiredLength }} characters
+                            long</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirm Password:</label>
+                    <div>
+                        <input type="password" formControlName="confirmPassword" id="confirmPassword"
+                            class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('confirmPassword') && hasError('confirmPassword', 'mustMatch')">
+                            Passwords do not match</div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</form>
+
+        <div class="row mt-2">
+            <div class="col-12 col-md-8 offset-md-2">
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="newsletter" id="newsletter">
+                    <label for="newsletter" class="form-check-label">I would like to subscribe to the newsletter to
+                        receive news about updates and new content from DMCompanion</label>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="privacyStatement"
+                        id="privacyStatement">
+                    <label for="privacyStatement" class="form-check-label">I agree to the terms in the <a
+                            href="#">Privacy Statement</a>.</label>
+                </div>
+                <div class="mt-2">
+                    <div class="alert alert-danger" *ngIf="validateControl('privacyStatement')">You must agree to the
+                        terms to create an account</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col-12 col-md-6 offset-md-3">
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
