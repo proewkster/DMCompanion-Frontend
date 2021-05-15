@@ -1,0 +1,87 @@
+<div class="container">
+    <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="updateUser(registerForm.value)">
+        <div class="row text-center mt-3">
+            <div class="col-12 text-center">
+                <h1 class="display-2">Update</h1>
+                <h2>Edit your personal details here</h2>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row my-3">
+            <div class="col-12 col-md-8 offset-md-2">
+                <div class="alert alert-danger" *ngIf="apiError">
+                    <span [innerHTML]="errorMessage"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-6 p-3">
+
+                <div class="form-group">
+                    <label for="nickname" class="form-label">Nickname:</label>
+                    <div>
+                        <input type="text" formControlName="nickname" id="nickname" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('nickname') && hasError('nickname', 'maxlength')">Nickname can be
+                            maximum {{ registerForm.controls['nickname'].errors.maxlength.requiredLength }} characters
+                            long</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName" class="form-label">First Name:</label>
+                    <div>
+                        <input type="text" formControlName="firstName" id="firstName" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('firstName') && hasError('firstName', 'required')">First name is
+                            required</div>
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('firstName') && hasError('firstName', 'maxlength')">First name can be
+                            maximum {{ registerForm.controls['firstname'].errors.maxlength.requiredLength }} characters
+                            long</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="form-label">Last name:</label>
+                    <div>
+                        <input type="text" formControlName="lastName" id="lastName" class="form-control" />
+                    </div>
+                    <div class="mt-2">
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('lastName') && hasError('lastName', 'required')">Last name is
+                            required</div>
+                        <div class="alert alert-danger"
+                            *ngIf="validateControl('lastName') && hasError('lastName', 'maxlength')">Last name can be
+                            maximum {{ registerForm.controls['lastname'].errors.maxlength.requiredLength }} characters
+                            long</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-2 d-flex justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="newsletter" id="newsletter">
+                    <label for="newsletter" class="form-check-label">I would like to subscribe to the newsletter to
+                        receive news about updates and new content from DMCompanion</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 col-md-6 offset-md-3">
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

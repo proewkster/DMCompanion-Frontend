@@ -12,6 +12,35 @@
 input.ng-touched.ng-invalid{
     border: 3px solid red;
 }
+@font-face {
+    font-family: 'DraconisRegular';
+    src: url('./assets/fonts/Draconis.eot');
+    src: url('./assets/fonts/Draconis.eot?#iefix') format('embedded-opentype'),
+        url('./assets/fonts/Draconis.woff2') format('woff2'),
+        url('./assets/fonts/Draconis.woff') format('woff'),
+        url('./assets/fonts/Draconis.svg#Draconis') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DraconisBold';
+    src: url('./assets/fonts/Draconis-Bold.eot');
+    src: url('./assets/fonts/Draconis-Bold.eot?#iefix') format('embedded-opentype'),
+        url('./assets/fonts/Draconis-Bold.woff2') format('woff2'),
+        url('./assets/fonts/Draconis-Bold.woff') format('woff'),
+        url('./assets/fonts/Draconis-Bold.svg#Draconis-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+.dm-reg-font{
+    font-family: DraconisRegular;
+}
+.dm-bold-font{
+    font-family: DraconisBold;
+}
 
 hr {
     margin: 0 auto;

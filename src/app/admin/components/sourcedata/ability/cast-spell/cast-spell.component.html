@@ -2,7 +2,7 @@
     <div class="row text-center">
         <div class="col-12">
             <h1>Cast Spells</h1>
-            <hr/>
+            <hr />
         </div>
     </div>
     <div class="row text-center">
@@ -24,15 +24,19 @@
                     <tr *ngFor="let item of castSpells">
                         <td class="align-middle">{{item.id}}</td>
                         <td class="align-middle">{{item.name}}</td>
-                        <td class="align-middle">{{item.description}}</td>
+                        <td class="align-middle">
+                            <div>{{item.description}}</div>
+                        </td>
                         <td class="align-middle">{{item.type}}</td>
                         <td class="align-middle">{{item.restoreCondition}}</td>
                         <td class="align-middle">{{item.maxSlots}}</td>
                         <td class="align-middle">{{item.castingLevel}}</td>
                         <td class="align-middle">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-action" (click)="showEditCastSpellModal(item)"><i class="fa fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-action" (click)="showDeleteCastSpellModal(item)"><i class="fa fa-trash"></i></button>
+                                <button type="button" class="btn btn-primary btn-action"
+                                    (click)="showEditCastSpellModal(item)"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger btn-action"
+                                    (click)="showDeleteCastSpellModal(item)"><i class="fa fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>
@@ -40,5 +44,6 @@
             </table>
         </div>
     </div>
-    <button type="button" class="btn btn-primary" (click)="showAddCastSpellModal()"><i class="fa fa-plus mr-2"></i>Add Cast Spell</button>
+    <button type="button" class="btn btn-primary" (click)="showAddCastSpellModal()"><i class="fa fa-plus mr-2"></i>Add
+        Cast Spell</button>
 </div>

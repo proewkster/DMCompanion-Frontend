@@ -12,7 +12,7 @@ import { EditMeleeAttackComponent } from './edit-melee-attack/edit-melee-attack.
 @Component({
   selector: 'app-melee-attack',
   templateUrl: './melee-attack.component.html',
-  styleUrls: ['./melee-attack.component.scss']
+  styleUrls: ['../../sourcedata.component.scss', './melee-attack.component.scss']
 })
 export class MeleeAttackComponent implements OnInit {
 
@@ -47,9 +47,9 @@ export class MeleeAttackComponent implements OnInit {
       .subscribe(data => {
         this.sources = data;
       },
-      error => {
-        console.log("An error occurred while retrieving data from the server");
-      });
+        error => {
+          console.log("An error occurred while retrieving data from the server");
+        });
   }
 
   private getMeleeAttacks = () => {
@@ -58,13 +58,13 @@ export class MeleeAttackComponent implements OnInit {
         console.log(data);
         this.meleeAttacks = data;
       },
-      error => {
-        console.log("An error occurred while retrieving data from the server");
-      })
+        error => {
+          console.log("An error occurred while retrieving data from the server");
+        })
   }
 
   public showEditMeleeAttackModal = (meleeAttack: SourceData_MeleeAttack) => {
-    
+
     // Open modal
     const modalRef = this._modalService.open(EditMeleeAttackComponent, this.optionsLarge);
     modalRef.componentInstance.title = "Edit MeleeAttack";
@@ -89,17 +89,17 @@ export class MeleeAttackComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 
   public showDeleteMeleeAttackModal = (meleeAttack: SourceData_MeleeAttack) => {
-    
+
     // Open modal
     const modalRef = this._modalService.open(DeleteMeleeAttackComponent, this.optionsSmall);
     modalRef.componentInstance.title = "Delete MeleeAttack";
@@ -116,7 +116,7 @@ export class MeleeAttackComponent implements OnInit {
         else { // Process succeeded
           // Remove item from array
           let index = this.meleeAttacks.indexOf(meleeAttack);
-  
+
           this.meleeAttacks.splice(index, 1);
 
           // Show success message
@@ -124,13 +124,13 @@ export class MeleeAttackComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 
   public showAddMeleeAttackModal = () => {
@@ -156,12 +156,12 @@ export class MeleeAttackComponent implements OnInit {
         }
       }
     },
-    error => {
-      console.log(error);
-      if (error === "Close click" || error === "Cross click") {
-        // Modal dismissed, no specific action
-        // Error catch is needed to suppress errors in UI
-      }
-    });
+      error => {
+        console.log(error);
+        if (error === "Close click" || error === "Cross click") {
+          // Modal dismissed, no specific action
+          // Error catch is needed to suppress errors in UI
+        }
+      });
   }
 }

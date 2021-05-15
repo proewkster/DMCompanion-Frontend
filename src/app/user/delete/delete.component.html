@@ -1,0 +1,34 @@
+<shared-modal title={{title}}>
+    <div body>
+        <div class="row text-center">
+            <div class="col-8 offset-2">
+                <div class="text-danger">
+                    <p><strong>Warning</strong></p>
+                    <p>This will permanently delete your profile and all characters tied to it.</p>
+                    <p class="mt-1">Are you sure you want to proceed?</p>
+                </div>
+                <div>
+                    <form #pass="ngForm">
+                        <div class="form-group">
+                            <label for="upassword">Confirm your password here</label>
+                            <input type="password" class="form-control" id="upassword" required
+                                placeholder="Password" [(ngModel)]="userpassword"
+                                #password="ngModel" name="upassword">
+                        </div>
+                        <div *ngIf="pass.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                            Your password is required.
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <div footer>
+            <button [disabled]="pass.invalid" type="button" class="btn btn-danger btn-block"
+                (click)="removePersonalData()">Delete</button>
+        </div>
+    </div>
+</shared-modal>
+ 
+   
