@@ -25,6 +25,7 @@ export class RaceComponent implements OnInit, AfterViewInit {
   selectedSubRace: SourceData_Race;
 
   fullMainRace: Branching_Race;
+  fullSubRace: Branching_Race;
 
   // Validation specific properties
   mainRaceIsValid = false;
@@ -75,7 +76,7 @@ export class RaceComponent implements OnInit, AfterViewInit {
   onMainRaceSelection = (raceId: string) => {
     // Invalidate races
     this.mainRaceIsValid = false;
-    this.subRaceIsValid = true; // Temporarily set to true until subrace processing is implemented
+    this.subRaceIsValid = false;
 
     // Remove all races from character, including subrace
     this.characterModel.races = [];
@@ -92,7 +93,7 @@ export class RaceComponent implements OnInit, AfterViewInit {
     }, 1);
 
     // Validate subrace if main race doesn't have subraces
-    //this.subRaceIsValid = this.selectedMainRace.subRaces === undefined || this.selectedMainRace.subRaces?.length === 0;
+    this.subRaceIsValid = this.selectedMainRace.subRaces === undefined || this.selectedMainRace.subRaces?.length === 0;
 
     // Get branching data from database for selected race
     if (this.selectedMainRace != undefined){
@@ -109,5 +110,15 @@ export class RaceComponent implements OnInit, AfterViewInit {
     
     // Get selected subrace object
     this.selectedSubRace = this.selectedMainRace.subRaces.find(x => x.id === raceId);
+
+    // Get branching data from database for selected race
+    if (this.selectedSubRace != undefined){
+      // Add race the character model
+      this.characterModel.races.push(new DTO_NewCharacter_Race(this.selectedSubRace.id));
+
+      this._branchingService.getRace(this.selectedSubRace.id).subscribe(data => {
+        this.fullSubRace = data;
+      });
+    }
   }
 }

@@ -41,3 +41,8 @@
         </div>
     </div>
 </div>
+<div class="row mt-2" *ngIf="fullSubRace != undefined">
+    <div class="col-10 offset-1 p-3 text-center">
+        <character-branching-root [race]="fullSubRace" [characterModel]="characterModel" (validationChanged)="onSubRaceValidationChanged($event)"></character-branching-root>
+    </div>
+</div>
