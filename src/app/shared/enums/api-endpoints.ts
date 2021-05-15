@@ -15,6 +15,13 @@ export enum ApiEndPoints {
     DOWNLOADPERSONALDATA = "/user/DownloadUserData",
     DELETEPERSONALDATA = "/user/DeleteUser",
 
+    //UserManagement Endpoints
+    USER_LIST = "/usermanagement/UserList",
+    CHANGE_ADMIN = "/usermanagement/Adminstate",
+    DELETE_USER = "/usermanagement/DeleteUser",
+    FORGOT_PASSWORD = "/usermanagement/ForgotPassword",
+    RESEND_CONFIRMATION = "/usermanagement/ResendConfirmation",
+
     // SourceData Endpoints
     SOURCEDATA_ABILITYSCORE = "/sourcedata/abilityscore",
     SOURCEDATA_CONDITION = "/sourcedata/condition",

@@ -6,19 +6,20 @@ import { CharacterlistComponent } from './character/characterlist/characterlist.
 import { SelectedCharacterComponent } from './character/characterlist/selected-character/selected-character.component';
 import { NewcharacterComponent } from './character/newcharacter/newcharacter.component';
 import { HomeComponent } from './main/home/home.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
-  { path: "Characters", component: CharacterlistComponent },
-  { path: "Characters/:id", component: SelectedCharacterComponent },
-  { path: "newCharacter", component: NewcharacterComponent },
-  { path: "editCharacter/:id", component: NewcharacterComponent },
+  { path: "Characters", component: CharacterlistComponent, canActivate: [AuthGuard] },
+  { path: "Characters/:id", component: SelectedCharacterComponent, canActivate: [AuthGuard] },
+  { path: "newCharacter", component: NewcharacterComponent, canActivate: [AuthGuard] },
+  { path: "editCharacter/:id", component: NewcharacterComponent, canActivate: [AuthGuard] },
   { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
   { path: 'error', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
-  { path: "*", component: HomeComponent }
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AdminGuard] },
+  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
