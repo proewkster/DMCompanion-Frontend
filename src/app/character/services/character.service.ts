@@ -17,8 +17,8 @@ export class CharacterService {
     return this._http.requestCall(ApiEndPoints.CHARACTERDATA_CHARACTER, ApiMethod.GET, id);
   }
 
-  createNewCharacter(char: DTO_NewCharacter) {
-    return this._http.requestCall(ApiEndPoints.CHARACTERDATA_CHARACTER, ApiMethod.POST, null, char);
+  createNewCharacter(newCharacter: DTO_NewCharacter) {
+    return this._http.requestCall(ApiEndPoints.CHARACTERDATA_CHARACTER, ApiMethod.POST, null, newCharacter);
   }
   updateCharacter(char: DTO_NewCharacter) {
     return this._http.requestCall(ApiEndPoints.CHARACTERDATA_CHARACTER, ApiMethod.PUT, null, char);

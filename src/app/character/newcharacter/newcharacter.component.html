@@ -72,11 +72,11 @@
         <!-- TAB2 -->
         <div class="tab-pane fade" id="abilityScore" role="tabpanel" aria-labelledby="contact-tab">
             <form #f2="ngForm">
-                <div *ngFor="let abscore of abilityScores">
+                <div *ngFor="let abscore of newCharacter.abilityScores">
                     <div class="form-group">
                         <label for="{{abscore.name}}">{{abscore.name}}</label>
                         <input type="number" class="form-control" id="{{abscore.name}}" required min="0" max="20"
-                            placeholder="Enter the abilityscore for {{abscore.name}}" [(ngModel)]="abscore.base_value"
+                            placeholder="Enter the abilityscore for {{abscore.name}}" [(ngModel)]="abscore.baseValue"
                             #{{abscore.name}}="ngModel" name="{{abscore.name}}">
                     </div>
                     <div *ngIf="'{{abscore.name}}'.invalid && ('{{abscore.name}}'.dirty || '{{abscore.name}}'.touched)"
@@ -96,40 +96,6 @@
         </div>
         <!-- TAB3 -->
         <div class="tab-pane fade" id="race" role="tabpanel" aria-labelledby="contact-tab">
-            
-            <form #f3="ngForm">
-                <!--
-                <div class="form-group">
-                    <label for="race">Race</label>
-                    <select class="form-control" [compareWith]="compareRace" (change)="mainRaceChanged()"
-                        #race="ngModel" [(ngModel)]="selectedRace" required name="race">
-                        <option value="" disabled>Choose your race</option>
-                        <ng-container *ngFor=" let race of mainRaces">
-
-                            <option *ngIf="race.parentId==null" [ngValue]="race">
-                                {{race.name}}
-                            </option>
-                        </ng-container>
-                    </select>
-                    <p *ngIf="selectedRace">
-                        {{selectedRace.description}}
-                    </p>
-                </div>
-                <div *ngIf="race.valid && subracesForMainRace.length>0" class="form-group">
-                    <label for="subrace">SubRace</label>
-                    <select class="form-control" [compareWith]="compareSubrace" #subrace="ngModel"
-                        [(ngModel)]="selectedSubrace" name="subrace">
-                        <option value="" disabled>Choose your subrace</option>
-                        <option *ngFor=" let subrace of subracesForMainRace" [ngValue]="subrace">
-                            {{subrace.name}}
-                        </option>
-                    </select>
-                    <p *ngIf="selectedSubrace">
-                        {{selectedSubrace.description}}
-                    </p>
-                </div>
-                -->
-            </form>
             
             <character-race [characterModel]="newCharacter" (validationChanged)="onRaceValidationChanged($event)"></character-race>
 

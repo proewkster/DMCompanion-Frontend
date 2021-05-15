@@ -1,12 +1,12 @@
+import { DTO_NewCharacter_Ability } from 'src/app/character/models/dto_newcharacter_ability';
+import { DTO_NewCharacter } from 'src/app/character/models/dto-newcharacter';
 import { Branching_CastSpell } from './../../../../admin/models/branching/branching_castspell';
 import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { NgbModalOptions, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Branching_Ability } from 'src/app/admin/models/branching/branching_ability';
-import { Branching_Choice } from 'src/app/admin/models/branching/branching_choice';
 import { TemplateSelectionModalComponent } from '../template-selection-modal/template-selection-modal.component';
+import { Branching_Choice } from '../../../../admin/models/branching/branching_choice';
+import { Branching_Ability } from '../../../../admin/models/branching/branching_ability';
 import { ClassIdentifiers } from 'src/app/enums/class-identifier.enum';
-import { DTO_NewCharacter_Ability } from 'src/app/character/models/dto_newcharacter_ability';
-import { DTO_NewCharacter } from 'src/app/character/models/dto-newcharacter';
 
 @Component({
   selector: 'character-branching-template-ability',

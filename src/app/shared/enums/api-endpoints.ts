@@ -33,5 +33,5 @@ export enum ApiEndPoints {
     BRANCHING_SPELL = "/branching/spell",
 
     //Character endpoints
-    CHARACTERDATA_CHARACTER = "/CharacterData/Character"
+    CHARACTERDATA_CHARACTER = "/characterdata/character"
 }

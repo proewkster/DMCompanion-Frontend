@@ -2,9 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnIni
 import { Branching_Choice } from 'src/app/admin/models/branching/branching_choice';
 import { Branching_Spell } from 'src/app/admin/models/branching/branching_spell';
 import { DTO_NewCharacter_Ability } from 'src/app/character/models/dto_newcharacter_ability';
-import { DTO_NewCharacter_Feat } from 'src/app/character/models/dto_newcharacter_feat';
 import { DTO_NewCharacter_Spell } from 'src/app/character/models/dto_newcharacter_spell';
-import { ClassIdentifiers } from 'src/app/enums/class-identifier.enum';
 
 declare var $: any;
 
@@ -86,7 +84,7 @@ export class TemplateSpellComponent implements OnInit, AfterViewInit {
   
   private addSelectionToCharacterModel = () => {
     // Create new spell object
-    let newSpell = new DTO_NewCharacter_Spell(this.selectedSpell.id, this.choice.level, this.choice.parentId, this.rootId);
+    let newSpell = new DTO_NewCharacter_Spell(this.selectedSpell.id, this.choice.level, this.rootId, this.choice.parentId);
 
     // Add spell to list
     this.abilityModel.spells.push(newSpell)

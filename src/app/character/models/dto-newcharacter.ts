@@ -2,7 +2,7 @@ import { DTO_NewCharacter_Race } from './dto_newcharacter_race';
 import { Alignment } from "src/app/enums/alignment.enum";
 import { Gender } from "src/app/enums/gender.enum";
 import { Size } from "src/app/enums/size.enum";
-import { DtoNewABScores } from "./dto-new-abscores";
+import { DTO_NewCharacter_AbilityScore } from "./dto_newcharacter_abilityscore";
 
 export class DTO_NewCharacter {
   public name: string; //1
@@ -22,7 +22,7 @@ export class DTO_NewCharacter {
   public backstory: string;//4
   public notes: string;//3
 
-  public abilityScores: DtoNewABScores[] = [];
+  public abilityScores: DTO_NewCharacter_AbilityScore[] = [];
   public races: DTO_NewCharacter_Race[] = [];
 
   constructor(
@@ -42,7 +42,7 @@ export class DTO_NewCharacter {
     appearance?: string,
     backstory?: string,
     notes?: string,
-    abilityScores?: DtoNewABScores[]
+    abilityScores?: DTO_NewCharacter_AbilityScore[]
   ) {
     this.name = name
     this.level = level
