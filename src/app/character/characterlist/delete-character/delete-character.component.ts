@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { DtoListCharacters } from '../../models/dto-list-characters';
+import { DtoListCharacters } from '../../models/DTO/dto-list-characters';
 import { CharacterService } from '../../services/character.service';
 
 @Component({

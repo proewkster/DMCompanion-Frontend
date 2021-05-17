@@ -1,16 +1,15 @@
-import { DTO_NewCharacter_AbilityScore } from './../models/dto_newcharacter_abilityscore';
-import { DTO_NewCharacter } from 'src/app/character/models/dto-newcharacter';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Gender } from 'src/app/enums/gender.enum';
 import { Alignment } from 'src/app/enums/alignment.enum';
 import { Size } from 'src/app/enums/size.enum';
 import { CharacterService } from 'src/app/character/services/character.service';
 import { RaceService } from 'src/app/character/services/race.service';
-import { DtoNewRace } from '../models/dto-new-race';
-import { Component, OnInit, AfterViewInit, ChangeDetectorRef, Pipe } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { SourcedataService } from 'src/app/admin/services/sourcedata.service';
 import { map } from 'rxjs/operators';
 import { SourceData_AbilityScore } from 'src/app/admin/models/sourcedata/sourcedata_abilityscore';
+import { DTO_NewCharacter } from '../models/DTO/dto-newcharacter';
+import { DTO_NewCharacter_AbilityScore } from '../models/DTO/dto_newcharacter_abilityscore';
 
 
 @Component({

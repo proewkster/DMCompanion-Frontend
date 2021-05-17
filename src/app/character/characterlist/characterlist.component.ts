@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DtoListCharacters } from '../models/dto-list-characters';
-import { DtoNewRace } from '../models/dto-new-race';
 import { CharacterService } from '../services/character.service';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DeleteCharacterComponent } from './delete-character/delete-character.component';
+import { DtoListCharacters } from '../models/DTO/dto-list-characters';
 
 @Component({
   selector: 'app-characterlist',
@@ -26,6 +25,7 @@ export class CharacterlistComponent implements OnInit {
   ngOnInit(): void {
     this.getCharList();
   }
+  
   getCharList() {
     this.characterService.getCharacters()
       .subscribe(data => {
@@ -35,13 +35,7 @@ export class CharacterlistComponent implements OnInit {
           console.log("An error occurred while retrieving data from the server");
         });
   }
-  getraceName(races: DtoNewRace[]) {
-    let race = races.find(r => r.type == "Sub");
-    if (race == null) {
-      race = races.find(r => r.type == "Main");
-    }
-    return race ? race.name : "";
-  }
+  
   public showDeleteCharacterModal = (character: DtoListCharacters) => {
 
     // Open modal

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Branching_Race } from 'src/app/admin/models/branching/branching_race';
-import { DTO_NewCharacter } from '../../models/dto-newcharacter';
+import { DTO_NewCharacter } from '../../models/DTO/dto-newcharacter';
 
 @Component({
   selector: 'character-branching-root',

@@ -1,0 +1,174 @@
+.chip-skill {
+    display: inline-block;
+    padding: 0 0 0 20px;
+    height: 24px;
+    width: 130px;
+    font-size: 16px;
+    line-height: 15px;
+    border-radius: 10px;
+    background-color: #f2e9e4;
+    border: 3px solid #22223b;
+}
+
+.chip-skill-tag {
+    color: #f2e9e4;
+    font-size: 16px;
+    float: left;
+    margin: -6px 0px 0 -35px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 3px solid #22223b;
+    background-color: #22223b;
+    line-height: 24px;
+}
+
+.chip-skill-proficient {
+    border: 1px solid #22223b;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    float: right;
+    margin: -4px -6px 0 0;  
+    background-color: #f2e9e4;
+}
+
+.chip-skill-expertise {
+    border: 1px solid #22223b;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    float: right;
+    margin: 12px -10px 0 0;
+    background-color: #f2e9e4;
+}
+
+.chip-skill .tagged {
+    background-color: #22223b !important;
+}
+
+.chip-abilityscore {
+    display: inline-block;
+    text-align: center;
+    padding: 0px;
+    height: 100px;
+    width: 80px;
+    border-radius: 10px;
+    background-color: #f2e9e4;
+    border: 3px solid #22223b;
+}
+
+.chip-abilityscore-title {
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    line-height: 30px;
+    background-color: #22223b;
+    color: #f2e9e4;
+    padding-bottom: 2px;
+}
+
+.chip-abilityscore-body {
+    font-size: 40px;
+    line-height: 40px;
+    padding: 0px;
+    color: #22223b;
+}
+
+.chip-abilityscore-tag {
+    color: #f2e9e4;
+    font-size: 20px;
+    margin: auto;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 3px solid #22223b;
+    background-color: #22223b;
+    line-height: 34px;
+}
+
+
+.banner-image {
+    border-radius: 50%;
+    border: 6px solid #22223b;
+    height: 170px;
+    width: 170px;
+    padding: 5px;
+    background-color: #f2e9e4;
+    float: left;
+}
+
+.banner {
+    border: 6px solid #22223b;
+    margin: 10px 0px 0px 50px;
+    border-radius: 10px;
+    height: 150px;
+}
+
+.banner-body {
+    padding: 5px 1px 5px 10px;
+    height: 100%;
+    width: 40%;
+    float: left;
+}
+
+.banner-stats {
+    height: 100%;
+    width: 20%;
+    float: left;
+}
+
+.banner-section {
+    height: 50%;
+}
+
+.banner-title {
+    width: 100%;
+    text-align: center;
+    background-color: #22223b;
+    line-height: 100%;
+    color: #f2e9e4;
+    padding-bottom: 3px;
+}
+
+.banner-statbox {
+    float: left;
+    width: 33%;
+    text-align: center;
+    padding: 0;
+    line-height: 100%;
+}
+
+.stat {
+    margin: 6px 0 0 0;
+    font-size: 30px;
+}
+
+.banner-name {
+    font-size: 45px;
+    font-weight: bold;
+    line-height: 100%;
+}
+
+.banner-class {
+    font-size: 20px;
+    line-height: 100%;
+}
+
+.banner-xp {
+    margin-top: 25px;
+    line-height: 100%;
+    width: 10%;
+}
+
+.btn-banner {
+    border: 2px solid #22223b;
+    font-size: 16px;
+    color: #22223b;
+}
+
+.btn-banner:hover {
+    border-color: #4A4E69;
+    background-color: #4A4E69;
+    color: #f2e9e4;
+}

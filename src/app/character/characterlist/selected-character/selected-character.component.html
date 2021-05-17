@@ -1,33 +1,143 @@
-<div class="container">
-    <div class="row">
-        <div class="list-group-item list-group-item-action d-flex">
-            <div class="col-2">
-                <img class="img-fluid rounded-circle" src="{{char.picture}}" />
+<div class="container" *ngIf="!isLoading; else loadingScreen">
+    <div class="row my-1">
+        <div class="dm-reg-font w-100">
+            <div class="banner-image">
+                <img class="img-fluid rounded-circle" src="../assets/img/d20.png" />
             </div>
-            <div class="col-10">
-                Name: {{char?.name}} <br>
-                Level: {{char?.level}} <br>
-                Race: {{getraceName(char?.races)}}
+            <div class="banner">
+                <div class="banner-body">
+                    <div class="banner-name">
+                        {{character.name}}
+                    </div>
+                    <div class="banner-class">
+                        Level {{character.level}} {{character.race}} <!--Classes go here-->
+                    </div>
+                    <div class="banner-xp"> 
+                        XP: {{character.xp}}
+                    </div>
+                </div>
+                <div class="banner-stats">
+                    <div class="banner-section">
+                        <div class="banner-title">
+                            Hit Points
+                        </div>
+                        <div class="banner-statbox">
+                            Current
+                            <p class="stat">{{character.current_Hit_Points}}</p>
+                        </div>
+                        <div class="banner-statbox">
+                            Max
+                            <p class="stat">{{character.current_Max_Hit_Points}}</p>
+                        </div>
+                        <div class="banner-statbox">
+                            Temp
+                            <p class="stat">{{character.temp_Hit_Points}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="banner-section justify-content-around">
+                        <div class="banner-title">
+                            Stats
+                        </div>
+                        <div class="banner-statbox">
+                            Prof. Bonus
+                            <p class="stat">+{{character.proficiency_Bonus}}</p>
+                        </div>
+                        <div class="banner-statbox">
+                            AC
+                            <p class="stat">{{character.armor_Class}}</p>
+                        </div>
+                        <div class="banner-statbox">
+                            Initiative
+                            <p class="stat">{{character.initiative >= 0 ? "+" + character.initiative : character.initiative}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-functions">
+                    <div class="row">
+                        <div class="col-6 pl-4 pr-2 py-2">
+                            <button type="button" class="btn-sm btn-banner btn-block">Heal</button>
+                            <button type="button" class="btn-sm btn-banner btn-block">Take Damage</button>
+                        </div>
+                        <div class="col-6 py-2">
+                            <button type="button" class="btn-sm btn-banner btn-block">Long Rest</button>
+                            <button type="button" class="btn-sm btn-banner btn-block">Short Rest</button>
+                            <button type="button" class="btn-sm btn-banner btn-block">Edit</button>
+                        </div>
+                    </div>                    
+                </div>
             </div>
         </div>
     </div>
     <div class="row my-3">
-        <div class="d-flex flex-wrap col-6 justify-content-around border border-primary rounded">
-            <div *ngFor="let abscore of char.abilityScores" class="col-4 border border-primary rounded m-2">
-                <p class="text-center">
-                    {{abscore.name}}
-                </p>
-                <hr>
-                <p class="text-center">
-                    {{abscore.base_value}} | {{calculateModifier(abscore.base_value)}}
-                </p>
+        <div class="d-flex flex-wrap col-12 justify-content-around">
+            <div *ngFor="let abscore of character.abilityScores">
+                <div class="chip-abilityscore dm-reg-font my-2">
+                    <div class="chip-abilityscore-title dm-bold-font">
+                        {{abscore.name.substring(0,3).toUpperCase()}}
+                    </div>
+                    <div class="chip-abilityscore-body">
+                        {{abscore.currentValue}}
+                    </div>
+                    <div class="chip-abilityscore-tag text-center">
+                        {{abscore.modifier >= 0 ? "+" + abscore.modifier : abscore.modifier}}
+                    </div>
+                </div>
             </div>
         </div>
-
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex flex-wrap justify-content-around">
+                        <div class="m-1 text-center dm-bold-font w-100">
+                            Saving Throws
+                        </div>
+                        <div *ngFor="let abilityScore of character.abilityScores">
+                            <div class="chip-skill dm-reg-font my-2">
+                                {{abilityScore.name}}
+                                <div class="chip-skill-tag text-center">
+                                    {{abilityScore.savingThrowModifier >= 0 ? "+" + abilityScore.savingThrowModifier : abilityScore.savingThrowModifier}}
+                                </div>
+                                <div class="chip-skill-proficient" [ngClass]="{'tagged' : abilityScore.proficient || abilityScore.expert}"></div>
+                                <div class="chip-skill-expertise" [ngClass]="{'tagged' : abilityScore.expert}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex flex-wrap justify-content-around">
+                        <div class="m-1 text-center dm-bold-font w-100">
+                            Skills
+                        </div>
+                        <div *ngFor="let skill of skills">
+                            <div class="chip-skill dm-reg-font my-2">
+                                {{skill.name}}
+                                <div class="chip-skill-tag text-center">
+                                    {{skill.currentValue >= 0 ? "+" + skill.currentValue : skill.currentValue}}
+                                </div>
+                                <div class="chip-skill-proficient" [ngClass]="{'tagged' : skill.proficient || skill.expert}"></div>
+                                <div class="chip-skill-expertise" [ngClass]="{'tagged' : skill.expert}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        
     </div>
 </div>
 
-
-
-
-<!-- <pre>{{char|json}}</pre> -->
+<ng-template #loadingScreen class="container">
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1>Loading...</h1>
+            <div class="spinner-border" role="status"></div>
+        </div>
+    </div>
+</ng-template>

@@ -13,7 +13,7 @@
         <tbody *ngFor="let character of characters">
             <tr>
                 <th scope="row"><a routerLink="./{{character.id}}">{{character?.name}}</a></th>
-                <td>{{getraceName(character?.races)}}</td>
+                <td>{{character?.race}}</td>
                 <td>{{character?.level}}</td>
 
                 <td> <button type="button" class="btn btn-primary btn-action"

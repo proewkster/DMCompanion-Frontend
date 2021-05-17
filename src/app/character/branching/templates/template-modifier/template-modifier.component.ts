@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, AfterViewInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Branching_Choice } from 'src/app/admin/models/branching/branching_choice';
 import { Branching_Modifier } from 'src/app/admin/models/branching/branching_modifier';
-import { DTO_NewCharacter_Modifier } from 'src/app/character/models/dto_newcharacter-modifier';
-import { DTO_NewCharacter_Ability } from 'src/app/character/models/dto_newcharacter_ability';
-import { DTO_NewCharacter_Feat } from 'src/app/character/models/dto_newcharacter_feat';
+import { DTO_NewCharacter_Modifier } from 'src/app/character/models/DTO/dto_newcharacter-modifier';
+import { DTO_NewCharacter_Ability } from 'src/app/character/models/DTO/dto_newcharacter_ability';
+import { DTO_NewCharacter_Feat } from 'src/app/character/models/DTO/dto_newcharacter_feat';
 import { ClassIdentifiers } from 'src/app/enums/class-identifier.enum';
 
 declare var $: any;
@@ -87,7 +87,7 @@ export class TemplateModifierComponent implements OnInit, AfterViewInit {
 
   private addSelectionToCharacterModel = () => {
     // Create new modifier object
-    let newModifier = new DTO_NewCharacter_Modifier(this.selectedModifier.id, this.choice.level, this.choice.parentId, this.rootId);
+    let newModifier = new DTO_NewCharacter_Modifier(this.selectedModifier.id, this.choice.level, this.rootId, this.choice.parentId);
 
     // Detect the modifier's parent based on the identifier in the choice's parentID
     switch (this.choice.parentId.substring(0, this.choice.parentId.indexOf('-'))) {

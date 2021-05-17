@@ -2,8 +2,8 @@ import { Component, Input, OnInit, AfterViewInit, ChangeDetectorRef, Output, Eve
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Branching_Choice } from 'src/app/admin/models/branching/branching_choice';
 import { Branching_Feat } from 'src/app/admin/models/branching/branching_feat';
-import { DTO_NewCharacter } from 'src/app/character/models/dto-newcharacter';
-import { DTO_NewCharacter_Feat } from 'src/app/character/models/dto_newcharacter_feat';
+import { DTO_NewCharacter } from 'src/app/character/models/DTO/dto-newcharacter';
+import { DTO_NewCharacter_Feat } from 'src/app/character/models/DTO/dto_newcharacter_feat';
 import { ClassIdentifiers } from 'src/app/enums/class-identifier.enum';
 import { TemplateSelectionModalComponent } from '../template-selection-modal/template-selection-modal.component';
 

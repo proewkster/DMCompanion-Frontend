@@ -3,8 +3,8 @@ import { Branching_Race } from 'src/app/admin/models/branching/branching_race';
 import { SourceData_Race } from 'src/app/admin/models/sourcedata/sourcedata_race';
 import { BranchingService } from 'src/app/admin/services/branching.service';
 import { SourcedataService } from 'src/app/admin/services/sourcedata.service';
-import { DTO_NewCharacter } from '../../models/dto-newcharacter';
-import { DTO_NewCharacter_Race } from '../../models/dto_newcharacter_race';
+import { DTO_NewCharacter } from '../../models/DTO/dto-newcharacter';
+import { DTO_NewCharacter_Race } from '../../models/DTO/dto_newcharacter_race';
 
 declare var $: any;
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Character } from 'src/app/models/character';
-import { Race } from 'src/app/models/race';
+import { Character } from '../../models/Main/character';
+import { Skill } from '../../models/Main/skill';
 import { CharacterService } from '../../services/character.service';
 
 @Component({
@@ -10,33 +10,49 @@ import { CharacterService } from '../../services/character.service';
   styleUrls: ['./selected-character.component.scss']
 })
 export class SelectedCharacterComponent implements OnInit {
-  public char: Character = new Character(null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-  constructor(private characterservice: CharacterService, private activatedroute: ActivatedRoute) { }
+
+  character: Character;
+  isLoading = true;
+
+  skills: Skill[] = [];
+
+  constructor(private _characterservice: CharacterService, private _activatedroute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getcharacter();
+    // Get character data from database
+    this.getCharacter();
   }
-  getcharacter() {
-    this.activatedroute.paramMap.subscribe(
+
+  getCharacter = () => {
+    this._activatedroute.paramMap.subscribe(
       (route: ParamMap) => {
-        this.characterservice.getCharacter(route.get('id'))
-          .subscribe(data => { this.char = data; })
+        // Get character ID from route parameter
+        let id = route.get('id');
+
+        // Get character data through API
+        this._characterservice.getCharacter(id).subscribe(data => {
+          if(data) {
+            // Map data to property
+            this.character = data;
+
+            // Populate skill list
+            this.character.abilityScores.forEach(abilityScore => {
+              // Fetch each skill in the ability score
+              abilityScore.skills.forEach(skill => {
+                this.skills.push(skill);
+              })
+            })
+
+            // Sort skills alphabetically
+            this.skills.sort(function(a,b) {
+              return a.name.localeCompare(b.name);
+            });
+
+            // Unset loading parameter
+            this.isLoading = false;
+          }
+        });
       }
     )
   }
-  calculateModifier(ABscore: number) {
-    let modifier: Number = Math.floor((ABscore - 10) / 2);
-    if (modifier < 0) {
-      return modifier
-    }
-    return "+" + modifier;
-  }
-  getraceName(races: Race[]) {
-    let race = races?.find(r => r.type == "Sub");
-    if (race == null) {
-      race = races?.find(r => r.type == "Main");
-    }
-    return race ? race.name : "";
-  }
-
 }

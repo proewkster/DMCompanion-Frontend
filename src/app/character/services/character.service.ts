@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiEndPoints } from 'src/app/shared/enums/api-endpoints';
 import { ApiMethod } from 'src/app/shared/enums/api-method';
 import { HttpService } from 'src/app/shared/services/http.service';
-import { DTO_NewCharacter } from '../models/dto-newcharacter';
+import { DTO_NewCharacter } from '../models/DTO/dto-newcharacter';
 
 @Injectable({
   providedIn: 'root'

@@ -1,8 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Branching_Choice } from 'src/app/admin/models/branching/branching_choice';
 import { Branching_Spell } from 'src/app/admin/models/branching/branching_spell';
-import { DTO_NewCharacter_Ability } from 'src/app/character/models/dto_newcharacter_ability';
-import { DTO_NewCharacter_Spell } from 'src/app/character/models/dto_newcharacter_spell';
+import { DTO_NewCharacter_Ability } from 'src/app/character/models/DTO/dto_newcharacter_ability';
+import { DTO_NewCharacter_Spell } from 'src/app/character/models/DTO/dto_newcharacter_spell';
 
 declare var $: any;
 
