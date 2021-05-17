@@ -60,7 +60,7 @@ export class DTO_NewCharacter {
     this.appearance = appearance
     this.backstory = backstory
     this.notes = notes
-    this.abilityScores = abilityScores
+    this.abilityScores = abilityScores ? abilityScores : [];
   }
 
 

@@ -18,7 +18,7 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="Characters" routerLinkActive="active">Characters</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" *ngIf="isAdmin">
                     <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         Admin

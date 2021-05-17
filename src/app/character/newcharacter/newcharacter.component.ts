@@ -60,7 +60,7 @@ export class NewcharacterComponent implements OnInit, AfterViewInit {
 
     // Create new instance of character model
     if (this.createForm) {
-      this.newCharacter = new DTO_NewCharacter("Test",1,"somepicture",Alignment['Neutral (NN)'],Gender['Undetermined (X)'],"blue",6,Size.Medium,"none","black","pale",35,58,"something","Backstory goes here",null,[]);
+      this.newCharacter = new DTO_NewCharacter();
 
       // Populate lists
       this.getAbilityScores();

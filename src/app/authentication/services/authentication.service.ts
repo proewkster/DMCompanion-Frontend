@@ -87,6 +87,11 @@ export class AuthenticationService {
   public isAdmin = (): boolean => { // Checks if user has admin role -- Used in AdminGuard
     // Get token
     const token = localStorage.getItem("token");
+
+    // Return false if token doens't exist
+    if(!token) {
+      return false;
+    }
     
     // Decode token
     const decodedToken = this._jwtHelper.decodeToken(token);

@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   isAuthenticated: boolean;
+  isAdmin: boolean;
   username: string;
   title = 'DMCompanion';
 
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(res => {
         this.isAuthenticated = res;
         this.username = this._authService.getAuthenticatedUser();
+        this.isAdmin = this._authService.isAdmin();
       })
   }
 

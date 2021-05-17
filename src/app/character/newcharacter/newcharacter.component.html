@@ -32,7 +32,7 @@
         <div class="tab-pane fade show active" id="start" role="tabpanel" aria-labelledby="home-tab">
             <form #f1="ngForm">
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Name*</label>
                     <input type="text" class="form-control" id="name" required minlength="3" placeholder="Name"
                         [(ngModel)]="newCharacter.name" #name="ngModel" name="name">
                 </div>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="level">Level</label>
+                    <label for="level">Level*</label>
                     <input type="number" class="form-control" id="level" required placeholder="Enter level"
                         [(ngModel)]="newCharacter.level" #level="ngModel" name="level">
                 </div>
@@ -56,13 +56,11 @@
                 </div>
                 <div class="form-group">
                     <label for="picture">Picture</label>
-                    <input type="text" class="form-control" id="picture" required [(ngModel)]="newCharacter.picture"
+                    <input type="text" class="form-control" id="picture" [(ngModel)]="newCharacter.picture"
                         placeholder="picture" #picture="ngModel" name="picture">
                 </div>
                 <div *ngIf="picture.invalid && (picture.dirty || picture.touched)" class="alert alert-danger">
-                    <div *ngIf="picture.errors.required">
-                        Picture is required.
-                    </div>
+
                 </div>
             </form>
             <div class="d-flex justify-content-end">
@@ -108,7 +106,7 @@
         <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="profile-tab">
             <form #f4="ngForm">
                 <div class="form-group">
-                    <label for="gender">Gender</label>
+                    <label for="gender">Gender*</label>
                     <select class="form-control" #gender="ngModel" [(ngModel)]="newCharacter.gender" required
                         name="gender">
                         <option value="" disabled>Choose your gender</option>
@@ -119,32 +117,30 @@
                 </div>
                 <div class="form-group">
                     <label for="eye_Color">Eye color</label>
-                    <input type="text" class="form-control" id="eye_Color" required placeholder="eye color"
+                    <input type="text" class="form-control" id="eye_Color" placeholder="eye color"
                         [(ngModel)]="newCharacter.eye_Color" #eye_Color="ngModel" name="eye_Color">
                 </div>
                 <div *ngIf="eye_Color.invalid && (eye_Color.dirty || eye_Color.touched)" class="alert alert-danger">
-                    <div *ngIf="eye_Color.errors.required">
-                        The eye color is required.
-                    </div>
+
                 </div>
                 <div class="form-group">
                     <label for="height">Height</label>
-                    <input type="number" class="form-control" id="height" required placeholder="height"
+                    <input type="number" class="form-control" id="height"placeholder="height"
                          [(ngModel)]="newCharacter.height"  #height="ngModel" name="height">
                 </div>
                 <div *ngIf="height.invalid && (height.dirty ||height.touched)"class="alert alert-danger">
-                    <div *ngIf="height.errors.required">The height is required.</div>
+                    
                 </div>
                 <div class="form-group">
                     <label for="weight">Weight</label>
-                    <input type="number" class="form-control" id="weight" required placeholder="weight"
+                    <input type="number" class="form-control" id="weight" placeholder="weight"
                          [(ngModel)]="newCharacter.weight"  #weight="ngModel" name="weight">
                 </div>
                 <div *ngIf="weight.invalid && (weight.dirty ||weight.touched)"class="alert alert-danger">
-                    <div *ngIf="weight.errors.required">The weight is required.</div>
+                    
                 </div>
                 <div class="form-group">
-                    <label for="size">Size</label>
+                    <label for="size">Size*</label>
                     <select class="form-control" #size="ngModel" [(ngModel)]="newCharacter.size" required name="size">
                         <option value="" disabled>Choose your size</option>
                         <option *ngFor=" let size of sizes | keyvalue" [ngValue]="size.value">
@@ -154,26 +150,22 @@
                 </div>
                 <div class="form-group">
                     <label for="hair_Color">Hair color</label>
-                    <input type="text" class="form-control" id="hair_Color" required placeholder="hair color"
+                    <input type="text" class="form-control" id="hair_Color" placeholder="hair color"
                         [(ngModel)]="newCharacter.hair_Color" #hair_Color="ngModel" name="hair_Color">
                 </div>
                 <div *ngIf="hair_Color.invalid && (hair_Color.dirty || hair_Color.touched)" class="alert alert-danger">
-                    <div *ngIf="hair_Color.errors.required">
-                        Hair color is required.
-                    </div>
+                    
                 </div>
                 <div class="form-group">
                     <label for="skin_Color">Skin color</label>
-                    <input type="text" class="form-control" id="skin_Color" required placeholder="skin color"
+                    <input type="text" class="form-control" id="skin_Color" placeholder="skin color"
                         [(ngModel)]="newCharacter.skin_Color" #skin_Color="ngModel" name="skin_Color">
                 </div>
                 <div *ngIf="skin_Color.invalid && (skin_Color.dirty || skin_Color.touched)" class="alert alert-danger">
-                    <div *ngIf="skin_Color.errors.required">
-                        Skin color is required.
-                    </div>
+                    
                 </div>
                 <div class="form-group">
-                    <label for="age">Age</label>
+                    <label for="age">Age*</label>
                     <input type="number" class="form-control" id="age" required placeholder="age"
                          [(ngModel)]="newCharacter.age"  #age="ngModel" name="age">
                 </div>
@@ -182,15 +174,13 @@
                 </div>
                 <div class="form-group">
                     <label for="appearance">Appearance</label>
-                    <textarea rows="3" type="text" class="form-control" id="appearance" required
+                    <textarea rows="3" type="text" class="form-control" id="appearance" 
                         placeholder="Write a description of your characters general appearance here."
                         [(ngModel)]="newCharacter.appearance" #appearance="ngModel" name="appearance">
             </textarea>
                 </div>
                 <div *ngIf="appearance.invalid && (appearance.dirty || appearance.touched)" class="alert alert-danger">
-                    <div *ngIf="appearance.errors.required">
-                        Appearance is required.
-                    </div>
+                    
                 </div>
             </form>
             <div class="d-flex justify-content-end">
@@ -202,8 +192,8 @@
         <div class="tab-pane fade" id="personality" role="tabpanel" aria-labelledby="contact-tab">
             <form #f5="ngForm">
                 <div class="form-group">
-                    <label for="alignment">Alignment</label>
-                    <select class="form-control" #alignment [(ngModel)]="newCharacter.alignment" name="alignment">
+                    <label for="alignment">Alignment*</label>
+                    <select class="form-control" #alignment [(ngModel)]="newCharacter.alignment" required name="alignment">
                         <option value="" disabled>Choose your alignment</option>
                         <option *ngFor=" let alignment of alignments | keyvalue" [ngValue]="alignment.value">
                             {{alignment.value}}
@@ -212,13 +202,10 @@
                 </div>
                 <div class="form-group">
                     <label for="faith">Faith</label>
-                    <input type="text" class="form-control" id="faith" required placeholder="faith"
+                    <input type="text" class="form-control" id="faith" placeholder="faith"
                         [(ngModel)]="newCharacter.faith" #faith="ngModel" name="faith">
                 </div>
                 <div *ngIf="faith.invalid && (faith.dirty || faith.touched)" class="alert alert-danger">
-                    <div *ngIf="faith.errors.required">
-                        Faith is required.
-                    </div>
                 </div>
                 <div class="form-group">
                     <label for="notes">Other notes</label>
@@ -238,15 +225,13 @@
             <form #f6="ngForm">
                 <div class="form-group">
                     <label for="backstory">Your backstory</label>
-                    <textarea rows="8" type="text" class="form-control" id="backstory" required
+                    <textarea rows="8" type="text" class="form-control" id="backstory" 
                         placeholder="Write your characters backstory here." [(ngModel)]="newCharacter.backstory"
                         #backstory="ngModel" name="backstory">
             </textarea>
                 </div>
                 <div *ngIf="backstory.invalid && (backstory.dirty || backstory.touched)" class="alert alert-danger">
-                    <div *ngIf="backstory.errors.required">
-                        Backstory is required.
-                    </div>
+                    
                 </div>
             </form>
             <div class="d-flex justify-content-end">
