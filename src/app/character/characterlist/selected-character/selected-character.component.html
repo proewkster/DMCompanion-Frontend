@@ -10,9 +10,10 @@
                         {{character.name}}
                     </div>
                     <div class="banner-class">
-                        Level {{character.level}} {{character.race}} <!--Classes go here-->
+                        Level {{character.level}} {{character.race}}
+                        <!--Classes go here-->
                     </div>
-                    <div class="banner-xp"> 
+                    <div class="banner-xp">
                         XP: {{character.xp}}
                     </div>
                 </div>
@@ -34,7 +35,7 @@
                             <p class="stat">{{character.temp_Hit_Points}}</p>
                         </div>
                     </div>
-                    
+
                     <div class="banner-section justify-content-around">
                         <div class="banner-title">
                             Stats
@@ -49,7 +50,8 @@
                         </div>
                         <div class="banner-statbox">
                             Initiative
-                            <p class="stat">{{character.initiative >= 0 ? "+" + character.initiative : character.initiative}}</p>
+                            <p class="stat">{{character.initiative >= 0 ? "+" + character.initiative :
+                                character.initiative}}</p>
                         </div>
                     </div>
                 </div>
@@ -64,7 +66,7 @@
                             <button type="button" class="btn-sm btn-banner btn-block">Short Rest</button>
                             <button type="button" class="btn-sm btn-banner btn-block">Edit</button>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -98,9 +100,11 @@
                             <div class="chip-skill dm-reg-font my-2">
                                 {{abilityScore.name}}
                                 <div class="chip-skill-tag text-center">
-                                    {{abilityScore.savingThrowModifier >= 0 ? "+" + abilityScore.savingThrowModifier : abilityScore.savingThrowModifier}}
+                                    {{abilityScore.savingThrowModifier >= 0 ? "+" + abilityScore.savingThrowModifier :
+                                    abilityScore.savingThrowModifier}}
                                 </div>
-                                <div class="chip-skill-proficient" [ngClass]="{'tagged' : abilityScore.proficient || abilityScore.expert}"></div>
+                                <div class="chip-skill-proficient"
+                                    [ngClass]="{'tagged' : abilityScore.proficient || abilityScore.expert}"></div>
                                 <div class="chip-skill-expertise" [ngClass]="{'tagged' : abilityScore.expert}"></div>
                             </div>
                         </div>
@@ -119,7 +123,8 @@
                                 <div class="chip-skill-tag text-center">
                                     {{skill.currentValue >= 0 ? "+" + skill.currentValue : skill.currentValue}}
                                 </div>
-                                <div class="chip-skill-proficient" [ngClass]="{'tagged' : skill.proficient || skill.expert}"></div>
+                                <div class="chip-skill-proficient"
+                                    [ngClass]="{'tagged' : skill.proficient || skill.expert}"></div>
                                 <div class="chip-skill-expertise" [ngClass]="{'tagged' : skill.expert}"></div>
                             </div>
                         </div>
@@ -129,7 +134,7 @@
         </div>
     </div>
     <div class="row">
-        
+
     </div>
 </div>
 

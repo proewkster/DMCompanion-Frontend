@@ -103,6 +103,7 @@
     margin: 10px 0px 0px 50px;
     border-radius: 10px;
     height: 150px;
+    width: 100%;
 }
 
 .banner-body {
@@ -110,6 +111,7 @@
     height: 100%;
     width: 40%;
     float: left;
+    margin-bottom: 10px;
 }
 
 .banner-stats {
@@ -171,4 +173,36 @@
     border-color: #4A4E69;
     background-color: #4A4E69;
     color: #f2e9e4;
+}
+@media only screen and (max-width: 1200px) {
+    .banner-image{
+      z-index: 999;
+      position:absolute;
+     }
+    .banner{
+        z-index: 1;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:space-around;
+        margin: 10px 0px 0px 50px;
+        height: 340px;
+        width: auto;
+    }
+    .banner-body {
+    padding: 5px 1px 5px 120px;
+    height: 45%;
+    width: 80%;
+    float: left;
+}
+
+.banner-stats {
+    height: 45%;
+    width: 40%;
+    float: left;
+}
+.banner-functions{
+    height: 45%;
+    width: 50%;
+}
 }
