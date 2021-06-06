@@ -1,7 +1,7 @@
 <div class="modal-content">
     <div class="modal-header">
         <span class="modal-title">{{title}}</span>
-        <button type="button" class="close" aria-label="Close" (click)="activeModel.dismiss('Cross click')">
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -10,7 +10,7 @@
     </div>
     <div class="modal-footer">
         <ng-content select="[footer]"></ng-content>
-        <button type="button" class="btn btn-primary" (click)="activeModel.dismiss('Close click')">
+        <button type="button" class="btn btn-primary" (click)="activeModal.dismiss('Close click')">
             Close
         </button>
     </div>

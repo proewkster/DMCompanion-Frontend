@@ -86,6 +86,7 @@ export class RaceComponent implements OnInit, AfterViewInit {
 
     // Clear selection of subrace
     this.selectedSubRace = null;
+    this.fullSubRace = null;
 
     // Refresh dropdown menu to display options
     setTimeout(function() {

@@ -10,7 +10,7 @@ export class ModalComponent implements OnInit {
 
   @Input() title = "Information";
 
-  constructor(public activeModel: NgbActiveModal) { }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }
