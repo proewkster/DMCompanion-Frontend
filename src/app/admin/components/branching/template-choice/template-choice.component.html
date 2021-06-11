@@ -17,7 +17,6 @@
             <div *ngSwitchCase="1">
                 <div *ngFor="let option of choice.options">
                     <branching-template-spell [spell]="option" [root]="false" (deleteSpellEvent)="onDeleteSpell($event)"></branching-template-spell>
-                    
                 </div>
             </div>
             <div *ngSwitchCase="2">
@@ -47,6 +46,6 @@
             </div>
         </div>
 
-        <button type="button" class="btn btn-secondary" (click)="addOption()"><i class="fa fa-plus">Add Option</i></button>
+        <button type="button" [attr.disabled]="limitedTypeFlag ? 'disabled' : null" class="btn btn-secondary" (click)="addOption()"><i class="fa fa-plus">Add Option</i></button>
     </div>
 </div>

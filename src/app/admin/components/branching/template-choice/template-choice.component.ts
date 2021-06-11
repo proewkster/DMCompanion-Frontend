@@ -1,5 +1,4 @@
 import { ToastrService } from 'ngx-toastr';
-import { AbilityComponent } from './../../sourcedata/ability/ability/ability.component';
 import { ModalAddOptionComponent } from './../modal-add-option/modal-add-option.component';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
@@ -39,9 +38,15 @@ export class TemplateChoiceComponent implements OnInit {
     size: "md"
   }
 
+  limitedTypeFlag = false;
+
   constructor(private _modalService: NgbModal, private _toastrService: ToastrService) { }
 
   ngOnInit(): void {
+    // Check if options contain options of type ANY or ALL and disable buttons accordingly
+    if (this.choice.options[0]?.name.endsWith("- Any") || this.choice.options[0]?.name.endsWith("- All")) {
+      this.limitedTypeFlag = true;
+    }
   }
 
   editChoice = () => {
@@ -115,10 +120,29 @@ export class TemplateChoiceComponent implements OnInit {
           // Selection has already been added, display error message
           this._toastrService.error("The selected option was already added to this choice. You cannot add an option twice to the same choice.");
         }
-        else {
-          // Add choice to parent list
-          this.choice.options.push(data);
+        // Check if present option is of type ANY or ALL
+        else if (this.choice.options.length > 0 && (this.choice.options[0].name.endsWith("- Any") || this.choice.options[0].name.endsWith("- All"))) {
+          // Choice already contains an ANY or ALL type options, which cannot be combined with other options
+          this._toastrService.error("Choice already contains an option of type 'ANY' or 'ALL'. These options cannot be combined with other options.");
         }
+        else {
+          // Check if option is of type ANY or ALL and other options were already added
+          if ((data.name.endsWith("- Any") || data.name.endsWith("- All")) && this.choice.options.length > 0) {
+            // ANY or ALL type option detected, but choice already contains other options, display error message
+            this._toastrService.error("An option of type 'ANY' or 'ALL' cannot be combined with other options.");
+          }
+
+          // New option is valid
+          else {
+            // Check for ANY and ALL options and set flag accordingly
+            if (data.name.endsWith("- Any") || data.name.endsWith("- All")) {
+              this.limitedTypeFlag = true;
+            }
+
+            // Add choice to parent list
+            this.choice.options.push(data);
+          }
+        } 
       }
     },
     error => {
@@ -141,31 +165,39 @@ export class TemplateChoiceComponent implements OnInit {
     // Get index of choice object in abilities list
     let index = this.choice.options.indexOf(ability);
 
-    // Remove choice from abilities list
-    this.choice.options.splice(index, 1);
+    // Delete option from list
+    this.deleteOption(index);
   }
 
   onDeleteFeat = (feat: Branching_Feat) => {
     // Get index of choice object in abilities list
     let index = this.choice.options.indexOf(feat);
 
-    // Remove choice from abilities list
-    this.choice.options.splice(index, 1);
+    // Delete option from list
+    this.deleteOption(index);
   }
 
   onDeleteModifier = (modifier: Branching_Modifier) => {
     // Get index of choice object in abilities list
     let index = this.choice.options.indexOf(modifier);
 
-    // Remove choice from abilities list
-    this.choice.options.splice(index, 1);
+    // Delete option from list
+    this.deleteOption(index);
   }
 
   onDeleteSpell = (spell: Branching_Spell) => {
     // Get index of choice object in abilities list
     let index = this.choice.options.indexOf(spell);
 
+    // Delete option from list
+    this.deleteOption(index);
+  }
+
+  private deleteOption = (index: number) => {
     // Remove choice from abilities list
     this.choice.options.splice(index, 1);
+
+    // Reset limitedTypeFlag
+    this.limitedTypeFlag = false;
   }
 }
