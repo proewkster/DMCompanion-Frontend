@@ -7,13 +7,13 @@ export enum ApiEndPoints {
     RESETPASSWORD = "/authentication/resetpassword",
 
     //User Endpoints
-    USER_DATA = "/User/GetUserData",
-    USER_UPDATE = "/User/UpdateUser",
-    USER_UPDATEPASSWORD = "/User/UpdatePassword",
-    USER_UPDATEEMAIL = "/User/UpdateEmail",
+    USER_DATA = "/User",
+    USER_UPDATE = "/User",
+    USER_UPDATEPASSWORD = "/User/Password",
+    USER_UPDATEEMAIL = "/User/Email",
     CONFIRMUPDATEDEMAIL = "/user/EmailConfirmation",
-    DOWNLOADPERSONALDATA = "/user/DownloadUserData",
-    DELETEPERSONALDATA = "/user/DeleteUser",
+    DOWNLOADPERSONALDATA = "/user/Download",
+    DELETEPERSONALDATA = "/user",
 
     //UserManagement Endpoints
     USER_LIST = "/usermanagement/UserList",
